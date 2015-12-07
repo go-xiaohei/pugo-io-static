@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Pugo 一次内存泄露的调优 - Pugo.Static</title>
+    <meta name="keywords" content="pugo,golang,static,site,generator"/>
+    <meta name="description" content=""/>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/css/prism.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<header id="header">
+    <div class="container">
+        <div class="header clearfix">
+            <nav id="site-nav">
+                <ul class="nav nav-inverse nav-pills pull-right">
+                    <li role="presentation" class="">
+                        <a href="/" class="">Home
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/archive.html" class="">Archive
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/about.html" class="" target="_blank" >About
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 id="site-title">
+                <a href="/">Pugo.Static</a>
+            </h3>
+        </div>
+    </div>
+</header>
+
+<section id="main">
+    <div class="container">
+        <div id="article-single">
+            <article class="article">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 panel panel-default">
+                        <header class="header">
+                            <div class="meta">
+                        <span class="date">
+                            <span class="month">10</span>
+                            <span class="day">14</span>
+                        </span>
+                            </div>
+                            <h3 class="title">
+                                <a href="/2015/10/14/pugo-mem-leak-profile.html">Pugo 一次内存泄露的调优</a>
+                            </h3>
+                        </header>
+                        <aside class="aside clearfix">
+                            <a class="tag label label-info" href="/tags/Go.html">Go</a>
+                            <a class="tag label label-info" href="/tags/%e8%b0%83%e4%bc%98.html">调优</a>
+                            <a class="tag label label-info" href="/tags/pprof.html">pprof</a>
+                            <a class="stat label label-default pull-right" href="http://fuxiaohei.me/" target="_blank">傅小黑</a>
+                        </aside>
+                        <section class="brief"><p>我刚刚写好新的博客程序 <a href="https://github.com/go-xiaohei/pugo">Pugo</a>，欢迎试用和体验。这两天我把个站 <a href="http://fuxiaohei.me">fuxiaohei.me</a> 迁移到新的博客程序。但是，经过一天的运行，发现内存从启动的 14MB 上升到了 228 MB。显然程序发生内存泄露，所以也开始以下调优过程。</p>
+
+<h3>PPROF</h3>
+
+<p><a href="http://blog.golang.org/profiling-go-programs">pprof</a> 是 Golang 自带的调试工具，有很多可用的工具。pprof 的调试方式有代码的方式和 HTTP 方式。其中 HTTP  调试比较方便，加入很简单的代码：</p>
+<pre><code class="language-go">import _ &quot;net/http/pprof&quot; // pprof 的 http 路由注册在自带路由上
+
+go func() {
+    http.ListenAndServe(&quot;0.0.0.0:6060&quot;, nil) // 启动默认的 http 服务，可以使用自带的路由
+}()
+
+</code></pre>
+
+<!--more-->
+
+<p>访问 <code>http://localhost:6060/debug/pprof/</code> 就可以查看 pprof 提供的信息。分析内存使用，可以关注 heap 上分配的变量都是哪些内容，访问 <code>http://localhost:6060/debug/pprof/heap?debug=1</code> 可以看到如图的数据：</p>
+
+<p><img src="/upload/3bbae75c83000b1cd910df4083b5cd76.png" alt="heap" /></p>
+
+<p>来自代码 <code>github.com/syndtr/goleveldb/leveldb/memdb.New</code> 的对象在 heap 上最多。 Pugo 的数据库底层是 基于 goleveldb 存储的 tidb 数据库。 goleveldb 有类似于 leveldb 的行为，就是半内存半存储的数据分布。因而，有比较大量的内存对象是正常现象。但是使用 go tool 的时候发现了别的问题：</p>
+<pre><code>go tool pprof http://localhost:6060/debug/pprof/heap
+</code></pre>
+
+<p>go tool 暂存下当时的 heap 快照用于分析。同时进入了 pprof 工具，用命令：</p>
+<pre><code>top -10
+</code></pre>
+
+<p>展示占用最多的 10 个对象堆如图：</p>
+
+<p><img src="/upload/0c14c53f64bf3f32020bddb87e4e105b.png" alt="heap-top" /></p>
+
+<p><code>reflect.Value.call</code> 是 heap 上最多的调用，呵呵。问题落在标准库上，可能就是 golang 标准库的问题。我本机还是 Go 1.5版本。试着更新了一下 Go 1.5.1 后，发现 heap 上的数据分布没有什么变化。那就不是标准库的问题。</p>
+
+<h3>深入分析</h3>
+
+<p>既然不是标准库的问题，就是调用<code>reflect.Value.call</code>的上级出现问题。用命令生成 svg 过程图到浏览器：</p>
+<pre><code>web
+</code></pre>
+
+<p>时序图中明显有问题的部分：</p>
+
+<p><img src="/upload/0401f49f61bbf182be168c2b104a31e6.png" alt="heap-svg" /></p>
+
+<p>发现 <code>tango.(*Context).Next</code> 是调度的上级。但是 Next() 方法源码中没有 reflect 的调用过程，不够明确。用另一个命令辅助：</p>
+<pre><code>peek reflect.Value.Call
+</code></pre>
+
+<p>有图：</p>
+
+<p><img src="/upload/bcd54e59036229210d665a04dcaa4bbd.png" alt="heap-peek" /></p>
+
+<p>可以看到上下文方法 <code>tango.(*Context).Invoke</code>，代码中发现：</p>
+<pre><code class="language-go">if ctx.action != nil {
+    var ret []reflect.Value
+    switch fn := ctx.route.raw.(type) {
+    case func(*Context):
+        fn(ctx)
+    case func(*http.Request, http.ResponseWriter):
+        fn(ctx.req, ctx.ResponseWriter)
+    case func():
+        fn()
+    case func(*http.Request):
+        fn(ctx.req)
+    case func(http.ResponseWriter):
+        fn(ctx.ResponseWriter)
+    default:
+        ret = ctx.route.method.Call(ctx.callArgs) // 调用 reflect.Value.Call 的地方
+    }
+
+    if len(ret) == 1 {
+        ctx.Result = ret[0].Interface()
+    } else if len(ret) == 2 {
+        if code, ok := ret[0].Interface().(int); ok {
+            ctx.Result = &amp;StatusResult{code, ret[1].Interface()}
+        }
+    }
+    // not route matched
+} else {
+    if !ctx.Written() {
+        ctx.NotFound()
+    }
+}
+</code></pre>
+
+<p>把这个位置反馈给tango的作者 lunny 后，最终定位的问题在 router 池的构造方法：</p>
+<pre><code class="language-go">func newPool(size int, tp reflect.Type) *pool {
+    return &amp;pool{
+        size: size,
+        cur:  0,
+        pool: reflect.MakeSlice(reflect.SliceOf(tp), size, size), // 这个地方申请了大内存
+        tp:   reflect.SliceOf(tp),
+        stp:  tp,
+    }
+}
+</code></pre>
+
+<p><code>reflect.MakeSlice</code> 的 <code>size</code> 默认值是 800， 也就是创造了存有一个长度800的slice的pool，内存一直在不停增长。然后 pool 中存有的 reflect.Value 一直被调用，所以 heap 可以看到调度信息。修改 size 默认值到 10 左右，一切就正常啦。</p>
+
+<h3>总结</h3>
+
+<p>Golang 本身提供的 profile 工具很好，可以提供很多的信息。然后，我经过对代码的分析和追踪，发现问题所在。调试和优化是工作中经常遇到的事情。每一次分析过程都为自己积累了思考的方式和修改的经验。</p>
+</section>
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+    </div>
+</section>
+<footer id="footer">
+    <div class="container text-center">
+        <p>© 2015 Pugo.Static.
+            <a href="http://creativecommons.org/licenses/by/3.0/">Some rights reserved </a> |
+            <a href="/feed.xml">Feed</a> |
+            <a href="/sitemap.xml">Sitemap</a>
+        </p>
+        <p>Powered by <a href="https://github.com/go-xiaohei/pugo-static">Pugo 0.8.0</a>. Theme by Default.
+        </p>
+    </div>
+</footer>
+<script src="/static/js/jquery-2.1.4.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/prism.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("pre code").addClass("line-numbers")
+    });
+</script>
+</body>
+</html>
