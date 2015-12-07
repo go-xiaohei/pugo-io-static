@@ -101,6 +101,56 @@ This blog is generated from file `source/welcome.md`. You can learn it and try t
                 </div>
             </article>
             
+            <article class="article">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 panel panel-default">
+                        <header class="header">
+                            <div class="meta">
+                        <span class="date">
+                            <span class="month">11</span>
+                            <span class="day">25</span>
+                        </span>
+                            </div>
+                            <h3 class="title">
+                                <a href="/2015/11/25/deep-in-fasthttp-package.html">阅读 valyala/fasthttp —— 比官方库更快的 HTTP 包</a>
+                            </h3>
+                        </header>
+                        <section class="brief"><p><a href="https://github.com/valyala/fasthttp">valyala/fasthttp</a> 是号称比官方<code>net/http</code>库更快的 http server 库。就去顺便研究了，发现一些细节的不同。</p>
+
+<h3>处理 net.Conn 的 goroutine</h3>
+
+<p><strong>处理net.Conn的goroutine的使用方式</strong>，和标准库有很大差别。在标准库，<code>net.Listener.Accept()</code> 到一个连接，就会开启一个goroutine：</p>
+<pre><code class="language-go">// Serve accepts incoming connections on the Listener l, creating a
+// new service goroutine for each.  The service goroutines read requests and
+// then call srv.Handler to reply to them.
+func (srv *Server) Serve(l net.Listener) error {
+    defer l.Close()
+    var tempDelay time.Duration // how long to sleep on accept failure
+    for {
+        rw, e := l.Accept()
+        if e != nil {
+            ......
+        }
+        ......
+        c, err := srv.newConn(rw)
+        if err != nil {
+            continue
+        }
+        c.setState(c.rwc, StateNew) // before Serve can return
+        go c.serve() // 在这里创建一个goroutine处理net.Conn的实际逻辑
+    }
+}
+</code></pre>
+
+<p>但是在<code>valyala/fasthttp</code>中使用的是worker的形式，开启固定数量的goroutine处理<code>net.Conn</code>。</p>
+</section>
+                        <aside class="aside clearfix">
+                            <a class="btn btn-primary btn-lg pull-right" href="/2015/11/25/deep-in-fasthttp-package.html">Read More</a>
+                        </aside>
+                    </div>
+                </div>
+            </article>
+            
             <div class="article-pager text-center">
                 
                 
