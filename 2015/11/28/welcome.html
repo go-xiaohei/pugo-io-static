@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Welcome - Pugo.Static</title>
+    <meta name="keywords" content="pugo,golang,static,site,generator"/>
+    <meta name="description" content="welcome to try pugo.static site generator"/>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/css/prism.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<header id="header">
+    <div class="container">
+        <div class="header clearfix">
+            <nav id="site-nav">
+                <ul class="nav nav-inverse nav-pills pull-right">
+                    <li role="presentation" class="">
+                        <a href="/" class="">Home
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/archive.html" class="">Archive
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/about.html" class="" target="_blank" >About
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 id="site-title">
+                <a href="/">Pugo.Static</a>
+            </h3>
+        </div>
+    </div>
+</header>
+
+<section id="main">
+    <div class="container">
+        <div id="article-single">
+            <article class="article">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 panel panel-default">
+                        <header class="header">
+                            <div class="meta">
+                        <span class="date">
+                            <span class="month">11</span>
+                            <span class="day">28</span>
+                        </span>
+                            </div>
+                            <h3 class="title">
+                                <a href="/2015/11/28/welcome.html">Welcome</a>
+                            </h3>
+                        </header>
+                        <aside class="aside clearfix">
+                            <a class="tag label label-info" href="/tags/pugo.html">pugo</a>
+                            <a class="tag label label-info" href="/tags/welcome.html">welcome</a>
+                            <a class="stat label label-default pull-right"></a>
+                        </aside>
+                        <section class="brief"><p>When you read the blog, <code>pugo</code> is running successfully. Then enjoy your blog journey.</p>
+
+<p>This blog is generated from file <code>source/welcome.md</code>. You can learn it and try to write your own blog article with following guide together.</p>
+
+<h4>blog meta</h4>
+
+<p>Blog&rsquo;s meta data, such as title, author, are created by first <code>ini</code> section with block <strong>```ini &hellip;.. ```</strong>:</p>
+<pre><code class="language-ini">; post title, required
+title = Welcome to Pugo.Static
+
+; post slug, use to build permalink and url, required
+slug = welcome-pugo-static
+
+; post created time, support
+; 2015-11-28, 2015-11-28 12:28, 2015-11-28 12:28:38
+date = 2015-11-28 11:28
+
+; post updated time, optional
+; if null, use created time
+update_date = 2015-11-28 12:28
+
+; author identifier, reference to meta.md [author.pugo], required
+author = pugo-robot
+
+; tags, optional
+tags = pugo,welcome
+</code></pre>
+
+<h4>blog content</h4>
+
+<p>Content are from the second section as <code>markdown</code> format:</p>
+<pre><code class="language-markdown">When you read the blog, `pugo` is running successfully. Then enjoy your blog journey.
+
+This blog is generated from file `source/welcome.md`. You can learn it and try to write your own blog article with following guide together.
+
+...... (markdown content)
+</code></pre>
+
+<p>Just write content after blog meta, all words will be parsed as markdown content.</p>
+</section>
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+    </div>
+</section>
+<footer id="footer">
+    <div class="container text-center">
+        <p>© 2015 Pugo.Static.
+            <a href="http://creativecommons.org/licenses/by/3.0/">Some rights reserved </a> |
+            <a href="/feed.xml">Feed</a> |
+            <a href="/sitemap.xml">Sitemap</a>
+        </p>
+        <p>Powered by <a href="https://github.com/go-xiaohei/pugo-static">Pugo 0.8.0</a>. Theme by Default.
+        </p>
+    </div>
+</footer>
+<script src="/static/js/jquery-2.1.4.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/prism.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("pre code").addClass("line-numbers")
+    });
+</script>
+</body>
+</html>
