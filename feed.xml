@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Pugo.Static - site generator</title><link>http://localhost</link><description>pugo is a simple static site generator</description><lastBuildDate>Mon, 07 Dec 2015 15:02:29 +0800</lastBuildDate><item><title>Welcome</title><link>http://localhost/2015/11/28/welcome.html</link><pubDate>Sat, 28 Nov 2015 00:00:00 +0000</pubDate><category>pugo</category><category>welcome</category><description><![CDATA[ <p>When you read the blog, <code>pugo</code> is running successfully. Then enjoy your blog journey.</p>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Pugo.Static - site generator</title><link>http://localhost</link><description>pugo is a simple static site generator</description><lastBuildDate>Fri, 18 Dec 2015 14:09:44 +0800</lastBuildDate><item><title>Welcome</title><link>http://localhost/2015/12/29/welcome.html</link><pubDate>Tue, 29 Dec 2015 00:00:00 +0000</pubDate><description><![CDATA[ <p>When you read the blog, <code>pugo</code> is running successfully. Then enjoy your blog journey.</p>
 
 <p>This blog is generated from file <code>source/welcome.md</code>. You can learn it and try to write your own blog article with following guide together.</p>
 
@@ -667,4 +667,1580 @@ beego.Router(&quot;/topic/:slug&quot;, posts, &quot;get:Topic;post:TopicSubmit&q
 <p>那么下一篇，我们来阅读以下<code>controllerInfo{}</code>添加到<code>*Tree</code>中的过程。既然是路由树，那么层级规则，节点内容，就是重要的细节。</p>
 
 <p><strong>Notice:</strong> 本文基于 beego v1.4.3</p>
+ ]]></description></item><item><title>2014, 2015</title><link>http://localhost/2015/2/22/2014-2015.html</link><pubDate>Sun, 22 Feb 2015 22:58:59 +0000</pubDate><description><![CDATA[ <p>2014年已经过去，2015已然开始。时光流逝，很多故事已经发生，我却不知从何说起。一切都按照预想进行，工作事业都很顺利。尤其是从西安到厦门重新谋生的过程，和之前预想的情况相差不大。只是不知为何，心里还是 <strong>空荡荡</strong> 的。我已经虚岁25了，越长大越孤单。也许，该是找个伴儿的时候了。</p>
+
+<h2>2014</h2>
+
+<p>2014是本命年，我都做了些什么。生活好像变化很大。可是，细细想来，还值钱没有太大差别：一个人的出租屋，一个人的死宅，公司宿舍的两点一线。我可能习惯了这样的生活。</p>
+
+<p>其实这样也对。从西安到了厦门，最大的期望就是恢复到原来简单的生活：工作兢兢业业，生活波澜不惊。按照计划，我已经做到了。入职<a href="http://www.yunduo.com">云朵网络</a>后工作顺利，没有很多的波澜。我了解、熟悉并加入到整个项目，各种问题中稳步推进，效果良好。云朵有几十名员工，分属各个部门。我作为后端开发，经常和测试妹子们和硬件开发们交流探讨。这也算逐渐熟悉了同事们。总之，现在的工作环境，我是<strong>满足</strong>的。&lt;!&ndash;more&ndash;&gt;</p>
+
+<p>生活上，相对于之前的死宅，我有一点点的开放。有几次面基，吃吃饭爬爬山。更多几次电影，跟上一些影视圈的步伐。不过，也就这么多了吧。我终究还是一个<strong>不愿意交际</strong>的人。这可能是我更落寞的原因。西安还有几个很熟悉的朋友，偶尔聊聊深沉的心里话。来到厦门的时间不长，还没有培养出这样的朋友。同时，我不是性格张扬的人。当自己心情不好的时候，并不会形于色，而是藏在心里。<strong>伪装</strong>是必须的，不为了应付别人，而是为了宽慰自己。</p>
+
+<hr />
+
+<p>2014年里，<a href="http://gogs.io">Gogs</a> 的进度没有实现年初制定的roadmap。原本计划2015年春节前发布 v1.0。可惜现在 v0.6 还没完全搞定。不过，<a href="http://wuwen.org">无闻</a> 说的5000+ Star倒是做到了。猛然间，我参与了如此受关注的项目，真是倍感压力。我知道，自己能力有限水平一般，希望2015年能继续参与下去，尽心尽力吧！</p>
+
+<p>到厦门后，我在 <a href="https://github.com/fuxiaohei">Github</a> 的活跃度就下降了很多。一方面是这边的工作时间更多，自由时间更少了。另一方面，是忽然间没有了很多的热情。我的心思用在应付新城市的生活上，没有更多的精力专心在开源项目。经过这半年，工作和生活都稳定下来啦，也有余力继续。</p>
+
+<p>如今，Github 上的活动已经成为判断一个程序猿技术能力的重要方面。一直以来我都在放出一些学习的代码，比如一个自己写着玩的php框架，php博客，以及一个Golang的博客<a href="https://github.com/fuxiaohei/Goblog">GoBlog</a>。后来，GoBlog的用户群逐渐出现。如今我已知的用户有十来位朋友。也许我需要深入的考虑这个东西，如何从一个玩具到一个产品。我有个想法：“做好这个东西，对得起这些支持我的朋友们”。哈哈，不错不错！</p>
+
+<h2>2015</h2>
+
+<p>智能穿戴设备领域的竞争越来越激烈。我们公司的产品要如何做好，必然需要一些过人之处。这些优势最终落地在各种技术支持上。因而，新的一年，我要做的还有很多。虽然我不知道会有怎样的新的内容，但是显然它不会是简单的工作。给自己一点鼓励，加油！</p>
+
+<p>Gogs 今年的roadmap还没有出来，不知道工作量会有多少。另外，我打算用 <a href="http://semantic-ui.com">SemanticUI</a> 和 <a href="http://facebook.github.io/react/">React.js</a> 来重构整个前端架构。我需要学习这两个新事物，并学以致用。努力努力。</p>
+
+<h2>别的话</h2>
+
+<p>对于一个伴侣，我有一些开放，有一些保守。比如性别无所谓，年龄要相近&hellip;&hellip;这些表象的东西在乎的不是那么多。有人说，人一辈子遇到的只有两种人：吵过后离开的人，吵过后凑合着过的人。从我父母的婚姻来看，凑合着过的，是大多数吧。就像我妈说的，难道还能离啊！哈。</p>
+
+<p>为什么会凑合着过？因为放下了很多本来的期望。就像本来需要一个高富帅，后来发现一个不高不富不帅的对自己好，也就算了。人总会审时度势。不过说的难听一点，就是得过且过，懒得再找。</p>
+
+<p>我不是一个积极的人。我交际上不积极，认识的人不多，更不要说有更多深入想法的人。心态上我也不积极，所有的悲与痛我都藏在心里。对外嘻嘻哈哈，对内郁结难久。从历史到现在，很多的事情在心里结痂。我不愿意去解开他们，反而在享受他们带来的悲伤和孤寂。蔡说，我是一个<strong>别扭</strong>的人。</p>
+ ]]></description></item><item><title>新城市安定好了</title><link>http://localhost/2014/11/1/a-new-city.html</link><pubDate>Sat, 01 Nov 2014 19:45:25 +0000</pubDate><description><![CDATA[ <p>6月中旬合同到期，再休息半个月，离开了从大学生活6年的西安。应@达达的邀请，去厦门开始新的工作生活。7月安置好生活，找到新的工作，8月开始正式上班，3个月过去。事情都稳定下来了。</p>
+
+<h3>新的工作</h3>
+
+<p>新工作是在 <a href="http://yunduo.com">云朵科技</a>, 专职云端开发工程师，主要使用 Go 语言，主要是做可穿戴式设备——定位鞋——后端服务交互和各种功能的算法。</p>
+
+<p>选择这个工作主要是因为比较稳定的上班时间。本来邀请的是去游戏团队，但是对高强度加班我很不喜欢，还是放弃了。然后又去网宿科技聊过，但因为是底层的技术，不是我的方面，也放弃了。最后，就定下云朵科技了。</p>
+
+<p>主要的工作内容是和鞋子的硬件模块交互，比如接受数据，下发命令。比较困难的问题是定位的问题。更新过两次算法，还是不很理想，只能依靠更多的固件更新。然后是各种省电策略的实现，各种乱七八糟的不正常状态bug。以及各种细节的问题，还是比较忙的。</p>
+
+<p>终于开始专职 Go 语言开发，希望一直能做下去。不过，我预估这个产品的市场发展有限，不过能占有一席之地，就可以了吧。</p>
+
+<!--more-->
+
+<h3>一些生活</h3>
+
+<p>租的房子是隔断间，还要900一月。等工作几个月攒一点钱租一个二室一厅来，舒服一些。而且现在上班无论怎么坐车都要30min，还是要选个更近一点的地方。</p>
+
+<p>上班现在也是问题。如果做直达公交，肯定挤成肉饼。如果坐只到软件园附近的公交，还得走路一段，略麻烦。</p>
+
+<p>饮食里不太喜欢海鲜。问题是一般吃的都不是太熟，或者说没有加很多的佐料盖住海鲜的腥味。有点腥味我胃口就不好了，实在没办法。</p>
+
+<h3>一些项目</h3>
+
+<p><code>gogs</code> 我也好久没有提交，要逐渐重新开了；<code>GoBlog</code> 也开始了重构的计划；一些源码分析的文章没有写；还有一个代码生成器的想法正在实现。</p>
+
+<p>还有好多事情啊！！！</p>
+ ]]></description></item><item><title>在做一些自己想做的事情</title><link>http://localhost/2014/5/28/something-want-to-do.html</link><pubDate>Wed, 28 May 2014 00:36:14 +0000</pubDate><category>Go语言</category><category>工作</category><category>学习</category><description><![CDATA[ <p>小站长草一个月，本来的计划有很多变化。我也不知道要说些什么好。生活总有如意不如意，自己负责就好。反正，终极的希望，<strong>做一些自己想做的事情就好</strong>。</p>
+
+<h3>GoGs</h3>
+
+<p><a href="http://gogs.io">GoGs</a>是Go实现的类Github服务。最初这个项目是<a href="https://github.com/Unknwon/">无闻</a>倡导的，他和<a href="https://github.com/lunny">lunny</a>最开始折腾。后来缺一个前端，就把我拉进来了。这是我第一次完整的参与一个开源项目的工作。GoGs在<a href="https://github.com/gogits/gogs">Github</a>已经1900个star，非常开心。</p>
+
+<p>其实我是知道自己的，UI设计和JavaScript功力都不是高手，只是有点熟悉罢了。真正专业的JavaScript代码我也是看得一头雾水，什么<code>promise</code>，<code>event-proxy</code>我理解也有困难。不过现在来看，目前的能力还是足够处理这个工作的。</p>
+
+<p>6月GoGs发布v0.4之后，前端会面临一次重构甚至重设计。希望我还可以做好。这就是我下班之余最忙活，也是最开心的事情吧。</p>
+
+<!--more-->
+
+<h3>Go语言</h3>
+
+<p>Go语言其实我一直只是自学，用武之地很匮乏。唯一上线的服务就是这个博客<a href="http://github.com/fuxiaohei/GoBlog">GoBlog</a>。当初写的非常殷情，觉得这会是个很漂亮的产品。但是如今回头来看，还是个非常初级的玩具。</p>
+
+<p>每个程序员都写框架的心理，我也不例外。GoBlog其实是我写Web框架<a href="https://github.com/fuxiaohei/GoInk">GoInk</a>同时的副产品。当然这个框架只是练习，不能真的生产使用。现在来看，也是太过简单，一直在走别的老路。因此，我想重构GoBlog，用全新的想法来写。</p>
+
+<p>其实我也不知道全新的想法是啥现在。一个新的项目<a href="https://github.com/fuxiaohei/fob">fob</a>，打算写一个简单的存储引擎，用来替换GoBlog原始的json文件方式。只是没想到<a href="http://github.com/astaxie">Asta谢</a>似乎对这个想法有些兴趣，非常感谢他在我疑惑的时候给我的解答。我没有学过什么数据库理论，在按自己的简单想法实现。不过雏形就好，能用先。</p>
+
+<p>另一方面要替换GoInk。曾经想用<a href="https://github.com/go-martini/martini">martini</a>，但是它的中间件通用型太差，为了满足我的特殊要求，非得自己改造。最后决定还是自己写一个算了。可能的方向会比较类似于<a href="http://compoundjs.com/">CompoundJS</a>。还在研究中。</p>
+
+<h3>手机和电脑</h3>
+
+<p>看了老罗的发布会，被他的演讲感染，觉得T1会是个好手机吧。不过对市场反应期待不高。无论说的多么优秀，多么体贴入微，对大多数手机用户而言都是扯淡。想到大多数的iPhone用户连用地图找公交车都不会，就更别想他们会花心思研究T1的使用技巧了。罗永浩也明白，T1的消费人群是粉丝和理性用户，就看他怎么继续下去咯。</p>
+
+<p>我自己的笔记本是4年前买的ASUS，已经跟不上时代咯。现在用的是公司的ThinkPad X201。6月份合同到期，我就得还给公司咯。因而，最近一直在看买个新的。最终很可能的是苹果 Macbook Pro 的 13 寸中配，不到9000。6月份开始来详细研究吧。</p>
+
+<h3>源码阅读</h3>
+
+<p>4月底我阅读了martini和<a href="https://github.com/astaxie/beego">beego</a>的源码，并写了简单的分析。真正的要理解这些框架，不仅仅是研究源码，还有使用体验。我所做的只是浅尝辄止。</p>
+
+<p>下一步的计划是lunny的<a href="https://github.com/go-xorm/xorm">xorm</a>和毛剑的<a href="https://github.com/Terry-Mao/gopush-cluster">gopush-cluster</a>。我功力有限，而且发觉真的要说清楚他们，需要写很多前瞻只是。比如ORM是什么，Go语言里<code>database/sql</code>库的操作，以及为什么选择使用ORM而不是标准库。对于大多数初学者，应该不会容易理解我写的分析吧。</p>
+
+<p>其实我也不知道该怎么写比较深入浅出。先做下去，希望阅读之后，多给我提提建议吧。</p>
+
+<h3>工作前后</h3>
+
+<p>工作合同在6月份到期，我却反而越来越不急切了。我应该会离开西安这个城市，回到家乡南方去，寻找新的工作机会。不过更多的，可能先去一些地方走走看看，旅游也好散心也好。放下自己一段时间，做一些自己想做的事情吧。</p>
+ ]]></description></item><item><title>Beego源码分析</title><link>http://localhost/2014/4/30/beego-source-study.html</link><pubDate>Wed, 30 Apr 2014 13:02:55 +0000</pubDate><category>Go语言</category><category>beego</category><description><![CDATA[ <p><code>beego</code> 是 <a href="https://github.com/astaxie">@astaxie</a> 开发的重量级Go语言Web框架。它有标准的MVC模式，完善的功能模块，和优异的调试和开发模式等特点。并且<code>beego</code>在国内企业用户较多，社区发达和Q群，文档齐全，特别是 @astaxie 本人对bug和issue等回复和代码修复很快，非常敬业。<code>beego</code>框架本身模块众多，无法简单描述所有的功能。我简单阅读了源码，记录一下<code>beego</code>执行过程。官方文档已经图示了<code>beego</code>执行过程<a href="http://beego.me/docs/mvc/">图</a>，而我会比较详细的解释<code>beego</code>的源码实现。
+&lt;!&ndash;more&ndash;&gt;
+<strong>注意</strong>，本文基于beego 1.1.4 (2014.04.15) 源码分析，且不是<code>beego</code>的使用教程。使用细节的问题在这里不会说明。</p>
+
+<h2>1. 启动应用</h2>
+
+<p><a href="http://beego.me/">beego官方首页</a>提供的示例非常简单：</p>
+<pre><code class="language-go">package main
+
+import &quot;github.com/astaxie/beego&quot;
+
+func main() {
+    beego.Run()
+}
+</code></pre>
+
+<p>那么，从<code>Run()</code>方法开始，在<a href="https://github.com/astaxie/beego/blob/master/beego.go#L179">beego.go#179</a>：</p>
+<pre><code class="language-go">func Run() {
+    initBeforeHttpRun()
+
+    if EnableAdmin {
+        go beeAdminApp.Run()
+    }
+
+    BeeApp.Run()
+}
+</code></pre>
+
+<p>额呵呵呵，还在更里面，先看<code>initBeforeHttpRun()</code>，在<a href="https://github.com/astaxie/beego/blob/master/beego.go#L189">beego.go#L189</a>:</p>
+<pre><code class="language-go">func initBeforeHttpRun() {
+    // if AppConfigPath not In the conf/app.conf reParse config
+    if AppConfigPath != filepath.Join(AppPath, &quot;conf&quot;, &quot;app.conf&quot;) {
+        err := ParseConfig()
+        if err != nil &amp;&amp; AppConfigPath != filepath.Join(workPath, &quot;conf&quot;, &quot;app.conf&quot;) {
+            // configuration is critical to app, panic here if parse failed
+            panic(err)
+        }
+    }
+
+    // do hooks function
+    for _, hk := range hooks {
+        err := hk()
+        if err != nil {
+            panic(err)
+        }
+    }
+
+    if SessionOn {
+        var err error
+        sessionConfig := AppConfig.String(&quot;sessionConfig&quot;)
+        if sessionConfig == &quot;&quot; {
+            sessionConfig = `{&quot;cookieName&quot;:&quot;` + SessionName + `&quot;,` +
+                `&quot;gclifetime&quot;:` + strconv.FormatInt(SessionGCMaxLifetime, 10) + `,` +
+                `&quot;providerConfig&quot;:&quot;` + SessionSavePath + `&quot;,` +
+                `&quot;secure&quot;:` + strconv.FormatBool(HttpTLS) + `,` +
+                `&quot;sessionIDHashFunc&quot;:&quot;` + SessionHashFunc + `&quot;,` +
+                `&quot;sessionIDHashKey&quot;:&quot;` + SessionHashKey + `&quot;,` +
+                `&quot;enableSetCookie&quot;:` + strconv.FormatBool(SessionAutoSetCookie) + `,` +
+                `&quot;cookieLifeTime&quot;:` + strconv.Itoa(SessionCookieLifeTime) + `}`
+        }
+        GlobalSessions, err = session.NewManager(SessionProvider,
+            sessionConfig)
+        if err != nil {
+            panic(err)
+        }
+        go GlobalSessions.GC()
+    }
+
+    err := BuildTemplate(ViewsPath)
+    if err != nil {
+        if RunMode == &quot;dev&quot; {
+            Warn(err)
+        }
+    }
+
+    middleware.VERSION = VERSION
+    middleware.AppName = AppName
+    middleware.RegisterErrorHandler()
+}
+</code></pre>
+
+<p>从代码看到在<code>Run()</code>的第一步，初始化<code>AppConfig</code>，调用<code>hooks</code>，初始化<code>GlobalSessions</code>，编译模板<code>BuildTemplate()</code>，和加载中间件<code>middleware.RegisterErrorHandler()</code>，分别简单叙述。</p>
+
+<h3>1.1 加载配置</h3>
+
+<p>加载配置的代码是：</p>
+<pre><code class="language-go">if AppConfigPath != filepath.Join(AppPath, &quot;conf&quot;, &quot;app.conf&quot;) {
+    err := ParseConfig()
+    if err != nil &amp;&amp; AppConfigPath != filepath.Join(workPath, &quot;conf&quot;, &quot;app.conf&quot;) {
+        // configuration is critical to app, panic here if parse failed
+        panic(err)
+    }
+}
+</code></pre>
+
+<p>判断配置文件是不是<code>AppPath/conf/app.conf</code>，如果不是就<code>ParseConfig()</code>。显然他之前就已经加载过一次了。找了一下，在<a href="https://github.com/astaxie/beego/blob/master/config.go#L152">config.go#L152</a>，具体加载什么就不说明了。需要说明的是<code>AppPath</code>和<code>workPath</code>这俩变量。找到定义<a href="https://github.com/astaxie/beego/blob/master/config.go#L72">config.go#72</a>：</p>
+<pre><code class="language-go">workPath, _ = os.Getwd()
+workPath, _ = filepath.Abs(workPath)
+// initialize default configurations
+AppPath, _ = filepath.Abs(filepath.Dir(os.Args[0]))
+
+AppConfigPath = filepath.Join(AppPath, &quot;conf&quot;, &quot;app.conf&quot;)
+
+if workPath != AppPath {
+    if utils.FileExists(AppConfigPath) {
+        os.Chdir(AppPath)
+    } else {
+        AppConfigPath = filepath.Join(workPath, &quot;conf&quot;, &quot;app.conf&quot;)
+    }
+}
+</code></pre>
+
+<p><code>workPath</code>是<code>os.Getwd()</code>，即当前的目录；<code>AppPath</code>是<code>os.Args[0]</code>，即二进制文件所在目录。有些情况下这两个是不同的。比如把命令加到<code>PATH</code>中，然后cd到别的目录执行。<code>beego</code>以二进制文件所在目录为优先。如果二进制文件所在目录没有发现<code>conf/app.conf</code>，再去<code>workPath</code>里找。</p>
+
+<h3>1.2 Hooks</h3>
+
+<p><code>hooks</code>就是钩子，在加载配置后就执行，这是要做啥呢？在 <a href="https://github.com/astaxie/beego/blob/master/beego.go#L173">beego.go#L173</a> 添加新的hook：</p>
+<pre><code class="language-go">// The hookfunc will run in beego.Run()
+// such as sessionInit, middlerware start, buildtemplate, admin start
+func AddAPPStartHook(hf hookfunc) {
+    hooks = append(hooks, hf)
+}
+</code></pre>
+
+<p><code>hooks</code>的定义在<a href="https://github.com/astaxie/beego/blob/master/beego.go#L19">beego.go#L19</a>：</p>
+<pre><code class="language-go">type hookfunc func() error //hook function to run
+var hooks []hookfunc       //hook function slice to store the hookfunc
+</code></pre>
+
+<p><code>hook</code>就是<code>func() error</code>类型的函数。那么为什么调用<code>hooks</code>可以实现代码注释中的如<code>middleware start, build template</code>呢？因为<code>beego</code>使用的是单实例的模式。</p>
+
+<h3>1.3 单实例</h3>
+
+<p><code>beego</code>的核心结构是<code>beego.APP</code>，保存路由调度结构<code>*beego.ControllerRegistor</code>。从<code>beego.Run()</code>方法的代码<code>BeeApp.Run()</code>发现，<code>beego</code>有一个全局变量<code>BeeApp</code>是实际调用的<code>*beego.APP</code>实例。也就是说整个<code>beego</code>就是一个实例，不需要类似<code>NewApp()</code>这样的写法。</p>
+
+<p>因此，很多结构都作为全局变量如<code>beego.BeeApp</code>暴露在外。详细的定义在 <a href="https://github.com/astaxie/beego/blob/master/config.go#L18">config.go#L18</a>，特别注意一下<code>SessionProvider(string)</code>，马上就要提到。</p>
+
+<h3>1.4 会话 <code>GlobalSessions</code></h3>
+
+<p>继续<code>beego.Run()</code>的阅读，<code>hooks</code>调用完毕后，初始化会话<code>GlobalSessions</code>：</p>
+<pre><code class="language-go">if SessionOn {
+    var err error
+    sessionConfig := AppConfig.String(&quot;sessionConfig&quot;)
+    if sessionConfig == &quot;&quot; {
+        sessionConfig = `{&quot;cookieName&quot;:&quot;` + SessionName + `&quot;,` +
+            `&quot;gclifetime&quot;:` + strconv.FormatInt(SessionGCMaxLifetime, 10) + `,` +
+            `&quot;providerConfig&quot;:&quot;` + SessionSavePath + `&quot;,` +
+            `&quot;secure&quot;:` + strconv.FormatBool(HttpTLS) + `,` +
+            `&quot;sessionIDHashFunc&quot;:&quot;` + SessionHashFunc + `&quot;,` +
+            `&quot;sessionIDHashKey&quot;:&quot;` + SessionHashKey + `&quot;,` +
+            `&quot;enableSetCookie&quot;:` + strconv.FormatBool(SessionAutoSetCookie) + `,` +
+            `&quot;cookieLifeTime&quot;:` + strconv.Itoa(SessionCookieLifeTime) + `}`
+    }
+    GlobalSessions, err = session.NewManager(SessionProvider,
+        sessionConfig)
+    if err != nil {
+        panic(err)
+    }
+    go GlobalSessions.GC()
+}
+</code></pre>
+
+<p><code>beego.SessionOn</code>定义是否启动Session功能，然后<code>sessionConfig</code>是Session的配置，如果配置为空，就使用拼接的默认配置。<code>sessionConfig</code>是json格式。</p>
+
+<p><code>session.NewManager()</code>返回<code>*session.Manager</code>，session的数据存储引擎是<code>beego.SessionProvider</code>定义，比如&rdquo;file&rdquo;，文件存储。</p>
+
+<p><code>go GlobalSessions.GC()</code>开启一个goroutine来处理session的回收。阅读一下<code>GC()</code>的代码，在 <a href="https://github.com/astaxie/beego/blob/master/session/session.go#L183">session/session.go#L183</a>：</p>
+<pre><code class="language-go">func (manager *Manager) GC() {
+    manager.provider.SessionGC()
+    time.AfterFunc(time.Duration(manager.config.Gclifetime)*time.Second, func() { manager.GC() })
+}
+</code></pre>
+
+<p>这是个<strong>无限循环</strong>。<code>time.AfterFunc()</code>在经过一段时间间隔<code>time.Duration(...)</code>之后，又调用自己，相当于又开始启动<code>time.AfterFunc()</code>等待下一次到期。<code>manager.provider.SessionGC()</code>是不同session存储引擎的回收方法（其实是<code>session.Provider</code>接口的）。</p>
+
+<h3>1.5 模板构建</h3>
+
+<p>继续<code>beego.Run()</code>，session初始化后，构建模板：</p>
+<pre><code class="language-go">err := BuildTemplate(ViewsPath)
+</code></pre>
+
+<p><code>beego.ViewsPath</code>是模板的目录啦，不多说。仔细来看看<code>BuildTemplate()</code>函数，<a href="https://github.com/astaxie/beego/blob/master/template.go#L114">template.goL#114</a>：</p>
+<pre><code class="language-go">// build all template files in a directory.
+// it makes beego can render any template file in view directory.
+func BuildTemplate(dir string) error {
+    if _, err := os.Stat(dir); err != nil {
+        if os.IsNotExist(err) {
+            return nil
+        } else {
+            return errors.New(&quot;dir open err&quot;)
+        }
+    }
+    self := &amp;templatefile{
+        root:  dir,
+        files: make(map[string][]string),
+    }
+    err := filepath.Walk(dir, func(path string, f os.FileInfo, err error) error {
+        return self.visit(path, f, err)
+    })
+    if err != nil {
+        fmt.Printf(&quot;filepath.Walk() returned %v\n&quot;, err)
+        return err
+    }
+    for _, v := range self.files {
+        for _, file := range v {
+            t, err := getTemplate(self.root, file, v...)
+            if err != nil {
+                Trace(&quot;parse template err:&quot;, file, err)
+            } else {
+                BeeTemplates[file] = t
+            }
+        }
+    }
+    return nil
+}
+</code></pre>
+
+<p>比较复杂。一点点来看，<code>os.Stat(dir)</code>判断目录是否存在。<code>filepath.Walk()</code>走一边目录里的文件，记录在<code>self.files</code>里面。循环<code>self.files</code>中的<code>file</code>（map[dir][]file])，用<code>getTemplate</code>获取<code>*template.Template</code>实例，保存在<code>beego.BeeTemplates</code>（map[string]*template.Template）。</p>
+
+<p>为什么要<strong>预先编译</strong>模板？想像一下，如果每次请求，都去寻找模板再编译一遍。这显然是个浪费的。而且如果模板复杂，嵌套众多，编译速度会是很大的问题。因此存下编译好的<code>*template.Template</code>是必然的选择。但是，编译后模板的修改不能立即响应了，怎么办呢？先继续看下去。</p>
+
+<h3>1.6 中间件</h3>
+
+<p><code>middleware</code>包目前似乎只有错误处理的功能。</p>
+<pre><code class="language-go">middleware.RegisterErrorHandler()
+</code></pre>
+
+<p>只是注册默认的错误处理方法 <code>middleware.NotFound</code> 等几个。</p>
+
+<h3>1.7 beeAdminApp</h3>
+<pre><code class="language-go">if EnableAdmin {
+    go beeAdminApp.Run()
+}
+</code></pre>
+
+<p><code>beeAdminApp</code>也是一个<code>*beego.adminApp</code>，负责系统监控、性能检测、访问统计和健康检查等。具体的介绍和使用可以访问<a href="http://beego.me/docs/advantage/monitor.md">文档</a>。</p>
+
+<h2>2. HTTP服务</h2>
+
+<p>写了这么多，终于要开始讲核心结构<code>beego.BeeApp</code>的启动：</p>
+<pre><code class="language-go">BeeApp.Run()
+</code></pre>
+
+<p><code>Run()</code>的实现代码在<a href="https://github.com/astaxie/beego/blob/master/app.go#L29">app.go#L29</a>。代码较长，看看最重要的一段：</p>
+<pre><code class="language-go">if UseFcgi {
+    if HttpPort == 0 {
+        l, err = net.Listen(&quot;unix&quot;, addr)
+    } else {
+        l, err = net.Listen(&quot;tcp&quot;, addr)
+    }
+    if err != nil {
+        BeeLogger.Critical(&quot;Listen: &quot;, err)
+    }
+    err = fcgi.Serve(l, app.Handlers)
+} else {
+    if EnableHotUpdate {
+        server := &amp;http.Server{
+            Handler:      app.Handlers,
+            ReadTimeout:  time.Duration(HttpServerTimeOut) * time.Second,
+            WriteTimeout: time.Duration(HttpServerTimeOut) * time.Second,
+        }
+        laddr, err := net.ResolveTCPAddr(&quot;tcp&quot;, addr)
+        if nil != err {
+            BeeLogger.Critical(&quot;ResolveTCPAddr:&quot;, err)
+        }
+        l, err = GetInitListener(laddr)
+        theStoppable = newStoppable(l)
+        err = server.Serve(theStoppable)
+        theStoppable.wg.Wait()
+        CloseSelf()
+    } else {
+        s := &amp;http.Server{
+            Addr:         addr,
+            Handler:      app.Handlers,
+            ReadTimeout:  time.Duration(HttpServerTimeOut) * time.Second,
+            WriteTimeout: time.Duration(HttpServerTimeOut) * time.Second,
+        }
+        if HttpTLS {
+            err = s.ListenAndServeTLS(HttpCertFile, HttpKeyFile)
+        } else {
+            err = s.ListenAndServe()
+        }
+    }
+}
+</code></pre>
+
+<p><code>beego.UseFcgi</code>定义是否使用<code>fast-cgi</code>服务，而不是HTTP。另一部分是启动HTTP。里面有个重要功能<code>EnableHotUpdate</code>————<strong>热更新</strong>。对他的描述，可以看看官方<a href="http://beego.me/docs/advantage/reload.md">文档</a>。</p>
+
+<h3>2.1 HTTP过程总览</h3>
+
+<p>上面的代码看得到<code>*http.Server.Handler</code>是<code>app.Handlers</code>，即<code>*beego.ControllerRegistor</code>，<code>ServeHTTP</code>就定义在代码<a href="https://github.com/astaxie/beego/blob/master/router.go#L431">router.go#L431</a>。非常长，我们检出重要的部分来说说。</p>
+
+<p>首先是要创建当前请求的上下文：</p>
+<pre><code class="language-go">// init context
+context := &amp;beecontext.Context{
+    ResponseWriter: w,
+    Request:        r,
+    Input:          beecontext.NewInput(r),
+    Output:         beecontext.NewOutput(),
+}
+context.Output.Context = context
+context.Output.EnableGzip = EnableGzip
+</code></pre>
+
+<p><code>context</code>的类型是<code>*context.Context</code>，把当前的<code>w(http.ResponseWriter)</code>和<code>r(*http.Request)</code>写在<code>context</code>的字段中。</p>
+
+<p>然后，定义了过滤器<code>filter</code>的调用方法，把<code>context</code>传递给过滤器操作：</p>
+<pre><code class="language-go">do_filter := func(pos int) (started bool) {
+    if p.enableFilter {
+        if l, ok := p.filters[pos]; ok {
+            for _, filterR := range l {
+                if ok, p := filterR.ValidRouter(r.URL.Path); ok {
+                    context.Input.Params = p
+                    filterR.filterFunc(context)
+                    if w.started {
+                        return true
+                    }
+                }
+            }
+        }
+    }
+    return false
+}
+</code></pre>
+
+<p>然后，加载Session：</p>
+<pre><code class="language-go">if SessionOn {
+    context.Input.CruSession = GlobalSessions.SessionStart(w, r)
+    defer func() {
+        context.Input.CruSession.SessionRelease(w)
+    }()
+}
+</code></pre>
+
+<p><code>defer</code>中的<code>SessionRelease()</code>是将session持久化到存储引擎中，比如写入文件保存。</p>
+
+<p>然后，判断请求方式是否支持：</p>
+<pre><code class="language-go">if !utils.InSlice(strings.ToLower(r.Method), HTTPMETHOD) {
+    http.Error(w, &quot;Method Not Allowed&quot;, 405)
+    goto Admin
+}
+</code></pre>
+
+<p>这里看一看到 <code>goto Admin</code>，就是执行<code>AdminApp</code>的监控操作，记录这次请求的相关信息。<code>Admin</code>定义在整个HTTP执行的最后：</p>
+<pre><code class="language-go">Admin:
+    //admin module record QPS
+    if EnableAdmin {
+        timeend := time.Since(starttime)
+        if FilterMonitorFunc(r.Method, requestPath, timeend) {
+            if runrouter != nil {
+                go toolbox.StatisticsMap.AddStatistics(r.Method, requestPath, runrouter.Name(), timeend)
+            } else {
+                go toolbox.StatisticsMap.AddStatistics(r.Method, requestPath, &quot;&quot;, timeend)
+            }
+        }
+    }
+</code></pre>
+
+<p>所以<code>goto Admin</code>直接就跳过中间过程，走到HTTP执行的最后了。显然，当请求方式不支持的时候，直接跳到HTTP执行最后。如果不启用<code>AdminApp</code>，那就是HTTP执行过程结束。</p>
+
+<p>继续阅读，开始处理静态文件了：</p>
+<pre><code class="language-go">if serverStaticRouter(context) {
+    goto Admin
+}
+</code></pre>
+
+<p>然后处理POST请求的内容体：</p>
+<pre><code class="language-go">if context.Input.IsPost() {
+    if CopyRequestBody &amp;&amp; !context.Input.IsUpload() {
+        context.Input.CopyBody()
+    }
+    context.Input.ParseFormOrMulitForm(MaxMemory)
+}
+</code></pre>
+
+<p>执行两个前置的过滤器：</p>
+<pre><code class="language-go">if do_filter(BeforeRouter) {
+    goto Admin
+}
+
+if do_filter(AfterStatic) {
+    goto Admin
+}
+</code></pre>
+
+<p>不过我觉得这俩顺序怪怪的，应该先<code>AfterStatic</code>后<code>BeforeRouter</code>。需要注意，过滤器如果返回<code>false</code>，整个执行就结束（跳到最后）。</p>
+
+<p>继续阅读，然后判断有没有指定执行的控制器和方法：</p>
+<pre><code class="language-go">if context.Input.RunController != nil &amp;&amp; context.Input.RunMethod != &quot;&quot; {
+    findrouter = true
+    runMethod = context.Input.RunMethod
+    runrouter = context.Input.RunController
+}
+</code></pre>
+
+<p>如果过滤器执行后，对<code>context</code>指定了执行的控制器和方法，就用指定的。</p>
+
+<p>继续，路由的寻找开始，有三种路由：</p>
+<pre><code class="language-go">if !findrouter {
+    for _, route := range p.fixrouters {
+        n := len(requestPath)
+        if requestPath == route.pattern {
+            runMethod = p.getRunMethod(r.Method, context, route)
+            if runMethod != &quot;&quot; {
+                runrouter = route.controllerType
+                findrouter = true
+                break
+            }
+        }
+        //......
+    }
+}
+</code></pre>
+
+<p><code>p.fixrouters</code>就是不带正则的路由，比如<code>/user</code>。<code>route.controllerType</code>的类型是<code>reflect.Type</code>，后面会用来创建控制器实例。<code>p.getRunMethod()</code>获取实际请求方式。为了满足浏览器无法发送表单<code>PUT</code>和<code>DELETE</code>方法，可以用表单域<code>_method</code>值代替。（注明一下<code>p</code>就是<code>*beego.ControllerRegistor</code>。</p>
+
+<p>接下来当然是正则的路由：</p>
+<pre><code class="language-go">if !findrouter {
+    //find a matching Route
+    for _, route := range p.routers {
+
+        //check if Route pattern matches url
+        if !route.regex.MatchString(requestPath) {
+            continue
+        }
+        // ......
+        runMethod = p.getRunMethod(r.Method, context, route)
+        if runMethod != &quot;&quot; {
+            runrouter = route.controllerType
+            context.Input.Params = params
+            findrouter = true
+            break
+        }
+    }
+}
+</code></pre>
+
+<p>正则路由比如<code>/user/:id:int</code>，这种带参数的。匹配后的参数会记录在<code>context.Input.Params</code>中。</p>
+
+<p>还没找到，就看看是否需要自动路由：</p>
+<pre><code class="language-go">if !findrouter &amp;&amp; p.enableAuto {
+    // ......
+    for cName, methodmap := range p.autoRouter {
+        // ......
+    }
+}
+</code></pre>
+
+<p>把所有路由规则走完，还是没有找到匹配的规则：</p>
+<pre><code class="language-go">if !findrouter {
+    middleware.Exception(&quot;404&quot;, rw, r, &quot;&quot;)
+    goto Admin
+}
+</code></pre>
+
+<p>另一种情况就是找到路由规则咯，且看下文。</p>
+
+<h3>2.2 路由调用</h3>
+
+<p>上面的代码发现路由的调用依赖<code>runrouter</code>和<code>runmethod</code>变量。他们值觉得了到底调用什么控制器和方法。来看看具体实现：</p>
+<pre><code class="language-go">if findrouter {
+    //execute middleware filters
+    if do_filter(BeforeExec) {
+        goto Admin
+    }
+
+    //Invoke the request handler
+    vc := reflect.New(runrouter)
+    execController, ok := vc.Interface().(ControllerInterface)
+    if !ok {
+        panic(&quot;controller is not ControllerInterface&quot;)
+    }
+
+    //call the controller init function
+    execController.Init(context, runrouter.Name(), runMethod, vc.Interface())
+
+    //if XSRF is Enable then check cookie where there has any cookie in the  request's cookie _csrf
+    if EnableXSRF {
+        execController.XsrfToken()
+        if r.Method == &quot;POST&quot; || r.Method == &quot;DELETE&quot; || r.Method == &quot;PUT&quot; ||
+            (r.Method == &quot;POST&quot; &amp;&amp; (r.Form.Get(&quot;_method&quot;) == &quot;delete&quot; || r.Form.Get(&quot;_method&quot;) == &quot;put&quot;)) {
+            execController.CheckXsrfCookie()
+        }
+    }
+
+    //call prepare function
+    execController.Prepare()
+
+    if !w.started {
+        //exec main logic
+        switch runMethod {
+        case &quot;Get&quot;:
+            execController.Get()
+        case &quot;Post&quot;:
+            execController.Post()
+        case &quot;Delete&quot;:
+            execController.Delete()
+        case &quot;Put&quot;:
+            execController.Put()
+        case &quot;Head&quot;:
+            execController.Head()
+        case &quot;Patch&quot;:
+            execController.Patch()
+        case &quot;Options&quot;:
+            execController.Options()
+        default:
+            in := make([]reflect.Value, 0)
+            method := vc.MethodByName(runMethod)
+            method.Call(in)
+        }
+
+        //render template
+        if !w.started &amp;&amp; !context.Input.IsWebsocket() {
+            if AutoRender {
+                if err := execController.Render(); err != nil {
+                    panic(err)
+                }
+
+            }
+        }
+    }
+
+    // finish all runrouter. release resource
+    execController.Finish()
+
+    //execute middleware filters
+    if do_filter(AfterExec) {
+        goto Admin
+    }
+}
+</code></pre>
+
+<p>研读一下，最开始的又是过滤器：</p>
+<pre><code class="language-go">if do_filter(BeforeExec) {
+    goto Admin
+}
+</code></pre>
+
+<p><code>BeforeExec</code>执行控制器方法前的过滤。</p>
+
+<p>然后，创建一个新的控制器实例：</p>
+<pre><code class="language-go">vc := reflect.New(runrouter)
+execController, ok := vc.Interface().(ControllerInterface)
+if !ok {
+    panic(&quot;controller is not ControllerInterface&quot;)
+}
+
+//call the controller init function
+execController.Init(context, runrouter.Name(), runMethod, vc.Interface())
+</code></pre>
+
+<p><code>reflect.New()</code>创建新的实例，用<code>vc.Interface().(ControllerInterface)</code>取出，调用接口的<code>Init</code>方法，将请求的上下文等传递进去。
+这里就说明为什么不能存下控制器实例给每次请求使用，因为每次请求的上下文是<strong>不同的</strong>。</p>
+<pre><code class="language-go">execController.Prepare()
+</code></pre>
+
+<p>控制器的准备工作，这里可以写用户登录验证等。</p>
+
+<p>然后根据<code>runmethod</code>执行控制器对应的方法，非接口定义的方法，用<code>reflect.Call</code>调用。</p>
+<pre><code class="language-go">if !w.started &amp;&amp; !context.Input.IsWebsocket() {
+    if AutoRender {
+        if err := execController.Render(); err != nil {
+            panic(err)
+        }
+    }
+}
+</code></pre>
+
+<p>如果自动渲染<code>AutoRender</code>，就调用<code>Render()</code>方法渲染页面。</p>
+<pre><code class="language-go">execController.Finish()
+
+//execute middleware filters
+if do_filter(AfterExec) {
+    goto Admin
+}
+</code></pre>
+
+<p>控制器最后一刀<code>Finish</code>搞定，然后过滤器<code>AfterExec</code>使用。</p>
+
+<p>总结起来，<code>beego.ControllerInterface</code>接口方法的<code>Init</code>,<code>Prepare</code>,<code>Render</code>和<code>Finish</code>发挥很大作用。那就来研究一下。</p>
+
+<h2>3. 控制器和视图</h2>
+
+<h3>3.1 控制器接口</h3>
+
+<p>控制器接口<code>beego.ControllerInterface</code>的定义在<a href="https://github.com/astaxie/beego/blob/master/controller.go#L47">controller.go#L47</a>：</p>
+<pre><code class="language-go">type ControllerInterface interface {
+    Init(ct *context.Context, controllerName, actionName string, app interface{})
+    Prepare()
+    Get()
+    Post()
+    Delete()
+    Put()
+    Head()
+    Patch()
+    Options()
+    Finish()
+    Render() error
+    XsrfToken() string
+    CheckXsrfCookie() bool
+}
+</code></pre>
+
+<p>官方的实现<code>beego.Controller</code>定义在<a href="https://github.com/astaxie/beego/blob/master/controller.go#L29">controller.go#L29</a>：</p>
+<pre><code class="language-go">type Controller struct {
+    Ctx            *context.Context
+    Data           map[interface{}]interface{}
+    controllerName string
+    actionName     string
+    TplNames       string
+    Layout         string
+    LayoutSections map[string]string // the key is the section name and the value is the template name
+    TplExt         string
+    _xsrf_token    string
+    gotofunc       string
+    CruSession     session.SessionStore
+    XSRFExpire     int
+    AppController  interface{}
+    EnableReander  bool
+}
+</code></pre>
+
+<p>内容好多，没必要全部都看看，重点在<code>Init</code>,<code>Prepare</code>,<code>Render</code>和<code>Finish</code>这四个。</p>
+
+<h3>3.2 控制器的实现</h3>
+
+<p><code>Init</code>方法：</p>
+<pre><code class="language-go">// Init generates default values of controller operations.
+func (c *Controller) Init(ctx *context.Context, controllerName, actionName string, app interface{}) {
+    c.Layout = &quot;&quot;
+    c.TplNames = &quot;&quot;
+    c.controllerName = controllerName
+    c.actionName = actionName
+    c.Ctx = ctx
+    c.TplExt = &quot;tpl&quot;
+    c.AppController = app
+    c.EnableReander = true
+    c.Data = ctx.Input.Data
+}
+</code></pre>
+
+<p>没什么话说，一堆赋值。唯一要谈的是<code>c.EnableReander</code>，这种拼写错误实在是，掉阴沟里。实际的意思是<code>EnableRender</code>。</p>
+
+<p><code>Prepare</code>和<code>Finish</code>方法：</p>
+<pre><code class="language-go">// Prepare runs after Init before request function execution.
+func (c *Controller) Prepare() {
+
+}
+
+// Finish runs after request function execution.
+func (c *Controller) Finish() {
+
+}
+</code></pre>
+
+<p>空的！原来我要自己填内容啊。</p>
+
+<p><code>Render</code>方法：</p>
+<pre><code class="language-go">// Render sends the response with rendered template bytes as text/html type.
+func (c *Controller) Render() error {
+    if !c.EnableReander {
+        return nil
+    }
+    rb, err := c.RenderBytes()
+
+    if err != nil {
+        return err
+    } else {
+        c.Ctx.Output.Header(&quot;Content-Type&quot;, &quot;text/html; charset=utf-8&quot;)
+        c.Ctx.Output.Body(rb)
+    }
+    return nil
+}
+</code></pre>
+
+<h3>3.3 视图渲染</h3>
+
+<p>渲染的核心方法是<code>c.RenderBytes()</code>:</p>
+<pre><code class="language-go">// RenderBytes returns the bytes of rendered template string. Do not send out response.
+func (c *Controller) RenderBytes() ([]byte, error) {
+    //if the controller has set layout, then first get the tplname's content set the content to the layout
+    if c.Layout != &quot;&quot; {
+        if c.TplNames == &quot;&quot; {
+            c.TplNames = strings.ToLower(c.controllerName) + &quot;/&quot; + strings.ToLower(c.actionName) + &quot;.&quot; + c.TplExt
+        }
+        if RunMode == &quot;dev&quot; {
+            BuildTemplate(ViewsPath)
+        }
+        newbytes := bytes.NewBufferString(&quot;&quot;)
+        if _, ok := BeeTemplates[c.TplNames]; !ok {
+            panic(&quot;can't find templatefile in the path:&quot; + c.TplNames)
+            return []byte{}, errors.New(&quot;can't find templatefile in the path:&quot; + c.TplNames)
+        }
+        err := BeeTemplates[c.TplNames].ExecuteTemplate(newbytes, c.TplNames, c.Data)
+        if err != nil {
+            Trace(&quot;template Execute err:&quot;, err)
+            return nil, err
+        }
+        tplcontent, _ := ioutil.ReadAll(newbytes)
+        c.Data[&quot;LayoutContent&quot;] = template.HTML(string(tplcontent))
+
+        if c.LayoutSections != nil {
+            for sectionName, sectionTpl := range c.LayoutSections {
+                if sectionTpl == &quot;&quot; {
+                    c.Data[sectionName] = &quot;&quot;
+                    continue
+                }
+
+                sectionBytes := bytes.NewBufferString(&quot;&quot;)
+                err = BeeTemplates[sectionTpl].ExecuteTemplate(sectionBytes, sectionTpl, c.Data)
+                if err != nil {
+                    Trace(&quot;template Execute err:&quot;, err)
+                    return nil, err
+                }
+                sectionContent, _ := ioutil.ReadAll(sectionBytes)
+                c.Data[sectionName] = template.HTML(string(sectionContent))
+            }
+        }
+
+        ibytes := bytes.NewBufferString(&quot;&quot;)
+        err = BeeTemplates[c.Layout].ExecuteTemplate(ibytes, c.Layout, c.Data)
+        if err != nil {
+            Trace(&quot;template Execute err:&quot;, err)
+            return nil, err
+        }
+        icontent, _ := ioutil.ReadAll(ibytes)
+        return icontent, nil
+    } else {
+        //......
+    }
+    return []byte{}, nil
+}
+</code></pre>
+
+<p>看起来很复杂，主要是两种情况，有没有Layout。如果有Layout：</p>
+<pre><code class="language-go">err := BeeTemplates[c.TplNames].ExecuteTemplate(newbytes, c.TplNames, c.Data)
+// ......
+tplcontent, _ := ioutil.ReadAll(newbytes)
+c.Data[&quot;LayoutContent&quot;] = template.HTML(string(tplcontent))
+</code></pre>
+
+<p>渲染模板文件，就是布局的主内容。</p>
+<pre><code class="language-go">for sectionName, sectionTpl := range c.LayoutSections {
+    if sectionTpl == &quot;&quot; {
+        c.Data[sectionName] = &quot;&quot;
+        continue
+    }
+
+    sectionBytes := bytes.NewBufferString(&quot;&quot;)
+    err = BeeTemplates[sectionTpl].ExecuteTemplate(sectionBytes, sectionTpl, c.Data)
+    // ......
+    sectionContent, _ := ioutil.ReadAll(sectionBytes)
+    c.Data[sectionName] = template.HTML(string(sectionContent))
+}
+</code></pre>
+
+<p>渲染布局里的别的区块<code>c.LayoutSections</code>。</p>
+<pre><code class="language-go">ibytes := bytes.NewBufferString(&quot;&quot;)
+err = BeeTemplates[c.Layout].ExecuteTemplate(ibytes, c.Layout, c.Data)
+// ......
+icontent, _ := ioutil.ReadAll(ibytes)
+return icontent, nil
+</code></pre>
+
+<p>最后是渲染布局文件，<code>c.Data</code>里带有所有布局的主内容和区块，可以直接赋值在布局里。</p>
+
+<p>渲染过程有趣的代码：</p>
+<pre><code class="language-go">if RunMode == &quot;dev&quot; {
+    BuildTemplate(ViewsPath)
+}
+</code></pre>
+
+<p>开发状态下，每次渲染都会重新<code>BuildTemplate()</code>。这样就可以理解，最初渲染模板并存下<code>*template.Template</code>，生产模式下，是不会响应即时的模版修改。</p>
+
+<h2>总结</h2>
+
+<p>本文对<code>beego</code>的执行过程进行了分析。一个Web应用，运行的过程就是路由分发，路由执行和结果渲染三个主要过程。本文没有非常详细的解释<code>beego</code>源码的细节分析，但是还是有几个重要问题进行的说明：</p>
+
+<ul>
+<li>路由规则的分类，固定的，还是正则，还是自动的。不同的路由处理方式不同，需要良好设计</li>
+<li>控制器的操作其实就是上下文的处理，使用控制器类，还是函数，需要根据应用考量。</li>
+<li>视图的效率控制需要严格把关，而且如何简单的设计就能满足复杂模板的使用，需要仔细考量。</li>
+</ul>
+
+<p><code>beego</code>本身复杂，他的很多实现其实并不是很简洁直观。当然随着功能越来越强大，<code>beego</code>会越来越好的。</p>
+ ]]></description></item><item><title>Martini源码剖析</title><link>http://localhost/2014/4/24/martini-source-study.html</link><pubDate>Thu, 24 Apr 2014 01:04:18 +0000</pubDate><category>Go语言</category><category>Martini</category><category>源码</category><description><![CDATA[ <p><a href="http://github.com/go-martini/martini">martini</a>是非常优雅的Go Web框架。他基于依赖注入的思想，仿照<a href="http://www.sinatrarb.com/">Sinatra</a>的路由设计，参考<a href="http://expressjs.com/">Express</a>的中间件设计，而且核心微小，扩展方便，非常值得学习。但是由于本身API设计简洁，使很多细节无法从代码理解。所以，我写一点笔记记录<code>martini</code>的工作方式。
+&lt;!&ndash;more&ndash;&gt;</p>
+
+<h2>Martini核心</h2>
+
+<p>我们从最简单的官方实例入手：</p>
+<pre><code class="language-go">package main
+
+import &quot;github.com/go-martini/martini&quot;
+
+func main() {
+  m := martini.Classic()
+  m.Get(&quot;/&quot;, func() string {
+    return &quot;Hello world!&quot;
+  })
+  m.Run()
+}
+</code></pre>
+
+<p><code>martini.Martini</code>是自带的核心结构，负责完成依赖注入和调用的过程。<code>martini.ClassicMartini</code>是路由<code>martini.Router</code>和<code>martini.Martini</code>的组合，实现路由分发和逻辑调用的过程。<code>m := martini.Classic()</code>返回的就是<code>martini.ClassicMartini</code>。具体在<a href="https://github.com/go-martini/martini/blob/master/martini.go#L104">martini.go#L104</a>:</p>
+<pre><code class="language-go">func Classic() *ClassicMartini {
+    r := NewRouter()
+    m := New()
+    m.Use(Logger())
+    m.Use(Recovery())
+    m.Use(Static(&quot;public&quot;))
+    m.MapTo(r, (*Routes)(nil))
+    m.Action(r.Handle)
+    return &amp;ClassicMartini{m, r}
+}
+</code></pre>
+
+<p>里面的<code>m := New()</code>定义在<a href="https://github.com/go-martini/martini/blob/master/martini.go#L38">martini.go#L38</a>:</p>
+<pre><code class="language-go">func New() *Martini {
+    m := &amp;Martini{Injector: inject.New(), action: func() {}, logger: log.New(os.Stdout, &quot;[martini] &quot;, 0)}
+    m.Map(m.logger)
+    m.Map(defaultReturnHandler())
+    return m
+}
+</code></pre>
+
+<h4>依赖注入</h4>
+
+<p>上面很明显的看到两个奇特方法：<code>m.Map()</code>、<code>m.MapTo()</code>。这里，需要注意<code>martini</code>的一个最重要原则，<strong>注入的任何类型的结构，都是唯一的</strong>。即如：</p>
+<pre><code class="language-go">type User struct{
+    Id int
+}
+
+m.Map(&amp;User{Id:1})
+m.Map(&amp;User{Id:2})
+
+</code></pre>
+
+<p><code>martini</code>在寻找<code>&amp;User</code>类型的时候，只能获取到<code>&amp;User{Id:2}</code>结构（最后注册的）。<code>Map</code>的作用，就是向内部注册对应类型的具体对象或者值。类型索引是<code>reflect.Type</code>。从而我们可以理解到<code>m.New()</code>的代码中将<code>m.Logger(*log.Logger)</code>和<code>defaultReturnHandler(martini.ReturnHandler)</code>(括号中是类型索引)注入到内部。</p>
+
+<p>这里出现了一个问题。接口这种类型，是无法用<code>reflect.Type()</code>直接获取的（因为传来的都是已经实现接口的具体结构）。解决方法就是<code>m.MapTo()</code>。</p>
+<pre><code>m.MapTo(r, (*Routes)(nil))
+</code></pre>
+
+<p>即将<code>r(martini.router)</code>按照<code>martini.Router</code>接口（注意大小写）类型注入到内部。</p>
+<pre><code>(*Routes)(nil)
+</code></pre>
+
+<p>也是高明的构造。接口的默认值不是nil，无法直接new。但是指针的默认值是nil，可以直接赋值，比如<code>var user *User; user = nil</code>。因此他注册一个接口指针类型的空指针，用<code>reflect.Type.Elem()</code>方法就可以获取到指针的内部类型，即接口类型，并以接口类型索引注入到内部。</p>
+
+<h2>路由过程</h2>
+
+<h4>HTTP处理</h4>
+
+<p><code>martini.Martini</code>实现了<code>http.Handler</code>方法，实际的HTTP执行过程在代码<a href="https://github.com/go-martini/martini/blob/master/martini.go#L68">martini.go#L68</a>:</p>
+<pre><code class="language-go">func (m *Martini) ServeHTTP(res http.ResponseWriter, req *http.Request) {
+    m.createContext(res, req).run()
+}
+</code></pre>
+
+<p>这里需要我们关注<code>m.createContext</code>，它返回<code>*martini.context</code>类型，代码<a href="https://github.com/go-martini/martini/blob/master/martini.go#L87">martini.go#L87</a>：</p>
+<pre><code class="language-go">func (m *Martini) createContext(res http.ResponseWriter, req *http.Request) *context {
+    c := &amp;context{inject.New(), m.handlers, m.action, NewResponseWriter(res), 0}
+    c.SetParent(m)
+    c.MapTo(c, (*Context)(nil))
+    c.MapTo(c.rw, (*http.ResponseWriter)(nil))
+    c.Map(req)
+    return c
+}
+</code></pre>
+
+<p>创建<code>*martini.context</code>类型；然后<code>SetParent</code>设置寻找注入对象的时候同时从<code>m(*martini.Martini)</code>中寻找（<code>*martini.context</code>和<code>*martini.Martini</code>两个独立的<code>inject</code>），这样就可以获取<code>m.Map</code>注入的数据。</p>
+
+<p>这里叉出来说：从代码看出实际上注入的数据有两层，分别在<code>*martini.context</code>和<code>*martini.Martini</code>。<code>*martini.context</code>中的是当前请求可以获取的（每个请求都会<code>m.createContext()</code>，都是新的对象）;<code>martini.Martini</code>是全局的，任何请求都可以获取到。</p>
+
+<p>回到上一段，<code>c.MapTo</code>把<code>*martini.context</code>按<code>martini.Context</code>接口，将<code>martini.ResponseWriter</code>按<code>http.ResponseWriter</code>接口，把<code>req(*http.Request)</code>注入到当前上下文。</p>
+
+<p><code>context.run</code>方法定义在<a href="https://github.com/go-martini/martini/blob/master/martini.go#L163">martini.go#L163</a>:</p>
+<pre><code class="language-go">func (c *context) run() {
+    for c.index &lt;= len(c.handlers) {
+        _, err := c.Invoke(c.handler())
+        if err != nil {
+            panic(err)
+        }
+        c.index += 1
+
+        if c.Written() {
+            return
+        }
+    }
+}
+</code></pre>
+
+<p>它在循环<code>c.handlers</code>(来自<code>m.handlers</code>,createContext代码中)。这里想解释三个细节。</p>
+
+<p><code>c.Invoke</code>是<code>inject.Invoke</code>方法，内部就是获取<code>c.hanlder()</code>返回的<code>martini.Handler(func)</code>类型的传入参数<code>reflect.Type.In()</code>，根据参数个数和类型去内部找对应的结构，然后拼装成<code>[]reflect.Value</code>给函数的<code>reflect.Value(func).Call()</code>。</p>
+
+<p><code>c.handler()</code>的返回来自两个方面,<code>c.hanlders</code>和<code>c.action</code>。<code>c.handlers</code>来自<code>m.Use()</code>添加,<code>c.action</code>来自<code>r.Handle(*martini.router.Handle)</code>(见上文<code>martini.ClassicMartini.New</code>中的<code>m.Action(r.Handle)</code>)。因此，可以发现实际上handlers是有两个列表，一个是<code>c.handlers([]martini.handler)</code>和<code>r.handlers(martini.routerContext.handlers)</code>。而且前者先执行。也就是说无论<code>m.Use</code>写在哪儿，都要比router添加的func先执行。</p>
+
+<p><code>c.Written</code>判断请求是否已经发送。他实际上是判断<code>martini.ResponseWriter.status</code>是否大于0。因此只要发送了response status，handlers过程就会停止。</p>
+
+<h4>路由调用</h4>
+
+<p>从上面可以知道，路由调用过程有两个方面：一是<code>m.Use()</code>添加的handlers，二是路由添加比如<code>m.Get(&quot;/&quot;,handlers...)</code>中的handlers。<code>m.Use</code>的handlers调用就是上文的<code>*martini.context.run</code>方法，不再赘述。路由中的handlers执行是在<a href="https://github.com/go-martini/martini/blob/master/router.go#L218">router.go#L218</a>:</p>
+<pre><code class="language-go">func (r *route) Handle(c Context, res http.ResponseWriter) {
+    context := &amp;routeContext{c, 0, r.handlers}
+    c.MapTo(context, (*Context)(nil))
+    context.run()
+}
+</code></pre>
+
+<p>和<a href="https://github.com/go-martini/martini/blob/master/router.go#L315">router.go#L315</a>:</p>
+<pre><code class="language-go">func (r *routeContext) run() {
+    for r.index &lt; len(r.handlers) {
+        handler := r.handlers[r.index]
+        vals, err := r.Invoke(handler)
+        if err != nil {
+            panic(err)
+        }
+        r.index += 1
+
+        // if the handler returned something, write it to the http response
+        if len(vals) &gt; 0 {
+            ev := r.Get(reflect.TypeOf(ReturnHandler(nil)))
+            handleReturn := ev.Interface().(ReturnHandler)
+            handleReturn(r, vals)
+        }
+
+        if r.Written() {
+            return
+        }
+    }
+}
+</code></pre>
+
+<p>如果你已经理解上文中说明，这个过程和<code>martini.context.run</code>是一样的。唯一这里要解释的是<code>martini.ReturnHandler</code>。它与很上文中的<code>m.Map(defaultReturnHandler())</code>遥相呼应。</p>
+
+<h2>中间件</h2>
+
+<p>从上文不难理解，中间件其实就是<code>martini.Handler</code>被<code>m.Use</code>添加到<code>m.handlers</code>中。这里我们来说明官方的一个中间件<code>martini.Logger()</code>，实现代码在<a href="https://github.com/go-martini/martini/blob/master/logger.go">logger.go</a>:</p>
+<pre><code class="language-go">func Logger() Handler {
+    return func(res http.ResponseWriter, req *http.Request, c Context, log *log.Logger) {
+        start := time.Now()
+        log.Printf(&quot;Started %s %s&quot;, req.Method, req.URL.Path)
+
+        rw := res.(ResponseWriter)
+        c.Next()
+
+        log.Printf(&quot;Completed %v %s in %v\n&quot;, rw.Status(), http.StatusText(rw.Status()), time.Since(start))
+    }
+}
+</code></pre>
+
+<p>首先看func的传入参数，<code>http.ResponseWriter</code>和<code>*http.Request</code>来自：</p>
+<pre><code>c := &amp;context{inject.New(), m.handlers, m.action, NewResponseWriter(res), 0}
+// ...
+c.MapTo(c.rw, (*http.ResponseWriter)(nil))
+c.Map(req)
+</code></pre>
+
+<p><code>Context</code>来自：</p>
+<pre><code>context := &amp;routeContext{c, 0, r.handlers}
+c.MapTo(context, (*Context)(nil))
+</code></pre>
+
+<p><code>*log.Logger</code>来自：</p>
+<pre><code>m := &amp;Martini{Injector: inject.New(), action: func() {}, logger: log.New(os.Stdout, &quot;[martini] &quot;, 0)}
+m.Map(m.logger)
+</code></pre>
+
+<p>然后看<code>rw := res.(ResponseWriter)</code>。实际上<code>c.rw</code>是<code>NewReponseWriter(res)</code>返回的<code>martini.ResponseWriter</code>类型，一次可以在这里直接转换（注意在外部调用，不是martini包中，要import并写<code>res.(martini.ResponseWriter)</code>）。</p>
+
+<p>最后是<code>c.Next()</code>方法，源码在<a href="#">martini.go#L154</a>:</p>
+<pre><code class="language-go">func (c *context) Next() {
+    c.index += 1
+    c.run()
+}
+</code></pre>
+
+<p>意思就是index自增，指向下一个handler，<code>c.run</code>走完所有handler，然后继续中间件里的<code>log.Printf...</code>。</p>
+
+<h2>总结</h2>
+
+<p>martini的对外API很简单，但是内部实现其实比较复杂的。需要仔细的阅读，并且有一定标准库的基础，才能很好的理解他代码的用意。</p>
+
+<p>我这里只是按照自己的理解说明，如果有错误请在评论中指正。</p>
+ ]]></description></item><item><title>Fxh.Go的新计划</title><link>http://localhost/2014/4/8/fxh-go-new-plan.html</link><pubDate>Tue, 08 Apr 2014 15:46:57 +0000</pubDate><category>Go语言</category><category>Fxh.Go</category><description><![CDATA[ <p>因为最近忙于工作和<code>gogits</code>的事情，<code>Fxh.Go</code>的进度落下了很多。而且，更多的想法出现了。
+本来想要从原生Go语言开始，搭建框架，完善博客功能。但是希望用户从头研究代码，是非常不现实的。因此，索性从现在的库类里组合，重新开发博客功能。方便大家理解使用。这就是<code>Fxh.Go</code>的新计划。
+&lt;!&ndash;more&ndash;&gt;</p>
+
+<h3>Web 框架</h3>
+
+<p>Web框架还是选择自由度最高的<a href="http://martini.codegangsta.io/"><code>martini</code></a>框架。<code>gogits</code>基于martini开发，改造了很多中间件，基本可以抄来用用。当然有很多用不上哈哈。<code>martini</code>本身的API简单，核心很小，理解和学习起来还是比较容易的。不过，真的用好比较难。中间件的编写，各种注入对象的需求，需要自己仔细安排。</p>
+
+<h3>数据库 &amp; ORM</h3>
+
+<p>原先使用JSON存储，管理和备份方便，但是查询复杂。尤其是排序和关联查询，很是费劲。虽然说博客数据都缓存在内存中，但是每次关联查询都要拆分成单条数据的操作，增加许多的代码。现在是知道SQL数据库的好处啦。</p>
+
+<p>SQL数据库问题也很多。<code>Fxh.Go</code>一直是纯go程序，不需要安装任何依赖（除了Go语言运行的依赖比如libc）。但SQL数据库有名的<code>MySQL</code>，需要另行安装，<code>SQLite</code>又依赖cgo，非常郁闷。后来发现了<a href="https://github.com/cznic/ql"><code>ql</code></a>——纯Go的SQL实现。感觉可以尝试一下。</p>
+
+<p>既然用了数据库，ORM几乎是必须的，否则<a href="http://golang.org/pkg/database/sql/#Rows.Scan"><code>Rows.Scan</code></a>这种API是要人命的。<a href="https://github.com/lunny/xorm"><code>xorm</code></a>的作者<code>lunny</code>也是<code>gogits</code>的开发者之一。他也打算让<code>xorm</code>支持<code>ql</code>。这个很值得期待。</p>
+
+<h3>旧程序</h3>
+
+<p>旧程序的数据肯定是要迁移过来的，我会写好一个导入程序的。</p>
+
+<hr />
+
+<p>好那就这样咯。</p>
+ ]]></description></item><item><title>Gogs：用二进制才是真正的部署</title><link>http://localhost/2014/3/31/gogs-binary-is-what-called-real-deployment.html</link><pubDate>Mon, 31 Mar 2014 10:58:59 +0000</pubDate><category>Go语言</category><category>GoGit</category><category>gogs</category><category>Git</category><description><![CDATA[ <p>原文作者 <a href="http://wuwen.org">无闻</a>, <a href="http://wuwen.org/article/27/gogs-binary-is-what-called-real-deployment.html">http://wuwen.org/article/27/gogs-binary-is-what-called-real-deployment.html</a></p>
+
+<p>本篇博客是随着 <a href="https://github.com/gogits/gogs">Gogs - Go Git Service</a> <code>v0.2.0</code> 版本而发布的。</p>
+
+<p>首先，请允许我代表开发团队感谢所有在 GitHub 上支持 Gogs 的同学。要知道，<code>v0.2.0</code> 是 Gogs 的首个公开发布版本，而在这之前一周的时间里，该项目已经获得了超过 650 个 Star。</p>
+
+<p>然后，我代表个人致以开发团队所有成员最诚挚的敬意，每个成员都为首个版本的发布做出了非常大的努力，是我们的团结一心和默契配合成就了 Gogs 这个项目的建立与成长。</p>
+
+<h2>项目概述</h2>
+
+<p>既然是首个公开发布版本，那么自然有必要对 Gogs 这个项目进行一定的说明，让大家更好地了解我们为什么开发 Gogs、是如何进行开发的，以及目前的开发状况。</p>
+
+<!--more-->
+
+<h3>开发目的</h3>
+
+<p>在 Git 自助托管服务这个领域，已经不乏成功地产品运行在世界的各个角落，那为什么我们还要选择开发 Gogs 呢？我们要如何与一些当下非常流行的同类产品进行竞争（例如：gitlab）？我们团队又如何看待如此明显的重复造轮子工程？</p>
+
+<p>用比较官方的说法来说我们的开发目的，就是希望借助 Go 语言编译到单个二进制文件的便利来实现无需外部依赖和开发环境安装就能够快速搭建属于自己的自助 Git 托管服务。用我自己的话来说，就是我不喜欢任何现有的同类产品，因为它们的安装不是过于繁琐，就是功能过于简单且只有单个开发人员，没有值得期待的前景，或者没有跨平台部署支持。由于 Go 语言支持相当丰富的操作系统和平台，使用 Go 语言开发自然就能够实现跨平台部署支持。</p>
+
+<p>从长远来看，我们的竞争对手至少有两位：gitlab 和 GitHub 企业版，那么 Gogs 具有什么样的特色以及潜力去和它们竞争呢？我想我举不出太多的例子，但是通过二进制部署，难以置信的简单步骤就能完成服务的搭建已经能够使我们获得足够大的优势。</p>
+
+<p>对于重复造轮子这个事情，很多人毫无理由地极其排斥，于是他们就错过了创新的机会。重复造轮子这个事情要从几个方面来看。首先，基于学习和锻炼技术的角度，这是非常好的一件事情，同时这也是我们选择基础框架采用 <a href="http://martini.codegangsta.io/">martini</a> 的理由，我们希望尝试一些自己从未接触过的东西。其次，现有的同类产品确实令我们无法满意，既然得到了机会去把一样东西变得更好，我们没有理由错过或放弃它。</p>
+
+<h3>开发团队</h3>
+
+<p>Gogs 作为一个互联网时代的产物，其开发团队也是基于互联网搭建的。开发团队的 5 名成员均是通过 Go 语言结识，没有见过面，但已经认识良久。团队成员也都是通过即时聊天工具（QQ）进行沟通，采用 <a href="https://trello.com/b/uxAoeLUl/gogs-go-git-service">Trello</a> 分配任务，最后使用 GitHub 作为协作平台。除了我之外，其它 4 名成员都是在工作之余参与项目的开发，非常难能可贵。</p>
+
+<p>下面，我简单地介绍一下团队成员以及各自负责的部分：</p>
+
+<ul>
+<li><a href="https://github.com/Unknwon">@Unknown</a>：项目管理、后端开发</li>
+<li><a href="https://github.com/lunny">@lunny</a>：后端 Git 及数据库相关开发</li>
+<li><a href="https://github.com/fuxiaohei">@傅小黑</a>：前端开发</li>
+<li><a href="https://github.com/slene">@slene</a>：前、后端开发</li>
+<li><a href="https://github.com/shxsun">@skyblue</a>：后端开发</li>
+</ul>
+
+<h3>现阶段状况</h3>
+
+<p>虽然已经发布首个版本且基本功能均已支持，但版本号还只有 <code>v0.2.0</code>，且仍被标记为 <code>alpha</code> 状态，可以说还不能够也不建议进行企业级的部署和使用。那么是不是只能进行观望的花瓶呢？答案当然是否定的。对于 Git 托管而言，核心在于 Git 仓库的托管，而对于这方面的支持 Gogs 已经比较稳定。等到新版本发布，用户也只需要对二进制和静态资源进行 <code>复制-粘贴</code> 式的替换即可，并不会对用户的 Git 数据造成任何破坏。</p>
+
+<h2>使用入门</h2>
+
+<p>目前 Gogs 的文档都撰写在 <a href="https://github.com/gogits/gogs/wiki">GitHub Wiki 页面</a> 上，当中提供了许多能够帮助您更好地了解和使用 Gogs 的说明。</p>
+
+<ul>
+<li>对于只是想体验或进行常规部署的用户，在完成 <a href="https://github.com/gogits/gogs/wiki/Prerequirements">基本需求</a> 的安装之后，只需要 <a href="https://github.com/gogits/gogs/wiki/Install-from-binary">通过二进制安装</a> 即可启动服务。</li>
+<li>如果您想 <a href="https://github.com/gogits/gogs/wiki/Install-from-source">从源码安装</a> Gogs，在安装了 Go 语言的前提下，其安装步骤也是极其简单。</li>
+</ul>
+
+<p>此外，在开发团队一切以简化用户步骤为宗旨的灌输下，Gogs 还提供了首次运行配置的 Install 界面（URL：<code>/install</code>），界面清新大方且能够对您的配置进行测试以确保服务正常运行。</p>
+
+<h2>注意事项</h2>
+
+<p>很高兴您能够选择 Gogs，在此我们也要友情地提醒您一些注意事项：</p>
+
+<ul>
+<li>注意查看 <a href="https://github.com/gogits/gogs/wiki/Known-Issues">已知问题</a> 以避免不必要的异常。</li>
+<li>有疑问可以先查看 <a href="https://github.com/gogits/gogs/wiki/FAQs">常见问题</a> 或 <a href="https://github.com/gogits/gogs/wiki/Troubleshooting">故障排查</a>，如果没有您想要的答案，可以通过 <a href="https://github.com/gogits/gogs/issues/new">发起 Issue</a> 的方式告知我们并与开发团队进行沟通，或加入 QQ 群：218443817。</li>
+</ul>
+
+<h2>未来计划</h2>
+
+<ul>
+<li>对于新版的发布，我们基本上会保持每月一个小版本（+0.1）的进度。</li>
+<li>对于非英语用户需求的国际化支持，我们会在 <code>v0.5.0</code> 版本开始考虑，大家可以关注 <a href="https://github.com/gogits/gogs/issues/9">Issue #9</a>。</li>
+<li>当前版本的内存和 CPU 使用率上还不尽人意，我们会在后续版本中着重改进。</li>
+<li>想要关注项目的最新进展，可以分别关注我们的 <a href="http://www.weibo.com/gogschina">新浪微博</a> 和 <a href="https://twitter.com/gogitservice">Twitter</a>。</li>
+</ul>
+
+<p>感谢您能够花时间阅读完这篇文章，在您的支持下，Gogs 将发展地更好！</p>
+ ]]></description></item><item><title>2月的一点抱怨</title><link>http://localhost/2014/2/28/complain-of-february-2014.html</link><pubDate>Fri, 28 Feb 2014 23:36:30 +0000</pubDate><category>工作</category><category>开源</category><description><![CDATA[ <p>2月打春，可惜，西安还是在冬天的雾霾和淅淅沥沥里度过。自己还年轻，24不到，可总觉得有些工作的累心。怎么说呢？一个破烂的php项目折腾了半个月。而工作之余也在为开源的东西做些工作。可能是事情多了，累了吧。</p>
+
+<h4>一个糟糕的php项目</h4>
+
+<p>公司承接一个海外的php项目，我刚开始满心欢喜。看了看他的代码，自己实现MVC模式，很容易理解。不过当我真的按照要求动手的时候，杯具开始。首先，是<strong>到处的超全局变量</strong>。</p>
+<pre><code class="language-php">$eventID = isset($_POST['event']) ? trim($_POST['event']) : NULL;
+$title = isset($_POST['title']) ? trim($_POST['title']) : &quot;&quot;;
+$video_status = isset($_POST['video_status']) ? trim($_POST['video_status']) : &quot;&quot;;
+$video_type = isset($_POST['video_type']) ? trim($_POST['video_type']) : &quot;&quot;;
+
+if (isset($_FILES['file']) &amp;&amp; !empty($_FILES['file']['tmp_name'])) {
+//......
+}
+</code></pre>
+
+<p>你再怎么样也别这样啊，不嫌繁琐啊。然后是，<strong>奇特的类属性定义</strong>。&lt;!&ndash;more&ndash;&gt;</p>
+<pre><code class="language-php">protected $_allow_add_new;
+protected $_allow_edit;
+protected $_allow_game_summaries;
+protected $_allow_video_summaries;
+protected $_allow_video_tags;
+protected $_allow_video_markers;
+protected $_page;
+protected $_allowed_videos_to_view;
+protected $_allowed_edit_evaluators;
+protected $_allowed_edit_video_settings;
+protected $_pageNo;
+protected $_currentTab;
+protected $_conf;
+protected $_userSettings;
+protected $_activeF;
+protected $_perPage;
+protected $_globalHelper;
+protected $_userID;
+protected $_titleID;   
+</code></pre>
+
+<p>你这里面有用户信息，有权限控制，还有分页。尼玛搞成几个class不就的啦，塞在一起做啥啊。最后是<strong>蛋疼数据库查询</strong>。</p>
+<pre><code class="language-php">$where_array = array();
+$settingsHelper = new settings();
+
+$sql = &quot;SELECT events.*,
+  users.name as owner_name,
+  sports.name as sport_name,
+  ( SELECT if(ue.id IS NOT NULL, 1, 0) 
+  FROM user_events ue
+  WHERE ue.user_id = ? AND ue.event_id = events.event_id 
+  GROUP BY ue.event_id,ue.user_id ) AS selected&quot;;
+array_push($where_array, $settingsArray[0]['user_id']);
+
+$sql .= &quot; FROM events
+  LEFT JOIN sports ON events.sport_id = sports.sport_id
+  LEFT JOIN videos ON videos.event_id = events.event_id&quot;;
+
+if (count($titles) &amp;&amp; $settingsArray['setTitle'] != $settingsHelper-&gt;get('USER_LEVEL_PARTICIPANT')) {
+  $sql .= &quot; LEFT JOIN users on users.user_id = videos.user_id&quot;;
+  $titles_list = implode(&quot;,&quot;, $titles);
+  $sql2 = &quot; WHERE users.title_id IN ( %s )&quot;;
+  $sql .= sprintf($sql2, $titles_list);
+}
+else {
+  $sql .= &quot; LEFT JOIN users on users.user_id = events.user_id&quot;;
+  $sql .= &quot; WHERE events.event_id IS NOT NULL&quot;;
+}
+      
+if ($settingsArray['setEvents'] != null &amp;&amp; count($settingsArray['setEvents']) &gt; 0) {
+  $events_list = implode(&quot;,&quot;, $settingsArray['setEvents']);
+  $sql2 = &quot; AND events.event_id IN ( %s )&quot;;
+  if ($settingsArray[0][&quot;group_id&quot;] == 0) {
+    $sql .= sprintf($sql2, &quot;SELECT event_id FROM user_events WHERE user_id = &quot; . (int)$settingsArray[0][&quot;user_id&quot;]);
+  } else {
+    $sql .= sprintf($sql2, $events_list);
+  }
+}
+else if ($settingsArray['setEvents'] === false) {
+  $sql .= &quot; AND events.event_id = 0&quot;;
+}
+
+if ($selectedSport != null &amp;&amp; $selectedSport != -1) {
+  $sql .= &quot; AND sports.sport_id = ?&quot;;
+  array_push($where_array, $selectedSport);
+}
+
+$sql .= &quot; GROUP BY events.event_id&quot;;
+
+if ($countOnly == false) {
+
+$sql .= &quot; ORDER BY events.event_time DESC&quot;;
+
+if ($offset != false &amp;&amp; $perPage != false) {
+  if ($offset === null) {
+    $offset = 0;
+  }
+  if ($perPage === null) {
+    $perPage = $this-&gt;getPerPage();
+  }
+  $sql.= &quot; LIMIT $offset, $perPage&quot;;
+  }
+}
+
+$this-&gt;_setSql($sql);
+$result = $this-&gt;getAll($where_array);
+</code></pre>
+
+<p>把各种权限，用户状态和过滤信息杂糅一起，拼接如此复杂的一次查询。你让我怎么猜你到底执行的是啥sql啊。</p>
+
+<p>为了这个破项目，折腾了一个多星期。终于是在各种烂代码的补充下，完成了客户的要求。TM太坑了。</p>
+
+<h4>开源事业</h4>
+
+<p>最近一直在研究go，比如这个博客程序。搭建了新的一页面 <a href="/open-source.html">开源</a> 简单介绍和记录这个程序。在开源中国，我也添加了这个项目 <a href="http://www.oschina.net/p/fxhgo">Fxh.Go</a>。总之，算是步入正轨的。最简单的想法，让这个程序一直活下去吧。</p>
+
+<p>然后是<a href="http://gobuild.io">gobuild.io</a>。其实我没写什么核心功能，只是做的全新的界面。写了点前端js，css和html而已。看起来有点高大上的感觉，比较满意。原作者<a href="https://github.com/shxsun/">@skyblue</a>最近也在忙着换工作，很多进度慢下来，大家也就休息了。不过目前还是有些细节优化在做，慢慢来吧。能在年内把这个做的像模像样，就很不错啦。</p>
+
+<p>最后，是在研究php的异步扩展<a href="http://www.swoole.com">swoole</a>。这货不支持windows，我也就只能在ubuntu下工作研究，甚是不上。不过感觉这个东西非常炫酷屌，很有意思。回头看看写个简单的东西，试试效果哈哈。</p>
+
+<h4>一句话结尾</h4>
+
+<p>其实我是来抱怨工作中的破项目的，就这么简单。</p>
+ ]]></description></item><item><title>Ubuntu 下 nginx , php , mysql 和 golang 的简单安装</title><link>http://localhost/2014/2/19/ubuntu-lnmp-golang-installation.html</link><pubDate>Wed, 19 Feb 2014 21:56:39 +0000</pubDate><category>LNMP</category><category>Go语言</category><description><![CDATA[ <p>我是搞php出身，自然安装lnmp是常规技能。以前的手段还是lnmp安装包，比如军哥的<a href="http://lnmp.org/">lnmp1.0</a>。随着php和mysql的更新，大多数一键安装都开始版本老化，更新困难的问题。因此，重新研究了一下Ubuntu下lnmp的安装，发现现在简单的多，记录一下。</p>
+
+<p>另外最近在学习golang，Ubuntu下安装自然也是必须的过程。不过golang的安装也有一些奥妙。当然，不是源码安装的啦。&lt;!&ndash;more&ndash;&gt;</p>
+
+<h4>Nginx Stable/Development</h4>
+
+<p>Ubuntu下的包管理器是<code>apt-get</code>或者说<code>dpkg</code>。常规的安装命令<code>apt-get install</code>(注意权限<code>sudo apt-get install</code>)。Nginx是这几个软件里最友好的，直接可以添加stable源：</p>
+<pre><code>add-apt-repository ppa:nginx/stable
+</code></pre>
+
+<p>或者development源：</p>
+<pre><code>add-apt-repository ppa:nginx/development
+</code></pre>
+
+<p>如果没有安装命令<code>add-apt-repository</code>,安装：</p>
+<pre><code>apt-get install python-software-properties 
+</code></pre>
+
+<p>之后常规的操作：</p>
+<pre><code>apt-get update
+apt-get install nginx
+service nginx start
+</code></pre>
+
+<h4>PHP 5.4+</h4>
+
+<p>PHP的ppa源有个老兄专门在做，<a href="https://launchpad.net/~ondrej/">Ondrej Sury</a>。有<a href="https://launchpad.net/~ondrej/+archive/php5-oldstable">php5.4</a>，<a href="https://launchpad.net/~ondrej/+archive/php5">php5.5</a>和<a href="https://launchpad.net/~ondrej/+archive/php5-5.6">php5.6</a>的源，具体的可以看官方页面。
+为什么没有5.3？你落伍啦！5.4+性能提高很多，5.5还有内置的<code>ZendOpCache</code>。安装php5.5:</p>
+<pre><code>add-apt-repository ppa:ondrej/php5
+apt-get update
+apt-get install php5 php5-fpm
+service php5-fpm start
+</code></pre>
+
+<p>还有些必要的包，安装一下，记得重启php5-fpm：</p>
+<pre><code>apt-get install php5-gd php5-curl php5-sqlite php5-mysqlnd php5-mcrypt
+service php5-fpm restart
+</code></pre>
+
+<p>至于nginx怎么配置php-fpm，一搜一大把，不多说。</p>
+
+<h4>MySQL 5.5+ &amp; MariaDB</h4>
+
+<p>还是这个老兄，维护着<a href="https://launchpad.net/~ondrej/+archive/mysql-5.5">mysql5.5</a>, <a href="https://launchpad.net/~ondrej/+archive/mysql-5.6">mysql5.6</a> 和 <a href="https://launchpad.net/~ondrej/+archive/mariadb-5.5">MariaDB5.5</a>。所以，很简单，比如安装MariaDB(不喜欢mysql，被oracle摧残了)：</p>
+<pre><code>add-apt-repository ppa:ondrej/mariadb-5.5
+apt-get update
+apt-get install mariadb-server-5.5
+service mysql start
+</code></pre>
+
+<p>这里注意，安装会提示<code>InnoDB Plugin Disabled</code>。不要紧，MariaDB把InnoDB内置进去了，其实是已经启动的。具体的可以：</p>
+<pre><code>mysql SHOW ENGINE INNODB STATUS;
+</code></pre>
+
+<h4>Golang</h4>
+
+<p>重头戏是golang啦。我搜寻了半天ppa源，只找到一个可以安装golang1.1.1的源，很不爽。其实可以golang官方下载已经编译好的<a href="https://code.google.com/p/go/downloads/list">linux.tar.gz</a>。但是需要自己手动设置<code>GOROOT</code>，有点麻烦啊。</p>
+
+<p>终于还是发现了个好工具<a href="http://blog.labix.org/2013/06/15/in-flight-deb-packages-of-go">Godeb</a>。实际上这就是一个deb包构建器。先把官方编译好的tar.gz下载，打包成deb然后执行安装。</p>
+
+<p>以64位安装为例：</p>
+<pre><code>wget https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz
+tar -zxvf godeb-amd64.tar.gz
+./godeb install
+</code></pre>
+
+<p>就开始安装最新版本。还可查看支持的版本，并安装特定版本：</p>
+<pre><code>./godeb list
+1.2
+1.2rc5
+1.2rc4
+1.2rc3
+1.2rc2
+1.2rc1
+1.1.2
+1.1.1
+1.1
+(...)
+
+./godeb install 1.1
+</code></pre>
+
+<p>安装好后，可以用<code>go env</code>查看，是否安装完成。</p>
+
+<p>剩下的设置<code>GOPATH</code>,<code>GOBIN</code>就不赘述了。我是修改在<code>/etc/profile</code>里面的。</p>
+
+<h4>写在最后</h4>
+
+<p>Ubuntu下很多东西都有源，容易安装，也是好事啊。</p>
+ ]]></description></item><item><title>Windows 下 gcc + golang 编译 git2go</title><link>http://localhost/2014/2/18/windows-git2go.html</link><pubDate>Tue, 18 Feb 2014 22:04:12 +0000</pubDate><category>Go语言</category><description><![CDATA[ <p>最近研究用go语言操作git，除了直接走命令行用<code>os/exec</code>包，还可以使用<code>libgit2</code>的go绑定<code>git2go</code>操作。
+但是<code>libgit2</code>是c语言库，go使用<code>cgo</code>连接c程序，需要<code>cgo</code>的支持。总之过程复杂，摔了一路。&lt;!&ndash;more&ndash;&gt;</p>
+
+<h4>安装 gcc 和 pkg-config</h4>
+
+<p>首先是安装<code>gcc</code>和<code>pkg-config</code>（cgo依赖）。gcc编译器推荐用<a href="http://tdm-gcc.tdragon.net/">TDM-GCC</a>来直接安装，方便快捷，注意不要用绿色版用安装版。<code>pkg-config</code>可以再gnome的<a href="http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/">官方库</a>中找到。<code>pkg-config</code>安装需要同时下载：</p>
+<pre><code>http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/pkg-config_0.26-1_win32.zip
+http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/gettext-runtime_0.18.1.1-2_win32.zip
+http://ftp.gnome.org/pub/gnome/binaries/win32/glib/2.28/glib_2.28.8-1_win32.zip
+</code></pre>
+
+<p>把几个zip包中bin目录的所有exe和dll拷贝到gcc的bin目录。</p>
+
+<h4>gcc 编译 libgit2</h4>
+
+<p><a href="http://libgit2.github.com/">libgit2</a> 是Git核心开发包的纯c实现，可以很容易移植和嵌入到别的应用中。官网也提供的它和各种语言的绑定，比如Go语言的<a href="https://github.com/libgit2/git2go">git2go</a>。</p>
+
+<p>在Mac上golang编译git2go很容易：</p>
+<pre><code>brew install libgit2
+go get github.com/libgit2/git2go
+</code></pre>
+
+<p>不过因为git2go和对应的libgit2进度不同，Windows编译的时候问题不断。</p>
+
+<p>直接git clone最新的libgit2代码（错误的），使用cmake编译。具体方法在官方wiki <a href="https://github.com/libgit2/libgit2/wiki/Building-libgit2-on-Windows">Building libgit2 on Windows</a> 已经写清楚，照着来就行。唯一注意，把编译参数中的 <code>BUILD_CLAR</code> 关闭，就可以不依赖python。还有，使用文档最后的参数：</p>
+<pre><code>cmake . -DCMAKE_INSTALL_PREFIX=C:\libgit2
+</code></pre>
+
+<p>编译到目录名没有空格的目录，否则git2go的wrapper.c会解析地址错误。建议用<code>cmake-gui</code>查看并设置编译参数。按照wiki编译：</p>
+<pre><code>cmake --build .. --target install
+</code></pre>
+
+<p>编译完成，将<strong>C:/libgit2/lib/pkgconfig</strong>添加到系统变量<code>PKG_CONFIG_PATH</code>，让<code>pkg-config</code>可以找到libgit2.pc文件。</p>
+
+<p>之后就可以 go get啦。</p>
+
+<h6>但是</h6>
+
+<p>后来在Github项目的<a href="https://github.com/libgit2/git2go/pull/53">Pull#53</a>发现，最新的libgit2更新了API破坏了git2go。最终求助mac的同学，查到brew提供的编译好的是0.20版本，就去下载 <a href="https://github.com/libgit2/libgit2/releases/tag/v0.20.0">release 0.20.0</a>。</p>
+
+<h4>golang 编译 git2go</h4>
+
+<p>git2go的编译唯一需要注意就是，将<strong>C:/libgit2/lib/pkgconfig</strong>添加到系统变量<code>PKG_CONFIG_PATH</code>，让cgo可以访问到.pc文件，读取库相关信息。剩下就是 go get 或者 go install。</p>
+ ]]></description></item><item><title>更新域名的公告</title><link>http://localhost/2014/2/18/change-domain-notice.html</link><pubDate>Tue, 18 Feb 2014 00:32:57 +0000</pubDate><category>域名</category><description><![CDATA[ <p>随着手中几个fuxiaohei相关域名的到期，以及最近手头不太宽裕，
+决定放弃对com和net的续费，只保留me域名，因此：</p>
+
+<p><strong>本站将于本周更新域名，fuxiaohei.me</strong></p>
+
+<p>更新完成后net会自动跳转到me，直到过期。</p>
+
+<p>有友链的朋友们注意更新。</p>
+
+<h4>更新</h4>
+
+<p>3月1日，决定，都<strong>留下</strong>吧。</p>
+ ]]></description></item><item><title>年初不爽二三事</title><link>http://localhost/2014/2/13/unluck-in-2014-spring.html</link><pubDate>Thu, 13 Feb 2014 10:28:52 +0000</pubDate><category>不爽</category><description><![CDATA[ <p>今年是本命年，传统上要多加小心。这不，过完年才回来上班，就接连几件事情不爽，无可奈何。</p>
+
+<h3>虎齿锁</h3>
+
+<p>出租屋的铁门是老式虎齿锁，本来就不容易扭开。这下，根本扭不开，必须要钥匙打开。
+甚至有时候钥匙捅半天也不开。</p>
+
+<p>那天我才回西安，开门进屋很方便。等下午和下班回来的室友吃饭出门才发现，门锁不上了。
+只能勉强带上门，火急火燎和室友吃完饭回来修锁。折腾了大半天，终于好一些了，可以锁上了。
+但是手动扭不开了，必须钥匙，而且钥匙也不容易打开。</p>
+
+<p>第二天下班，和室友商量好去买新的锁。可是猛然发现，回来都要6点了，周围的批发市场都关门了。
+好不容易找到一家五金店，没有这种大锁。还说这种锁很贵的，四五十块钱，你们要去专门锁店找。
+尼玛，谁知道哪儿有锁店啊。</p>
+
+<p>终于，无奈了，将就着用吧。&lt;!&ndash;more&ndash;&gt;</p>
+
+<h3>智能电卡</h3>
+
+<p>这是我的错，我弄丢了它，哪儿丢的我都不知道啊！！！周三要去交电费，才发现不见了。从晚上10点找到2点，屋里翻了个遍都没见到，死心了。
+第二天一早8点半去国家电网问，需要户主的身份证复印件。打电话给房东，求复印件，他说周五送来。回家看了看电表还有18块钱，怎么撑过周三周四啊！9点，一心憋火的上班去了。</p>
+
+<p>也算运气还在，房东下午1点来电话说，如果我有空，他下午就能过来。么么哒，我屁颠屁颠立刻请假回家。3点多房东来了，带上复印件，聊了一下电卡的事情，和下一年合同，走了。</p>
+
+<p>有了复印件，我立马去国家电网补卡。折腾了半天，工本费10块，拿到新卡。然后给我说，<strong>先回去插一下电表，再来充钱</strong>，尼玛！悲剧的迎着寒风回家，到楼道插一下电卡，家门都没进去，又继续去国家电网充钱。终于在5点，事情结束，在家休息了。</p>
+
+<h3>一件白事</h3>
+
+<p>正月二十六放假回家，二十七去看了我爷爷。二十八凌晨，爷爷在睡梦中去世。家里人都说，其实他是在等我，就我一个在外地工作。</p>
+
+<p>二十八上午9点，我到现场，磕头；10点，殡仪馆接走。12点从殡仪馆回来，吃饭。13点，带好孝服去姥爷家发丧叩头。18点回家，一天过去。</p>
+
+<p>二十九上午守灵堂。</p>
+
+<p>三十初一初二过年。</p>
+
+<p>初三中午接舅爷爷和表舅，安顿直到晚饭。</p>
+
+<p>初四7点包车去殡仪馆出殡，8点半活化；9点半下葬，11点结束；12点白事会；15点，全部结束。</p>
+
+<p>白事是父辈们操办的事情，我必须跟着。只是到处听他们聊天，各种恩恩怨怨，无可奈何。家家有本难念的经。</p>
+
+<hr />
+
+<p>这一波事件平息了，希望风平浪静一阵子吧。</p>
+ ]]></description></item><item><title>马年快乐，恭贺新禧</title><link>http://localhost/2014/1/30/new-horse-year.html</link><pubDate>Thu, 30 Jan 2014 23:59:24 +0000</pubDate><category>恭喜</category><description><![CDATA[ <p><img src="/upload/201401302358434.png" alt="恭贺新禧" /></p>
+
+<p>马年快乐，恭贺新禧</p>
+ ]]></description></item><item><title>2014 年的想法</title><link>http://localhost/2014/1/28/2014-new-idea.html</link><pubDate>Tue, 28 Jan 2014 20:27:18 +0000</pubDate><category>2014</category><category>想法</category><description><![CDATA[ <p><img src="/upload/201401282026245.png" alt="2014_new_idea" /></p>
+
+<p>2014年，24岁，本命年。俗话说，本命年要小心，不知未来会有怎样的安排。新的一年，一些计划想法以前就有雏形。即使仍然看不清，还是要为未来打一点草稿。希望自己，一帆风顺吧。</p>
+
+<h3>关于计划</h3>
+
+<p>其实我是没什么具体计划的人，更多的时候在随机应变。当然，方向还是有的，比如工作，感情，生活，都有自己的想法原则。具体的时候还是自己想办法吧。船到桥头自然直，只要方向没错，就走下去吧。&lt;!&ndash;more&ndash;&gt;</p>
+
+<h4>关于工作</h4>
+
+<p>毕业后在西安的小公司工作1年多，自感稳定安逸。每天准时上下班，很少加班，进度也不急切，挺好的。而且公司经常使用一些新的技术，偶尔被要求自学研究一些工具或者解决方法，受益匪浅。我满足现在的工作，但是不满足西安的技术圈环境。因为没有大型的技术公司，西安的IT从业者多是小圈子的状态。圈子之间隔离的比较厉害，交流很少，甚至都无法知道有什么圈子。因此，还是决定，想去一个<strong>新的城市</strong></p>
+
+<p>我是南方人，还是觉得去里家近一点的沿海发达城市比较好。向往的目标是杭州，然后南京，厦门，广州也是可以的，看实际的就业机会。另外，不太希望走社会招聘的道路，争取能有人帮忙内推。当然受人恩惠不能去丢人现眼，更要加倍努力。西安的合同在年中到期，就是我离开的时候吧。</p>
+
+<h4>关于生活</h4>
+
+<p>我是个狠宅狠宅的人。如果不是非得出门，很少出去，除了吃饭。当然这样子是不对的，不过确实我没什么想法去外面走动。根本理由是朋友少。普通朋友出去喝酒吃肉，我也偶尔参加。但终究是不喜欢人多的喧闹，尤其是ktv情调。慢慢的也就不怎么积极。</p>
+
+<p>其实我现在也不知道怎么改变好。要发现一个兴趣相投的朋友很难，更何况我这样又不愿意交际。只能说性格使然，无药可救咯。</p>
+
+<h4>关于感情</h4>
+
+<p>既然面临迁徙，感情就不敢奢求啦。24也不小，应该要为终身大事考虑。不过可能是自己期望太高吧，希望真的找到一个对的人，而不是说一个不算错的人。</p>
+
+<p>乐观一点，终究会遇到一个对的人的。当然，我不可能等太久的。</p>
+
+<h4>其他的</h4>
+
+<p>其他的事情还有很多。</p>
+
+<ul>
+<li>购买新的笔记本。现在的已经3年了，老了。</li>
+<li>正在研究和参与的开源项目要继续下去，偶尔也去开源中国翻译外文。</li>
+<li>继续在西安周边看看，没必要是名胜古迹。</li>
+<li>多读几本书，尤其是古典历史哲学，和现代互联网思维。</li>
+<li>更新一套家饰，衣服啊卧具啊等。</li>
+<li>利用余额宝和别的等，稍微活跃一下存款资金。</li>
+<li>还有。。。</li>
+</ul>
+
+<hr />
+
+<p>对一个不爱做计划，“做一些打算”，就足够了。希望上天对我不薄，不会在本命年得劲的摧残我，谢天谢地了。</p>
+ ]]></description></item><item><title>新的开始</title><link>http://localhost/2014/1/24/new-born.html</link><pubDate>Fri, 24 Jan 2014 16:47:31 +0000</pubDate><category>开始</category><description><![CDATA[ <p>到现在，Go语言开发的个站的主题内容已经基本完成。目前正致力于独立页面，附件上传，友链管理几个模块的开发。前端也还有很多细节，比如代码高亮，响应式设计等没有开始动手。不过慢慢来吧，预计这个月内可以有个比较好的结果。&lt;!&ndash;more&ndash;&gt;</p>
+
+<h4>罗伊VPS</h4>
+
+<p>这里首先要感谢<a href="https://paulvps.com/">@罗伊哥</a>给的优惠码，买了一个128M的<a href="https://paulvps.com/"><code>vps</code></a>，感觉非常不错。不过鉴于我联通网络一直是墙的排头兵，偶尔的抽风在所难免了。还是要说，罗伊好汉子！</p>
+
+<p>现在vps上只有<a href="http://golang.org/"><code>go</code></a>的环境，回头还想搞定<code>lnmp</code>环境。很多还在思考中。目前go承担了静态服务的责任，实在不应该，nginx估计会是最先上线的东西吧，继续研究先，还有淘宝的<code>tengine</code>可以选择呢。<code>php</code>就打算现在直接来学习<code>php5.5</code>了，增加了很多好玩的东西，试试看。最后数据库很纠结，我不喜欢<code>mysql</code>，更喜欢<code>postgresql</code>，但是pgsql的资料又少又有难度，很是麻烦。</p>
+
+<p>vps上我还是个新手，linux命令现在也没记住多少。反正现在网站也运行着，先这么着吧</p>
+
+<h4>开发历程</h4>
+
+<p>我的第一行Go代码是7月初开始的。忽然想搞点非PHP的东西，选来选去选择了go语言。要说为什么，优点优势有啥，我也不知道，只是觉得比较有兴趣。其实我来搞<code>nodejs</code>更好，前端我还是有功力的哈哈。管他呢，现在都已经研究了3个月，成果就是本站，还是值得的。</p>
+
+<p>学习Go的过程，最重要是感谢 <a href="http://weibo.com/Obahua">@无闻</a> 的帮助。虽然我没有怎么看他的视频教程，但是很多的交流给了我很多想法。而且他也是go的web框架<a href="http://beego.me/"><code>beego</code></a>的维护者之一，很多<code>beego</code>的细节他也明白。因而我写了自己的web核心<a href="https://github.com/fuxiaohei/GoInk"><code>GoInk</code></a>，并以其为基础搭建了现在的个站核心<a href="https://github.com/fuxiaohei/GoBlog"><code>Fxh.Go</code></a>。</p>
+
+<h4>一点希望</h4>
+
+<p><strong>fuxiaohei.net</strong>的域名其实一直在我手里，早在<a href="http://hexiaz.com/"><code>hexiaz.com</code></a>上线之前，这里曾经有一个我研究php自己开发的站点。。但是因为大学学业，把这里荒废了。我也土豪的续费的域名继续浪费。不过现在好了，有了新内容，坚持下去吧！</p>
+ ]]></description></item><item><title>换新博客了</title><link>http://localhost/2014/1/19/first-blog.html</link><pubDate>Sun, 19 Jan 2014 16:16:24 +0000</pubDate><category>Fxh.Go</category><description><![CDATA[ <p>终于，Go语言开发的博客算发布了，<a href="http://github.com/fuxiaohei/GoBlog/">Fxh.Go</a>。和原来的php相比，变化还是很大的。</p>
+
+<p>首先是程序上：</p>
+
+<ul>
+<li>花了很长时间的学习和研究，终于完全用Go语言，搭建自己的框架，实现了这个程序。</li>
+<li>没用数据库，完全是json储存，数据全部维持在内存，读取速度非常快。</li>
+<li>再三思索，还是没用.me的域名，用回了更早买的.net。同时，没用大的512M的VPS，用了手里最小的128M的。</li>
+<li>前端都是自己设计实现的。
+&lt;!&ndash;more&ndash;&gt;</li>
+</ul>
+
+<p>然后是内容上：</p>
+
+<p>这里可能要更多的谈技术分享，尤其是php，nodejs和go语言的一些想法。
+另外主要的领域是web开发，其他方面涉猎不深，能力有限。</p>
+
+<p>这次更新在我的<a href="http://hexiaz.com">php站点</a>上有预告，不过因为种种原因，耽搁至今。
+不过总算有所结果，聊以欣慰。</p>
+
+<p>最后的说明：</p>
+
+<p><code>Fxh.Go</code>这个程序功能尚未全面，仍在持续开发。
+主体结构不会再有巨大的变动，应该已经可用。
+有兴趣可以尝试一下，如果发现问题可以到github提issue或直接pull request，欢迎你的参与。</p>
  ]]></description></item></channel></rss>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Windows 下 gcc &#43; golang 编译 git2go - Pugo.Static</title>
+    <meta name="keywords" content="pugo,golang,static,site,generator"/>
+    <meta name="description" content=""/>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/css/prism.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<header id="header">
+    <div class="container">
+        <div class="header clearfix">
+            <nav id="site-nav">
+                <ul class="nav nav-inverse nav-pills pull-right">
+                    <li role="presentation" class="">
+                        <a href="/" class="">Home
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/archive.html" class="">Archive
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/about.html" class="" target="_blank" >About
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 id="site-title">
+                <a href="/">Pugo.Static</a>
+            </h3>
+        </div>
+    </div>
+</header>
+
+<section id="main">
+    <div class="container">
+        <div id="article-single">
+            <article class="article">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 panel panel-default">
+                        <header class="header">
+                            <div class="meta">
+                        <span class="date">
+                            <span class="month">2</span>
+                            <span class="day">18</span>
+                        </span>
+                            </div>
+                            <h3 class="title">
+                                <a href="/2014/2/18/windows-git2go.html">Windows 下 gcc &#43; golang 编译 git2go</a>
+                            </h3>
+                        </header>
+                        <aside class="aside clearfix">
+                            <a class="tag label label-info" href="/tags/Go%e8%af%ad%e8%a8%80.html">Go语言</a>
+                            <a class="stat label label-default pull-right" href="http://fuxiaohei.me/" target="_blank">傅小黑</a>
+                        </aside>
+                        <section class="brief"><p>最近研究用go语言操作git，除了直接走命令行用<code>os/exec</code>包，还可以使用<code>libgit2</code>的go绑定<code>git2go</code>操作。
+但是<code>libgit2</code>是c语言库，go使用<code>cgo</code>连接c程序，需要<code>cgo</code>的支持。总之过程复杂，摔了一路。&lt;!&ndash;more&ndash;&gt;</p>
+
+<h4>安装 gcc 和 pkg-config</h4>
+
+<p>首先是安装<code>gcc</code>和<code>pkg-config</code>（cgo依赖）。gcc编译器推荐用<a href="http://tdm-gcc.tdragon.net/">TDM-GCC</a>来直接安装，方便快捷，注意不要用绿色版用安装版。<code>pkg-config</code>可以再gnome的<a href="http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/">官方库</a>中找到。<code>pkg-config</code>安装需要同时下载：</p>
+<pre><code>http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/pkg-config_0.26-1_win32.zip
+http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/gettext-runtime_0.18.1.1-2_win32.zip
+http://ftp.gnome.org/pub/gnome/binaries/win32/glib/2.28/glib_2.28.8-1_win32.zip
+</code></pre>
+
+<p>把几个zip包中bin目录的所有exe和dll拷贝到gcc的bin目录。</p>
+
+<h4>gcc 编译 libgit2</h4>
+
+<p><a href="http://libgit2.github.com/">libgit2</a> 是Git核心开发包的纯c实现，可以很容易移植和嵌入到别的应用中。官网也提供的它和各种语言的绑定，比如Go语言的<a href="https://github.com/libgit2/git2go">git2go</a>。</p>
+
+<p>在Mac上golang编译git2go很容易：</p>
+<pre><code>brew install libgit2
+go get github.com/libgit2/git2go
+</code></pre>
+
+<p>不过因为git2go和对应的libgit2进度不同，Windows编译的时候问题不断。</p>
+
+<p>直接git clone最新的libgit2代码（错误的），使用cmake编译。具体方法在官方wiki <a href="https://github.com/libgit2/libgit2/wiki/Building-libgit2-on-Windows">Building libgit2 on Windows</a> 已经写清楚，照着来就行。唯一注意，把编译参数中的 <code>BUILD_CLAR</code> 关闭，就可以不依赖python。还有，使用文档最后的参数：</p>
+<pre><code>cmake . -DCMAKE_INSTALL_PREFIX=C:\libgit2
+</code></pre>
+
+<p>编译到目录名没有空格的目录，否则git2go的wrapper.c会解析地址错误。建议用<code>cmake-gui</code>查看并设置编译参数。按照wiki编译：</p>
+<pre><code>cmake --build .. --target install
+</code></pre>
+
+<p>编译完成，将<strong>C:/libgit2/lib/pkgconfig</strong>添加到系统变量<code>PKG_CONFIG_PATH</code>，让<code>pkg-config</code>可以找到libgit2.pc文件。</p>
+
+<p>之后就可以 go get啦。</p>
+
+<h6>但是</h6>
+
+<p>后来在Github项目的<a href="https://github.com/libgit2/git2go/pull/53">Pull#53</a>发现，最新的libgit2更新了API破坏了git2go。最终求助mac的同学，查到brew提供的编译好的是0.20版本，就去下载 <a href="https://github.com/libgit2/libgit2/releases/tag/v0.20.0">release 0.20.0</a>。</p>
+
+<h4>golang 编译 git2go</h4>
+
+<p>git2go的编译唯一需要注意就是，将<strong>C:/libgit2/lib/pkgconfig</strong>添加到系统变量<code>PKG_CONFIG_PATH</code>，让cgo可以访问到.pc文件，读取库相关信息。剩下就是 go get 或者 go install。</p>
+</section>
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+    </div>
+</section>
+<footer id="footer">
+    <div class="container text-center">
+        <p>© 2015 Pugo.Static.
+            <a href="http://creativecommons.org/licenses/by/3.0/">Some rights reserved </a> |
+            <a href="/feed.xml">Feed</a> |
+            <a href="/sitemap.xml">Sitemap</a>
+        </p>
+        <p>Powered by <a href="https://github.com/go-xiaohei/pugo-static">Pugo 0.8.4</a>. Theme by Default.
+        </p>
+    </div>
+</footer>
+<script src="/static/js/jquery-2.1.4.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/prism.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("pre code").addClass("line-numbers")
+    });
+</script>
+</body>
+</html>

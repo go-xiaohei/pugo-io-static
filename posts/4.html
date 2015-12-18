@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Page 4 - Pugo.Static</title>
+    <meta name="keywords" content="pugo,golang,static,site,generator"/>
+    <meta name="description" content="pugo is a simple static site generator"/>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/css/prism.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<header id="header">
+    <div class="container">
+        <div class="header clearfix">
+            <nav id="site-nav">
+                <ul class="nav nav-inverse nav-pills pull-right">
+                    <li role="presentation" class="">
+                        <a href="/" class="">Home
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/archive.html" class="">Archive
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/about.html" class="" target="_blank" >About
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 id="site-title">
+                <a href="/">Pugo.Static</a>
+            </h3>
+        </div>
+    </div>
+</header>
+
+<section id="main">
+    <div class="container">
+        <div id="article-list">
+            <article class="article">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 panel panel-default">
+                        <header class="header">
+                            <div class="meta">
+                        <span class="date">
+                            <span class="month">2</span>
+                            <span class="day">28</span>
+                        </span>
+                            </div>
+                            <h3 class="title">
+                                <a href="/2014/2/28/complain-of-february-2014.html">2月的一点抱怨</a>
+                            </h3>
+                        </header>
+                        <section class="brief"><p>2月打春，可惜，西安还是在冬天的雾霾和淅淅沥沥里度过。自己还年轻，24不到，可总觉得有些工作的累心。怎么说呢？一个破烂的php项目折腾了半个月。而工作之余也在为开源的东西做些工作。可能是事情多了，累了吧。</p>
+
+<h4>一个糟糕的php项目</h4>
+
+<p>公司承接一个海外的php项目，我刚开始满心欢喜。看了看他的代码，自己实现MVC模式，很容易理解。不过当我真的按照要求动手的时候，杯具开始。首先，是<strong>到处的超全局变量</strong>。</p>
+<pre><code class="language-php">$eventID = isset($_POST['event']) ? trim($_POST['event']) : NULL;
+$title = isset($_POST['title']) ? trim($_POST['title']) : &quot;&quot;;
+$video_status = isset($_POST['video_status']) ? trim($_POST['video_status']) : &quot;&quot;;
+$video_type = isset($_POST['video_type']) ? trim($_POST['video_type']) : &quot;&quot;;
+
+if (isset($_FILES['file']) &amp;&amp; !empty($_FILES['file']['tmp_name'])) {
+//......
+}
+</code></pre>
+
+<p>你再怎么样也别这样啊，不嫌繁琐啊。然后是，<strong>奇特的类属性定义</strong>。</p>
+</section>
+                        <aside class="aside clearfix">
+                            <a class="btn btn-primary btn-lg pull-right" href="/2014/2/28/complain-of-february-2014.html">Read More</a>
+                        </aside>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="article">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 panel panel-default">
+                        <header class="header">
+                            <div class="meta">
+                        <span class="date">
+                            <span class="month">2</span>
+                            <span class="day">19</span>
+                        </span>
+                            </div>
+                            <h3 class="title">
+                                <a href="/2014/2/19/ubuntu-lnmp-golang-installation.html">Ubuntu 下 nginx , php , mysql 和 golang 的简单安装</a>
+                            </h3>
+                        </header>
+                        <section class="brief"><p>我是搞php出身，自然安装lnmp是常规技能。以前的手段还是lnmp安装包，比如军哥的<a href="http://lnmp.org/">lnmp1.0</a>。随着php和mysql的更新，大多数一键安装都开始版本老化，更新困难的问题。因此，重新研究了一下Ubuntu下lnmp的安装，发现现在简单的多，记录一下。</p>
+
+<p>另外最近在学习golang，Ubuntu下安装自然也是必须的过程。不过golang的安装也有一些奥妙。当然，不是源码安装的啦。</p>
+</section>
+                        <aside class="aside clearfix">
+                            <a class="btn btn-primary btn-lg pull-right" href="/2014/2/19/ubuntu-lnmp-golang-installation.html">Read More</a>
+                        </aside>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="article">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 panel panel-default">
+                        <header class="header">
+                            <div class="meta">
+                        <span class="date">
+                            <span class="month">2</span>
+                            <span class="day">18</span>
+                        </span>
+                            </div>
+                            <h3 class="title">
+                                <a href="/2014/2/18/windows-git2go.html">Windows 下 gcc &#43; golang 编译 git2go</a>
+                            </h3>
+                        </header>
+                        <section class="brief"><p>最近研究用go语言操作git，除了直接走命令行用<code>os/exec</code>包，还可以使用<code>libgit2</code>的go绑定<code>git2go</code>操作。
+但是<code>libgit2</code>是c语言库，go使用<code>cgo</code>连接c程序，需要<code>cgo</code>的支持。总之过程复杂，摔了一路。</p>
+</section>
+                        <aside class="aside clearfix">
+                            <a class="btn btn-primary btn-lg pull-right" href="/2014/2/18/windows-git2go.html">Read More</a>
+                        </aside>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="article">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 panel panel-default">
+                        <header class="header">
+                            <div class="meta">
+                        <span class="date">
+                            <span class="month">2</span>
+                            <span class="day">18</span>
+                        </span>
+                            </div>
+                            <h3 class="title">
+                                <a href="/2014/2/18/change-domain-notice.html">更新域名的公告</a>
+                            </h3>
+                        </header>
+                        <section class="brief"><p>随着手中几个fuxiaohei相关域名的到期，以及最近手头不太宽裕，
+决定放弃对com和net的续费，只保留me域名，因此：</p>
+
+<p><strong>本站将于本周更新域名，fuxiaohei.me</strong></p>
+
+<p>更新完成后net会自动跳转到me，直到过期。</p>
+
+<p>有友链的朋友们注意更新。</p>
+
+<h4>更新</h4>
+
+<p>3月1日，决定，都<strong>留下</strong>吧。</p>
+</section>
+                        <aside class="aside clearfix">
+                            <a class="btn btn-primary btn-lg pull-right" href="/2014/2/18/change-domain-notice.html">Read More</a>
+                        </aside>
+                    </div>
+                </div>
+            </article>
+            
+            <div class="article-pager text-center">
+                <a class="btn btn-lg btn-info" href="/posts/3.html">prev</a>
+                <a class="btn btn-lg btn-info" href="/posts/5.html">next</a>
+            </div>
+        </div>
+    </div>
+</section>
+<footer id="footer">
+    <div class="container text-center">
+        <p>© 2015 Pugo.Static.
+            <a href="http://creativecommons.org/licenses/by/3.0/">Some rights reserved </a> |
+            <a href="/feed.xml">Feed</a> |
+            <a href="/sitemap.xml">Sitemap</a>
+        </p>
+        <p>Powered by <a href="https://github.com/go-xiaohei/pugo-static">Pugo 0.8.4</a>. Theme by Default.
+        </p>
+    </div>
+</footer>
+<script src="/static/js/jquery-2.1.4.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/prism.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("pre code").addClass("line-numbers")
+    });
+</script>
+</body>
+</html>

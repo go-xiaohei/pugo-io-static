@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Beego源码分析 - Pugo.Static</title>
+    <meta name="keywords" content="pugo,golang,static,site,generator"/>
+    <meta name="description" content=""/>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/css/prism.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<header id="header">
+    <div class="container">
+        <div class="header clearfix">
+            <nav id="site-nav">
+                <ul class="nav nav-inverse nav-pills pull-right">
+                    <li role="presentation" class="">
+                        <a href="/" class="">Home
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/archive.html" class="">Archive
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/about.html" class="" target="_blank" >About
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 id="site-title">
+                <a href="/">Pugo.Static</a>
+            </h3>
+        </div>
+    </div>
+</header>
+
+<section id="main">
+    <div class="container">
+        <div id="article-single">
+            <article class="article">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 panel panel-default">
+                        <header class="header">
+                            <div class="meta">
+                        <span class="date">
+                            <span class="month">4</span>
+                            <span class="day">30</span>
+                        </span>
+                            </div>
+                            <h3 class="title">
+                                <a href="/2014/4/30/beego-source-study.html">Beego源码分析</a>
+                            </h3>
+                        </header>
+                        <aside class="aside clearfix">
+                            <a class="tag label label-info" href="/tags/Go%e8%af%ad%e8%a8%80.html">Go语言</a>
+                            <a class="tag label label-info" href="/tags/beego.html">beego</a>
+                            <a class="stat label label-default pull-right" href="http://fuxiaohei.me/" target="_blank">傅小黑</a>
+                        </aside>
+                        <section class="brief"><p><code>beego</code> 是 <a href="https://github.com/astaxie">@astaxie</a> 开发的重量级Go语言Web框架。它有标准的MVC模式，完善的功能模块，和优异的调试和开发模式等特点。并且<code>beego</code>在国内企业用户较多，社区发达和Q群，文档齐全，特别是 @astaxie 本人对bug和issue等回复和代码修复很快，非常敬业。<code>beego</code>框架本身模块众多，无法简单描述所有的功能。我简单阅读了源码，记录一下<code>beego</code>执行过程。官方文档已经图示了<code>beego</code>执行过程<a href="http://beego.me/docs/mvc/">图</a>，而我会比较详细的解释<code>beego</code>的源码实现。
+&lt;!&ndash;more&ndash;&gt;
+<strong>注意</strong>，本文基于beego 1.1.4 (2014.04.15) 源码分析，且不是<code>beego</code>的使用教程。使用细节的问题在这里不会说明。</p>
+
+<h2>1. 启动应用</h2>
+
+<p><a href="http://beego.me/">beego官方首页</a>提供的示例非常简单：</p>
+<pre><code class="language-go">package main
+
+import &quot;github.com/astaxie/beego&quot;
+
+func main() {
+    beego.Run()
+}
+</code></pre>
+
+<p>那么，从<code>Run()</code>方法开始，在<a href="https://github.com/astaxie/beego/blob/master/beego.go#L179">beego.go#179</a>：</p>
+<pre><code class="language-go">func Run() {
+    initBeforeHttpRun()
+
+    if EnableAdmin {
+        go beeAdminApp.Run()
+    }
+
+    BeeApp.Run()
+}
+</code></pre>
+
+<p>额呵呵呵，还在更里面，先看<code>initBeforeHttpRun()</code>，在<a href="https://github.com/astaxie/beego/blob/master/beego.go#L189">beego.go#L189</a>:</p>
+<pre><code class="language-go">func initBeforeHttpRun() {
+    // if AppConfigPath not In the conf/app.conf reParse config
+    if AppConfigPath != filepath.Join(AppPath, &quot;conf&quot;, &quot;app.conf&quot;) {
+        err := ParseConfig()
+        if err != nil &amp;&amp; AppConfigPath != filepath.Join(workPath, &quot;conf&quot;, &quot;app.conf&quot;) {
+            // configuration is critical to app, panic here if parse failed
+            panic(err)
+        }
+    }
+
+    // do hooks function
+    for _, hk := range hooks {
+        err := hk()
+        if err != nil {
+            panic(err)
+        }
+    }
+
+    if SessionOn {
+        var err error
+        sessionConfig := AppConfig.String(&quot;sessionConfig&quot;)
+        if sessionConfig == &quot;&quot; {
+            sessionConfig = `{&quot;cookieName&quot;:&quot;` + SessionName + `&quot;,` +
+                `&quot;gclifetime&quot;:` + strconv.FormatInt(SessionGCMaxLifetime, 10) + `,` +
+                `&quot;providerConfig&quot;:&quot;` + SessionSavePath + `&quot;,` +
+                `&quot;secure&quot;:` + strconv.FormatBool(HttpTLS) + `,` +
+                `&quot;sessionIDHashFunc&quot;:&quot;` + SessionHashFunc + `&quot;,` +
+                `&quot;sessionIDHashKey&quot;:&quot;` + SessionHashKey + `&quot;,` +
+                `&quot;enableSetCookie&quot;:` + strconv.FormatBool(SessionAutoSetCookie) + `,` +
+                `&quot;cookieLifeTime&quot;:` + strconv.Itoa(SessionCookieLifeTime) + `}`
+        }
+        GlobalSessions, err = session.NewManager(SessionProvider,
+            sessionConfig)
+        if err != nil {
+            panic(err)
+        }
+        go GlobalSessions.GC()
+    }
+
+    err := BuildTemplate(ViewsPath)
+    if err != nil {
+        if RunMode == &quot;dev&quot; {
+            Warn(err)
+        }
+    }
+
+    middleware.VERSION = VERSION
+    middleware.AppName = AppName
+    middleware.RegisterErrorHandler()
+}
+</code></pre>
+
+<p>从代码看到在<code>Run()</code>的第一步，初始化<code>AppConfig</code>，调用<code>hooks</code>，初始化<code>GlobalSessions</code>，编译模板<code>BuildTemplate()</code>，和加载中间件<code>middleware.RegisterErrorHandler()</code>，分别简单叙述。</p>
+
+<h3>1.1 加载配置</h3>
+
+<p>加载配置的代码是：</p>
+<pre><code class="language-go">if AppConfigPath != filepath.Join(AppPath, &quot;conf&quot;, &quot;app.conf&quot;) {
+    err := ParseConfig()
+    if err != nil &amp;&amp; AppConfigPath != filepath.Join(workPath, &quot;conf&quot;, &quot;app.conf&quot;) {
+        // configuration is critical to app, panic here if parse failed
+        panic(err)
+    }
+}
+</code></pre>
+
+<p>判断配置文件是不是<code>AppPath/conf/app.conf</code>，如果不是就<code>ParseConfig()</code>。显然他之前就已经加载过一次了。找了一下，在<a href="https://github.com/astaxie/beego/blob/master/config.go#L152">config.go#L152</a>，具体加载什么就不说明了。需要说明的是<code>AppPath</code>和<code>workPath</code>这俩变量。找到定义<a href="https://github.com/astaxie/beego/blob/master/config.go#L72">config.go#72</a>：</p>
+<pre><code class="language-go">workPath, _ = os.Getwd()
+workPath, _ = filepath.Abs(workPath)
+// initialize default configurations
+AppPath, _ = filepath.Abs(filepath.Dir(os.Args[0]))
+
+AppConfigPath = filepath.Join(AppPath, &quot;conf&quot;, &quot;app.conf&quot;)
+
+if workPath != AppPath {
+    if utils.FileExists(AppConfigPath) {
+        os.Chdir(AppPath)
+    } else {
+        AppConfigPath = filepath.Join(workPath, &quot;conf&quot;, &quot;app.conf&quot;)
+    }
+}
+</code></pre>
+
+<p><code>workPath</code>是<code>os.Getwd()</code>，即当前的目录；<code>AppPath</code>是<code>os.Args[0]</code>，即二进制文件所在目录。有些情况下这两个是不同的。比如把命令加到<code>PATH</code>中，然后cd到别的目录执行。<code>beego</code>以二进制文件所在目录为优先。如果二进制文件所在目录没有发现<code>conf/app.conf</code>，再去<code>workPath</code>里找。</p>
+
+<h3>1.2 Hooks</h3>
+
+<p><code>hooks</code>就是钩子，在加载配置后就执行，这是要做啥呢？在 <a href="https://github.com/astaxie/beego/blob/master/beego.go#L173">beego.go#L173</a> 添加新的hook：</p>
+<pre><code class="language-go">// The hookfunc will run in beego.Run()
+// such as sessionInit, middlerware start, buildtemplate, admin start
+func AddAPPStartHook(hf hookfunc) {
+    hooks = append(hooks, hf)
+}
+</code></pre>
+
+<p><code>hooks</code>的定义在<a href="https://github.com/astaxie/beego/blob/master/beego.go#L19">beego.go#L19</a>：</p>
+<pre><code class="language-go">type hookfunc func() error //hook function to run
+var hooks []hookfunc       //hook function slice to store the hookfunc
+</code></pre>
+
+<p><code>hook</code>就是<code>func() error</code>类型的函数。那么为什么调用<code>hooks</code>可以实现代码注释中的如<code>middleware start, build template</code>呢？因为<code>beego</code>使用的是单实例的模式。</p>
+
+<h3>1.3 单实例</h3>
+
+<p><code>beego</code>的核心结构是<code>beego.APP</code>，保存路由调度结构<code>*beego.ControllerRegistor</code>。从<code>beego.Run()</code>方法的代码<code>BeeApp.Run()</code>发现，<code>beego</code>有一个全局变量<code>BeeApp</code>是实际调用的<code>*beego.APP</code>实例。也就是说整个<code>beego</code>就是一个实例，不需要类似<code>NewApp()</code>这样的写法。</p>
+
+<p>因此，很多结构都作为全局变量如<code>beego.BeeApp</code>暴露在外。详细的定义在 <a href="https://github.com/astaxie/beego/blob/master/config.go#L18">config.go#L18</a>，特别注意一下<code>SessionProvider(string)</code>，马上就要提到。</p>
+
+<h3>1.4 会话 <code>GlobalSessions</code></h3>
+
+<p>继续<code>beego.Run()</code>的阅读，<code>hooks</code>调用完毕后，初始化会话<code>GlobalSessions</code>：</p>
+<pre><code class="language-go">if SessionOn {
+    var err error
+    sessionConfig := AppConfig.String(&quot;sessionConfig&quot;)
+    if sessionConfig == &quot;&quot; {
+        sessionConfig = `{&quot;cookieName&quot;:&quot;` + SessionName + `&quot;,` +
+            `&quot;gclifetime&quot;:` + strconv.FormatInt(SessionGCMaxLifetime, 10) + `,` +
+            `&quot;providerConfig&quot;:&quot;` + SessionSavePath + `&quot;,` +
+            `&quot;secure&quot;:` + strconv.FormatBool(HttpTLS) + `,` +
+            `&quot;sessionIDHashFunc&quot;:&quot;` + SessionHashFunc + `&quot;,` +
+            `&quot;sessionIDHashKey&quot;:&quot;` + SessionHashKey + `&quot;,` +
+            `&quot;enableSetCookie&quot;:` + strconv.FormatBool(SessionAutoSetCookie) + `,` +
+            `&quot;cookieLifeTime&quot;:` + strconv.Itoa(SessionCookieLifeTime) + `}`
+    }
+    GlobalSessions, err = session.NewManager(SessionProvider,
+        sessionConfig)
+    if err != nil {
+        panic(err)
+    }
+    go GlobalSessions.GC()
+}
+</code></pre>
+
+<p><code>beego.SessionOn</code>定义是否启动Session功能，然后<code>sessionConfig</code>是Session的配置，如果配置为空，就使用拼接的默认配置。<code>sessionConfig</code>是json格式。</p>
+
+<p><code>session.NewManager()</code>返回<code>*session.Manager</code>，session的数据存储引擎是<code>beego.SessionProvider</code>定义，比如&rdquo;file&rdquo;，文件存储。</p>
+
+<p><code>go GlobalSessions.GC()</code>开启一个goroutine来处理session的回收。阅读一下<code>GC()</code>的代码，在 <a href="https://github.com/astaxie/beego/blob/master/session/session.go#L183">session/session.go#L183</a>：</p>
+<pre><code class="language-go">func (manager *Manager) GC() {
+    manager.provider.SessionGC()
+    time.AfterFunc(time.Duration(manager.config.Gclifetime)*time.Second, func() { manager.GC() })
+}
+</code></pre>
+
+<p>这是个<strong>无限循环</strong>。<code>time.AfterFunc()</code>在经过一段时间间隔<code>time.Duration(...)</code>之后，又调用自己，相当于又开始启动<code>time.AfterFunc()</code>等待下一次到期。<code>manager.provider.SessionGC()</code>是不同session存储引擎的回收方法（其实是<code>session.Provider</code>接口的）。</p>
+
+<h3>1.5 模板构建</h3>
+
+<p>继续<code>beego.Run()</code>，session初始化后，构建模板：</p>
+<pre><code class="language-go">err := BuildTemplate(ViewsPath)
+</code></pre>
+
+<p><code>beego.ViewsPath</code>是模板的目录啦，不多说。仔细来看看<code>BuildTemplate()</code>函数，<a href="https://github.com/astaxie/beego/blob/master/template.go#L114">template.goL#114</a>：</p>
+<pre><code class="language-go">// build all template files in a directory.
+// it makes beego can render any template file in view directory.
+func BuildTemplate(dir string) error {
+    if _, err := os.Stat(dir); err != nil {
+        if os.IsNotExist(err) {
+            return nil
+        } else {
+            return errors.New(&quot;dir open err&quot;)
+        }
+    }
+    self := &amp;templatefile{
+        root:  dir,
+        files: make(map[string][]string),
+    }
+    err := filepath.Walk(dir, func(path string, f os.FileInfo, err error) error {
+        return self.visit(path, f, err)
+    })
+    if err != nil {
+        fmt.Printf(&quot;filepath.Walk() returned %v\n&quot;, err)
+        return err
+    }
+    for _, v := range self.files {
+        for _, file := range v {
+            t, err := getTemplate(self.root, file, v...)
+            if err != nil {
+                Trace(&quot;parse template err:&quot;, file, err)
+            } else {
+                BeeTemplates[file] = t
+            }
+        }
+    }
+    return nil
+}
+</code></pre>
+
+<p>比较复杂。一点点来看，<code>os.Stat(dir)</code>判断目录是否存在。<code>filepath.Walk()</code>走一边目录里的文件，记录在<code>self.files</code>里面。循环<code>self.files</code>中的<code>file</code>（map[dir][]file])，用<code>getTemplate</code>获取<code>*template.Template</code>实例，保存在<code>beego.BeeTemplates</code>（map[string]*template.Template）。</p>
+
+<p>为什么要<strong>预先编译</strong>模板？想像一下，如果每次请求，都去寻找模板再编译一遍。这显然是个浪费的。而且如果模板复杂，嵌套众多，编译速度会是很大的问题。因此存下编译好的<code>*template.Template</code>是必然的选择。但是，编译后模板的修改不能立即响应了，怎么办呢？先继续看下去。</p>
+
+<h3>1.6 中间件</h3>
+
+<p><code>middleware</code>包目前似乎只有错误处理的功能。</p>
+<pre><code class="language-go">middleware.RegisterErrorHandler()
+</code></pre>
+
+<p>只是注册默认的错误处理方法 <code>middleware.NotFound</code> 等几个。</p>
+
+<h3>1.7 beeAdminApp</h3>
+<pre><code class="language-go">if EnableAdmin {
+    go beeAdminApp.Run()
+}
+</code></pre>
+
+<p><code>beeAdminApp</code>也是一个<code>*beego.adminApp</code>，负责系统监控、性能检测、访问统计和健康检查等。具体的介绍和使用可以访问<a href="http://beego.me/docs/advantage/monitor.md">文档</a>。</p>
+
+<h2>2. HTTP服务</h2>
+
+<p>写了这么多，终于要开始讲核心结构<code>beego.BeeApp</code>的启动：</p>
+<pre><code class="language-go">BeeApp.Run()
+</code></pre>
+
+<p><code>Run()</code>的实现代码在<a href="https://github.com/astaxie/beego/blob/master/app.go#L29">app.go#L29</a>。代码较长，看看最重要的一段：</p>
+<pre><code class="language-go">if UseFcgi {
+    if HttpPort == 0 {
+        l, err = net.Listen(&quot;unix&quot;, addr)
+    } else {
+        l, err = net.Listen(&quot;tcp&quot;, addr)
+    }
+    if err != nil {
+        BeeLogger.Critical(&quot;Listen: &quot;, err)
+    }
+    err = fcgi.Serve(l, app.Handlers)
+} else {
+    if EnableHotUpdate {
+        server := &amp;http.Server{
+            Handler:      app.Handlers,
+            ReadTimeout:  time.Duration(HttpServerTimeOut) * time.Second,
+            WriteTimeout: time.Duration(HttpServerTimeOut) * time.Second,
+        }
+        laddr, err := net.ResolveTCPAddr(&quot;tcp&quot;, addr)
+        if nil != err {
+            BeeLogger.Critical(&quot;ResolveTCPAddr:&quot;, err)
+        }
+        l, err = GetInitListener(laddr)
+        theStoppable = newStoppable(l)
+        err = server.Serve(theStoppable)
+        theStoppable.wg.Wait()
+        CloseSelf()
+    } else {
+        s := &amp;http.Server{
+            Addr:         addr,
+            Handler:      app.Handlers,
+            ReadTimeout:  time.Duration(HttpServerTimeOut) * time.Second,
+            WriteTimeout: time.Duration(HttpServerTimeOut) * time.Second,
+        }
+        if HttpTLS {
+            err = s.ListenAndServeTLS(HttpCertFile, HttpKeyFile)
+        } else {
+            err = s.ListenAndServe()
+        }
+    }
+}
+</code></pre>
+
+<p><code>beego.UseFcgi</code>定义是否使用<code>fast-cgi</code>服务，而不是HTTP。另一部分是启动HTTP。里面有个重要功能<code>EnableHotUpdate</code>————<strong>热更新</strong>。对他的描述，可以看看官方<a href="http://beego.me/docs/advantage/reload.md">文档</a>。</p>
+
+<h3>2.1 HTTP过程总览</h3>
+
+<p>上面的代码看得到<code>*http.Server.Handler</code>是<code>app.Handlers</code>，即<code>*beego.ControllerRegistor</code>，<code>ServeHTTP</code>就定义在代码<a href="https://github.com/astaxie/beego/blob/master/router.go#L431">router.go#L431</a>。非常长，我们检出重要的部分来说说。</p>
+
+<p>首先是要创建当前请求的上下文：</p>
+<pre><code class="language-go">// init context
+context := &amp;beecontext.Context{
+    ResponseWriter: w,
+    Request:        r,
+    Input:          beecontext.NewInput(r),
+    Output:         beecontext.NewOutput(),
+}
+context.Output.Context = context
+context.Output.EnableGzip = EnableGzip
+</code></pre>
+
+<p><code>context</code>的类型是<code>*context.Context</code>，把当前的<code>w(http.ResponseWriter)</code>和<code>r(*http.Request)</code>写在<code>context</code>的字段中。</p>
+
+<p>然后，定义了过滤器<code>filter</code>的调用方法，把<code>context</code>传递给过滤器操作：</p>
+<pre><code class="language-go">do_filter := func(pos int) (started bool) {
+    if p.enableFilter {
+        if l, ok := p.filters[pos]; ok {
+            for _, filterR := range l {
+                if ok, p := filterR.ValidRouter(r.URL.Path); ok {
+                    context.Input.Params = p
+                    filterR.filterFunc(context)
+                    if w.started {
+                        return true
+                    }
+                }
+            }
+        }
+    }
+    return false
+}
+</code></pre>
+
+<p>然后，加载Session：</p>
+<pre><code class="language-go">if SessionOn {
+    context.Input.CruSession = GlobalSessions.SessionStart(w, r)
+    defer func() {
+        context.Input.CruSession.SessionRelease(w)
+    }()
+}
+</code></pre>
+
+<p><code>defer</code>中的<code>SessionRelease()</code>是将session持久化到存储引擎中，比如写入文件保存。</p>
+
+<p>然后，判断请求方式是否支持：</p>
+<pre><code class="language-go">if !utils.InSlice(strings.ToLower(r.Method), HTTPMETHOD) {
+    http.Error(w, &quot;Method Not Allowed&quot;, 405)
+    goto Admin
+}
+</code></pre>
+
+<p>这里看一看到 <code>goto Admin</code>，就是执行<code>AdminApp</code>的监控操作，记录这次请求的相关信息。<code>Admin</code>定义在整个HTTP执行的最后：</p>
+<pre><code class="language-go">Admin:
+    //admin module record QPS
+    if EnableAdmin {
+        timeend := time.Since(starttime)
+        if FilterMonitorFunc(r.Method, requestPath, timeend) {
+            if runrouter != nil {
+                go toolbox.StatisticsMap.AddStatistics(r.Method, requestPath, runrouter.Name(), timeend)
+            } else {
+                go toolbox.StatisticsMap.AddStatistics(r.Method, requestPath, &quot;&quot;, timeend)
+            }
+        }
+    }
+</code></pre>
+
+<p>所以<code>goto Admin</code>直接就跳过中间过程，走到HTTP执行的最后了。显然，当请求方式不支持的时候，直接跳到HTTP执行最后。如果不启用<code>AdminApp</code>，那就是HTTP执行过程结束。</p>
+
+<p>继续阅读，开始处理静态文件了：</p>
+<pre><code class="language-go">if serverStaticRouter(context) {
+    goto Admin
+}
+</code></pre>
+
+<p>然后处理POST请求的内容体：</p>
+<pre><code class="language-go">if context.Input.IsPost() {
+    if CopyRequestBody &amp;&amp; !context.Input.IsUpload() {
+        context.Input.CopyBody()
+    }
+    context.Input.ParseFormOrMulitForm(MaxMemory)
+}
+</code></pre>
+
+<p>执行两个前置的过滤器：</p>
+<pre><code class="language-go">if do_filter(BeforeRouter) {
+    goto Admin
+}
+
+if do_filter(AfterStatic) {
+    goto Admin
+}
+</code></pre>
+
+<p>不过我觉得这俩顺序怪怪的，应该先<code>AfterStatic</code>后<code>BeforeRouter</code>。需要注意，过滤器如果返回<code>false</code>，整个执行就结束（跳到最后）。</p>
+
+<p>继续阅读，然后判断有没有指定执行的控制器和方法：</p>
+<pre><code class="language-go">if context.Input.RunController != nil &amp;&amp; context.Input.RunMethod != &quot;&quot; {
+    findrouter = true
+    runMethod = context.Input.RunMethod
+    runrouter = context.Input.RunController
+}
+</code></pre>
+
+<p>如果过滤器执行后，对<code>context</code>指定了执行的控制器和方法，就用指定的。</p>
+
+<p>继续，路由的寻找开始，有三种路由：</p>
+<pre><code class="language-go">if !findrouter {
+    for _, route := range p.fixrouters {
+        n := len(requestPath)
+        if requestPath == route.pattern {
+            runMethod = p.getRunMethod(r.Method, context, route)
+            if runMethod != &quot;&quot; {
+                runrouter = route.controllerType
+                findrouter = true
+                break
+            }
+        }
+        //......
+    }
+}
+</code></pre>
+
+<p><code>p.fixrouters</code>就是不带正则的路由，比如<code>/user</code>。<code>route.controllerType</code>的类型是<code>reflect.Type</code>，后面会用来创建控制器实例。<code>p.getRunMethod()</code>获取实际请求方式。为了满足浏览器无法发送表单<code>PUT</code>和<code>DELETE</code>方法，可以用表单域<code>_method</code>值代替。（注明一下<code>p</code>就是<code>*beego.ControllerRegistor</code>。</p>
+
+<p>接下来当然是正则的路由：</p>
+<pre><code class="language-go">if !findrouter {
+    //find a matching Route
+    for _, route := range p.routers {
+
+        //check if Route pattern matches url
+        if !route.regex.MatchString(requestPath) {
+            continue
+        }
+        // ......
+        runMethod = p.getRunMethod(r.Method, context, route)
+        if runMethod != &quot;&quot; {
+            runrouter = route.controllerType
+            context.Input.Params = params
+            findrouter = true
+            break
+        }
+    }
+}
+</code></pre>
+
+<p>正则路由比如<code>/user/:id:int</code>，这种带参数的。匹配后的参数会记录在<code>context.Input.Params</code>中。</p>
+
+<p>还没找到，就看看是否需要自动路由：</p>
+<pre><code class="language-go">if !findrouter &amp;&amp; p.enableAuto {
+    // ......
+    for cName, methodmap := range p.autoRouter {
+        // ......
+    }
+}
+</code></pre>
+
+<p>把所有路由规则走完，还是没有找到匹配的规则：</p>
+<pre><code class="language-go">if !findrouter {
+    middleware.Exception(&quot;404&quot;, rw, r, &quot;&quot;)
+    goto Admin
+}
+</code></pre>
+
+<p>另一种情况就是找到路由规则咯，且看下文。</p>
+
+<h3>2.2 路由调用</h3>
+
+<p>上面的代码发现路由的调用依赖<code>runrouter</code>和<code>runmethod</code>变量。他们值觉得了到底调用什么控制器和方法。来看看具体实现：</p>
+<pre><code class="language-go">if findrouter {
+    //execute middleware filters
+    if do_filter(BeforeExec) {
+        goto Admin
+    }
+
+    //Invoke the request handler
+    vc := reflect.New(runrouter)
+    execController, ok := vc.Interface().(ControllerInterface)
+    if !ok {
+        panic(&quot;controller is not ControllerInterface&quot;)
+    }
+
+    //call the controller init function
+    execController.Init(context, runrouter.Name(), runMethod, vc.Interface())
+
+    //if XSRF is Enable then check cookie where there has any cookie in the  request's cookie _csrf
+    if EnableXSRF {
+        execController.XsrfToken()
+        if r.Method == &quot;POST&quot; || r.Method == &quot;DELETE&quot; || r.Method == &quot;PUT&quot; ||
+            (r.Method == &quot;POST&quot; &amp;&amp; (r.Form.Get(&quot;_method&quot;) == &quot;delete&quot; || r.Form.Get(&quot;_method&quot;) == &quot;put&quot;)) {
+            execController.CheckXsrfCookie()
+        }
+    }
+
+    //call prepare function
+    execController.Prepare()
+
+    if !w.started {
+        //exec main logic
+        switch runMethod {
+        case &quot;Get&quot;:
+            execController.Get()
+        case &quot;Post&quot;:
+            execController.Post()
+        case &quot;Delete&quot;:
+            execController.Delete()
+        case &quot;Put&quot;:
+            execController.Put()
+        case &quot;Head&quot;:
+            execController.Head()
+        case &quot;Patch&quot;:
+            execController.Patch()
+        case &quot;Options&quot;:
+            execController.Options()
+        default:
+            in := make([]reflect.Value, 0)
+            method := vc.MethodByName(runMethod)
+            method.Call(in)
+        }
+
+        //render template
+        if !w.started &amp;&amp; !context.Input.IsWebsocket() {
+            if AutoRender {
+                if err := execController.Render(); err != nil {
+                    panic(err)
+                }
+
+            }
+        }
+    }
+
+    // finish all runrouter. release resource
+    execController.Finish()
+
+    //execute middleware filters
+    if do_filter(AfterExec) {
+        goto Admin
+    }
+}
+</code></pre>
+
+<p>研读一下，最开始的又是过滤器：</p>
+<pre><code class="language-go">if do_filter(BeforeExec) {
+    goto Admin
+}
+</code></pre>
+
+<p><code>BeforeExec</code>执行控制器方法前的过滤。</p>
+
+<p>然后，创建一个新的控制器实例：</p>
+<pre><code class="language-go">vc := reflect.New(runrouter)
+execController, ok := vc.Interface().(ControllerInterface)
+if !ok {
+    panic(&quot;controller is not ControllerInterface&quot;)
+}
+
+//call the controller init function
+execController.Init(context, runrouter.Name(), runMethod, vc.Interface())
+</code></pre>
+
+<p><code>reflect.New()</code>创建新的实例，用<code>vc.Interface().(ControllerInterface)</code>取出，调用接口的<code>Init</code>方法，将请求的上下文等传递进去。
+这里就说明为什么不能存下控制器实例给每次请求使用，因为每次请求的上下文是<strong>不同的</strong>。</p>
+<pre><code class="language-go">execController.Prepare()
+</code></pre>
+
+<p>控制器的准备工作，这里可以写用户登录验证等。</p>
+
+<p>然后根据<code>runmethod</code>执行控制器对应的方法，非接口定义的方法，用<code>reflect.Call</code>调用。</p>
+<pre><code class="language-go">if !w.started &amp;&amp; !context.Input.IsWebsocket() {
+    if AutoRender {
+        if err := execController.Render(); err != nil {
+            panic(err)
+        }
+    }
+}
+</code></pre>
+
+<p>如果自动渲染<code>AutoRender</code>，就调用<code>Render()</code>方法渲染页面。</p>
+<pre><code class="language-go">execController.Finish()
+
+//execute middleware filters
+if do_filter(AfterExec) {
+    goto Admin
+}
+</code></pre>
+
+<p>控制器最后一刀<code>Finish</code>搞定，然后过滤器<code>AfterExec</code>使用。</p>
+
+<p>总结起来，<code>beego.ControllerInterface</code>接口方法的<code>Init</code>,<code>Prepare</code>,<code>Render</code>和<code>Finish</code>发挥很大作用。那就来研究一下。</p>
+
+<h2>3. 控制器和视图</h2>
+
+<h3>3.1 控制器接口</h3>
+
+<p>控制器接口<code>beego.ControllerInterface</code>的定义在<a href="https://github.com/astaxie/beego/blob/master/controller.go#L47">controller.go#L47</a>：</p>
+<pre><code class="language-go">type ControllerInterface interface {
+    Init(ct *context.Context, controllerName, actionName string, app interface{})
+    Prepare()
+    Get()
+    Post()
+    Delete()
+    Put()
+    Head()
+    Patch()
+    Options()
+    Finish()
+    Render() error
+    XsrfToken() string
+    CheckXsrfCookie() bool
+}
+</code></pre>
+
+<p>官方的实现<code>beego.Controller</code>定义在<a href="https://github.com/astaxie/beego/blob/master/controller.go#L29">controller.go#L29</a>：</p>
+<pre><code class="language-go">type Controller struct {
+    Ctx            *context.Context
+    Data           map[interface{}]interface{}
+    controllerName string
+    actionName     string
+    TplNames       string
+    Layout         string
+    LayoutSections map[string]string // the key is the section name and the value is the template name
+    TplExt         string
+    _xsrf_token    string
+    gotofunc       string
+    CruSession     session.SessionStore
+    XSRFExpire     int
+    AppController  interface{}
+    EnableReander  bool
+}
+</code></pre>
+
+<p>内容好多，没必要全部都看看，重点在<code>Init</code>,<code>Prepare</code>,<code>Render</code>和<code>Finish</code>这四个。</p>
+
+<h3>3.2 控制器的实现</h3>
+
+<p><code>Init</code>方法：</p>
+<pre><code class="language-go">// Init generates default values of controller operations.
+func (c *Controller) Init(ctx *context.Context, controllerName, actionName string, app interface{}) {
+    c.Layout = &quot;&quot;
+    c.TplNames = &quot;&quot;
+    c.controllerName = controllerName
+    c.actionName = actionName
+    c.Ctx = ctx
+    c.TplExt = &quot;tpl&quot;
+    c.AppController = app
+    c.EnableReander = true
+    c.Data = ctx.Input.Data
+}
+</code></pre>
+
+<p>没什么话说，一堆赋值。唯一要谈的是<code>c.EnableReander</code>，这种拼写错误实在是，掉阴沟里。实际的意思是<code>EnableRender</code>。</p>
+
+<p><code>Prepare</code>和<code>Finish</code>方法：</p>
+<pre><code class="language-go">// Prepare runs after Init before request function execution.
+func (c *Controller) Prepare() {
+
+}
+
+// Finish runs after request function execution.
+func (c *Controller) Finish() {
+
+}
+</code></pre>
+
+<p>空的！原来我要自己填内容啊。</p>
+
+<p><code>Render</code>方法：</p>
+<pre><code class="language-go">// Render sends the response with rendered template bytes as text/html type.
+func (c *Controller) Render() error {
+    if !c.EnableReander {
+        return nil
+    }
+    rb, err := c.RenderBytes()
+
+    if err != nil {
+        return err
+    } else {
+        c.Ctx.Output.Header(&quot;Content-Type&quot;, &quot;text/html; charset=utf-8&quot;)
+        c.Ctx.Output.Body(rb)
+    }
+    return nil
+}
+</code></pre>
+
+<h3>3.3 视图渲染</h3>
+
+<p>渲染的核心方法是<code>c.RenderBytes()</code>:</p>
+<pre><code class="language-go">// RenderBytes returns the bytes of rendered template string. Do not send out response.
+func (c *Controller) RenderBytes() ([]byte, error) {
+    //if the controller has set layout, then first get the tplname's content set the content to the layout
+    if c.Layout != &quot;&quot; {
+        if c.TplNames == &quot;&quot; {
+            c.TplNames = strings.ToLower(c.controllerName) + &quot;/&quot; + strings.ToLower(c.actionName) + &quot;.&quot; + c.TplExt
+        }
+        if RunMode == &quot;dev&quot; {
+            BuildTemplate(ViewsPath)
+        }
+        newbytes := bytes.NewBufferString(&quot;&quot;)
+        if _, ok := BeeTemplates[c.TplNames]; !ok {
+            panic(&quot;can't find templatefile in the path:&quot; + c.TplNames)
+            return []byte{}, errors.New(&quot;can't find templatefile in the path:&quot; + c.TplNames)
+        }
+        err := BeeTemplates[c.TplNames].ExecuteTemplate(newbytes, c.TplNames, c.Data)
+        if err != nil {
+            Trace(&quot;template Execute err:&quot;, err)
+            return nil, err
+        }
+        tplcontent, _ := ioutil.ReadAll(newbytes)
+        c.Data[&quot;LayoutContent&quot;] = template.HTML(string(tplcontent))
+
+        if c.LayoutSections != nil {
+            for sectionName, sectionTpl := range c.LayoutSections {
+                if sectionTpl == &quot;&quot; {
+                    c.Data[sectionName] = &quot;&quot;
+                    continue
+                }
+
+                sectionBytes := bytes.NewBufferString(&quot;&quot;)
+                err = BeeTemplates[sectionTpl].ExecuteTemplate(sectionBytes, sectionTpl, c.Data)
+                if err != nil {
+                    Trace(&quot;template Execute err:&quot;, err)
+                    return nil, err
+                }
+                sectionContent, _ := ioutil.ReadAll(sectionBytes)
+                c.Data[sectionName] = template.HTML(string(sectionContent))
+            }
+        }
+
+        ibytes := bytes.NewBufferString(&quot;&quot;)
+        err = BeeTemplates[c.Layout].ExecuteTemplate(ibytes, c.Layout, c.Data)
+        if err != nil {
+            Trace(&quot;template Execute err:&quot;, err)
+            return nil, err
+        }
+        icontent, _ := ioutil.ReadAll(ibytes)
+        return icontent, nil
+    } else {
+        //......
+    }
+    return []byte{}, nil
+}
+</code></pre>
+
+<p>看起来很复杂，主要是两种情况，有没有Layout。如果有Layout：</p>
+<pre><code class="language-go">err := BeeTemplates[c.TplNames].ExecuteTemplate(newbytes, c.TplNames, c.Data)
+// ......
+tplcontent, _ := ioutil.ReadAll(newbytes)
+c.Data[&quot;LayoutContent&quot;] = template.HTML(string(tplcontent))
+</code></pre>
+
+<p>渲染模板文件，就是布局的主内容。</p>
+<pre><code class="language-go">for sectionName, sectionTpl := range c.LayoutSections {
+    if sectionTpl == &quot;&quot; {
+        c.Data[sectionName] = &quot;&quot;
+        continue
+    }
+
+    sectionBytes := bytes.NewBufferString(&quot;&quot;)
+    err = BeeTemplates[sectionTpl].ExecuteTemplate(sectionBytes, sectionTpl, c.Data)
+    // ......
+    sectionContent, _ := ioutil.ReadAll(sectionBytes)
+    c.Data[sectionName] = template.HTML(string(sectionContent))
+}
+</code></pre>
+
+<p>渲染布局里的别的区块<code>c.LayoutSections</code>。</p>
+<pre><code class="language-go">ibytes := bytes.NewBufferString(&quot;&quot;)
+err = BeeTemplates[c.Layout].ExecuteTemplate(ibytes, c.Layout, c.Data)
+// ......
+icontent, _ := ioutil.ReadAll(ibytes)
+return icontent, nil
+</code></pre>
+
+<p>最后是渲染布局文件，<code>c.Data</code>里带有所有布局的主内容和区块，可以直接赋值在布局里。</p>
+
+<p>渲染过程有趣的代码：</p>
+<pre><code class="language-go">if RunMode == &quot;dev&quot; {
+    BuildTemplate(ViewsPath)
+}
+</code></pre>
+
+<p>开发状态下，每次渲染都会重新<code>BuildTemplate()</code>。这样就可以理解，最初渲染模板并存下<code>*template.Template</code>，生产模式下，是不会响应即时的模版修改。</p>
+
+<h2>总结</h2>
+
+<p>本文对<code>beego</code>的执行过程进行了分析。一个Web应用，运行的过程就是路由分发，路由执行和结果渲染三个主要过程。本文没有非常详细的解释<code>beego</code>源码的细节分析，但是还是有几个重要问题进行的说明：</p>
+
+<ul>
+<li>路由规则的分类，固定的，还是正则，还是自动的。不同的路由处理方式不同，需要良好设计</li>
+<li>控制器的操作其实就是上下文的处理，使用控制器类，还是函数，需要根据应用考量。</li>
+<li>视图的效率控制需要严格把关，而且如何简单的设计就能满足复杂模板的使用，需要仔细考量。</li>
+</ul>
+
+<p><code>beego</code>本身复杂，他的很多实现其实并不是很简洁直观。当然随着功能越来越强大，<code>beego</code>会越来越好的。</p>
+</section>
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+    </div>
+</section>
+<footer id="footer">
+    <div class="container text-center">
+        <p>© 2015 Pugo.Static.
+            <a href="http://creativecommons.org/licenses/by/3.0/">Some rights reserved </a> |
+            <a href="/feed.xml">Feed</a> |
+            <a href="/sitemap.xml">Sitemap</a>
+        </p>
+        <p>Powered by <a href="https://github.com/go-xiaohei/pugo-static">Pugo 0.8.4</a>. Theme by Default.
+        </p>
+    </div>
+</footer>
+<script src="/static/js/jquery-2.1.4.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/prism.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("pre code").addClass("line-numbers")
+    });
+</script>
+</body>
+</html>

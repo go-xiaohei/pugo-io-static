@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>开源 - Pugo.Static</title>
+    <meta name="keywords" content="pugo,golang,static,site,generator"/>
+    <meta name="description" content="pugo is a simple static site generator"/>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/css/prism.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<header id="header">
+    <div class="container">
+        <div class="header clearfix">
+            <nav id="site-nav">
+                <ul class="nav nav-inverse nav-pills pull-right">
+                    <li role="presentation" class="">
+                        <a href="/" class="">Home
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/archive.html" class="">Archive
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/about.html" class="" target="_blank" >About
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 id="site-title">
+                <a href="/">Pugo.Static</a>
+            </h3>
+        </div>
+    </div>
+</header>
+
+<section id="main">
+    <div class="container">
+        <div id="article-list">
+            <h2 class="tag text-center">开源</h2>
+            <article class="article">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 panel panel-default">
+                        <header class="header">
+                            <div class="meta">
+                        <span class="date">
+                            <span class="month">2</span>
+                            <span class="day">28</span>
+                        </span>
+                            </div>
+                            <h3 class="title">
+                                <a href="/2014/2/28/complain-of-february-2014.html">2月的一点抱怨</a>
+                            </h3>
+                        </header>
+                        <section class="brief"><p>2月打春，可惜，西安还是在冬天的雾霾和淅淅沥沥里度过。自己还年轻，24不到，可总觉得有些工作的累心。怎么说呢？一个破烂的php项目折腾了半个月。而工作之余也在为开源的东西做些工作。可能是事情多了，累了吧。</p>
+
+<h4>一个糟糕的php项目</h4>
+
+<p>公司承接一个海外的php项目，我刚开始满心欢喜。看了看他的代码，自己实现MVC模式，很容易理解。不过当我真的按照要求动手的时候，杯具开始。首先，是<strong>到处的超全局变量</strong>。</p>
+<pre><code class="language-php">$eventID = isset($_POST['event']) ? trim($_POST['event']) : NULL;
+$title = isset($_POST['title']) ? trim($_POST['title']) : &quot;&quot;;
+$video_status = isset($_POST['video_status']) ? trim($_POST['video_status']) : &quot;&quot;;
+$video_type = isset($_POST['video_type']) ? trim($_POST['video_type']) : &quot;&quot;;
+
+if (isset($_FILES['file']) &amp;&amp; !empty($_FILES['file']['tmp_name'])) {
+//......
+}
+</code></pre>
+
+<p>你再怎么样也别这样啊，不嫌繁琐啊。然后是，<strong>奇特的类属性定义</strong>。</p>
+</section>
+                        <aside class="aside clearfix">
+                            <a class="btn btn-primary btn-lg pull-right" href="/2014/2/28/complain-of-february-2014.html">Read More</a>
+                        </aside>
+                    </div>
+                </div>
+            </article>
+            
+            <div class="article-pager text-center">
+                
+                
+            </div>
+        </div>
+    </div>
+</section>
+<footer id="footer">
+    <div class="container text-center">
+        <p>© 2015 Pugo.Static.
+            <a href="http://creativecommons.org/licenses/by/3.0/">Some rights reserved </a> |
+            <a href="/feed.xml">Feed</a> |
+            <a href="/sitemap.xml">Sitemap</a>
+        </p>
+        <p>Powered by <a href="https://github.com/go-xiaohei/pugo-static">Pugo 0.8.4</a>. Theme by Default.
+        </p>
+    </div>
+</footer>
+<script src="/static/js/jquery-2.1.4.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/prism.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("pre code").addClass("line-numbers")
+    });
+</script>
+</body>
+</html>

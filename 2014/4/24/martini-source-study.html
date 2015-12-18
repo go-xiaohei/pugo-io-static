@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Martini源码剖析 - Pugo.Static</title>
+    <meta name="keywords" content="pugo,golang,static,site,generator"/>
+    <meta name="description" content=""/>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/css/prism.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<header id="header">
+    <div class="container">
+        <div class="header clearfix">
+            <nav id="site-nav">
+                <ul class="nav nav-inverse nav-pills pull-right">
+                    <li role="presentation" class="">
+                        <a href="/" class="">Home
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/archive.html" class="">Archive
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/about.html" class="" target="_blank" >About
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 id="site-title">
+                <a href="/">Pugo.Static</a>
+            </h3>
+        </div>
+    </div>
+</header>
+
+<section id="main">
+    <div class="container">
+        <div id="article-single">
+            <article class="article">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 panel panel-default">
+                        <header class="header">
+                            <div class="meta">
+                        <span class="date">
+                            <span class="month">4</span>
+                            <span class="day">24</span>
+                        </span>
+                            </div>
+                            <h3 class="title">
+                                <a href="/2014/4/24/martini-source-study.html">Martini源码剖析</a>
+                            </h3>
+                        </header>
+                        <aside class="aside clearfix">
+                            <a class="tag label label-info" href="/tags/Go%e8%af%ad%e8%a8%80.html">Go语言</a>
+                            <a class="tag label label-info" href="/tags/Martini.html">Martini</a>
+                            <a class="tag label label-info" href="/tags/%e6%ba%90%e7%a0%81.html">源码</a>
+                            <a class="stat label label-default pull-right" href="http://fuxiaohei.me/" target="_blank">傅小黑</a>
+                        </aside>
+                        <section class="brief"><p><a href="http://github.com/go-martini/martini">martini</a>是非常优雅的Go Web框架。他基于依赖注入的思想，仿照<a href="http://www.sinatrarb.com/">Sinatra</a>的路由设计，参考<a href="http://expressjs.com/">Express</a>的中间件设计，而且核心微小，扩展方便，非常值得学习。但是由于本身API设计简洁，使很多细节无法从代码理解。所以，我写一点笔记记录<code>martini</code>的工作方式。
+&lt;!&ndash;more&ndash;&gt;</p>
+
+<h2>Martini核心</h2>
+
+<p>我们从最简单的官方实例入手：</p>
+<pre><code class="language-go">package main
+
+import &quot;github.com/go-martini/martini&quot;
+
+func main() {
+  m := martini.Classic()
+  m.Get(&quot;/&quot;, func() string {
+    return &quot;Hello world!&quot;
+  })
+  m.Run()
+}
+</code></pre>
+
+<p><code>martini.Martini</code>是自带的核心结构，负责完成依赖注入和调用的过程。<code>martini.ClassicMartini</code>是路由<code>martini.Router</code>和<code>martini.Martini</code>的组合，实现路由分发和逻辑调用的过程。<code>m := martini.Classic()</code>返回的就是<code>martini.ClassicMartini</code>。具体在<a href="https://github.com/go-martini/martini/blob/master/martini.go#L104">martini.go#L104</a>:</p>
+<pre><code class="language-go">func Classic() *ClassicMartini {
+    r := NewRouter()
+    m := New()
+    m.Use(Logger())
+    m.Use(Recovery())
+    m.Use(Static(&quot;public&quot;))
+    m.MapTo(r, (*Routes)(nil))
+    m.Action(r.Handle)
+    return &amp;ClassicMartini{m, r}
+}
+</code></pre>
+
+<p>里面的<code>m := New()</code>定义在<a href="https://github.com/go-martini/martini/blob/master/martini.go#L38">martini.go#L38</a>:</p>
+<pre><code class="language-go">func New() *Martini {
+    m := &amp;Martini{Injector: inject.New(), action: func() {}, logger: log.New(os.Stdout, &quot;[martini] &quot;, 0)}
+    m.Map(m.logger)
+    m.Map(defaultReturnHandler())
+    return m
+}
+</code></pre>
+
+<h4>依赖注入</h4>
+
+<p>上面很明显的看到两个奇特方法：<code>m.Map()</code>、<code>m.MapTo()</code>。这里，需要注意<code>martini</code>的一个最重要原则，<strong>注入的任何类型的结构，都是唯一的</strong>。即如：</p>
+<pre><code class="language-go">type User struct{
+    Id int
+}
+
+m.Map(&amp;User{Id:1})
+m.Map(&amp;User{Id:2})
+
+</code></pre>
+
+<p><code>martini</code>在寻找<code>&amp;User</code>类型的时候，只能获取到<code>&amp;User{Id:2}</code>结构（最后注册的）。<code>Map</code>的作用，就是向内部注册对应类型的具体对象或者值。类型索引是<code>reflect.Type</code>。从而我们可以理解到<code>m.New()</code>的代码中将<code>m.Logger(*log.Logger)</code>和<code>defaultReturnHandler(martini.ReturnHandler)</code>(括号中是类型索引)注入到内部。</p>
+
+<p>这里出现了一个问题。接口这种类型，是无法用<code>reflect.Type()</code>直接获取的（因为传来的都是已经实现接口的具体结构）。解决方法就是<code>m.MapTo()</code>。</p>
+<pre><code>m.MapTo(r, (*Routes)(nil))
+</code></pre>
+
+<p>即将<code>r(martini.router)</code>按照<code>martini.Router</code>接口（注意大小写）类型注入到内部。</p>
+<pre><code>(*Routes)(nil)
+</code></pre>
+
+<p>也是高明的构造。接口的默认值不是nil，无法直接new。但是指针的默认值是nil，可以直接赋值，比如<code>var user *User; user = nil</code>。因此他注册一个接口指针类型的空指针，用<code>reflect.Type.Elem()</code>方法就可以获取到指针的内部类型，即接口类型，并以接口类型索引注入到内部。</p>
+
+<h2>路由过程</h2>
+
+<h4>HTTP处理</h4>
+
+<p><code>martini.Martini</code>实现了<code>http.Handler</code>方法，实际的HTTP执行过程在代码<a href="https://github.com/go-martini/martini/blob/master/martini.go#L68">martini.go#L68</a>:</p>
+<pre><code class="language-go">func (m *Martini) ServeHTTP(res http.ResponseWriter, req *http.Request) {
+    m.createContext(res, req).run()
+}
+</code></pre>
+
+<p>这里需要我们关注<code>m.createContext</code>，它返回<code>*martini.context</code>类型，代码<a href="https://github.com/go-martini/martini/blob/master/martini.go#L87">martini.go#L87</a>：</p>
+<pre><code class="language-go">func (m *Martini) createContext(res http.ResponseWriter, req *http.Request) *context {
+    c := &amp;context{inject.New(), m.handlers, m.action, NewResponseWriter(res), 0}
+    c.SetParent(m)
+    c.MapTo(c, (*Context)(nil))
+    c.MapTo(c.rw, (*http.ResponseWriter)(nil))
+    c.Map(req)
+    return c
+}
+</code></pre>
+
+<p>创建<code>*martini.context</code>类型；然后<code>SetParent</code>设置寻找注入对象的时候同时从<code>m(*martini.Martini)</code>中寻找（<code>*martini.context</code>和<code>*martini.Martini</code>两个独立的<code>inject</code>），这样就可以获取<code>m.Map</code>注入的数据。</p>
+
+<p>这里叉出来说：从代码看出实际上注入的数据有两层，分别在<code>*martini.context</code>和<code>*martini.Martini</code>。<code>*martini.context</code>中的是当前请求可以获取的（每个请求都会<code>m.createContext()</code>，都是新的对象）;<code>martini.Martini</code>是全局的，任何请求都可以获取到。</p>
+
+<p>回到上一段，<code>c.MapTo</code>把<code>*martini.context</code>按<code>martini.Context</code>接口，将<code>martini.ResponseWriter</code>按<code>http.ResponseWriter</code>接口，把<code>req(*http.Request)</code>注入到当前上下文。</p>
+
+<p><code>context.run</code>方法定义在<a href="https://github.com/go-martini/martini/blob/master/martini.go#L163">martini.go#L163</a>:</p>
+<pre><code class="language-go">func (c *context) run() {
+    for c.index &lt;= len(c.handlers) {
+        _, err := c.Invoke(c.handler())
+        if err != nil {
+            panic(err)
+        }
+        c.index += 1
+
+        if c.Written() {
+            return
+        }
+    }
+}
+</code></pre>
+
+<p>它在循环<code>c.handlers</code>(来自<code>m.handlers</code>,createContext代码中)。这里想解释三个细节。</p>
+
+<p><code>c.Invoke</code>是<code>inject.Invoke</code>方法，内部就是获取<code>c.hanlder()</code>返回的<code>martini.Handler(func)</code>类型的传入参数<code>reflect.Type.In()</code>，根据参数个数和类型去内部找对应的结构，然后拼装成<code>[]reflect.Value</code>给函数的<code>reflect.Value(func).Call()</code>。</p>
+
+<p><code>c.handler()</code>的返回来自两个方面,<code>c.hanlders</code>和<code>c.action</code>。<code>c.handlers</code>来自<code>m.Use()</code>添加,<code>c.action</code>来自<code>r.Handle(*martini.router.Handle)</code>(见上文<code>martini.ClassicMartini.New</code>中的<code>m.Action(r.Handle)</code>)。因此，可以发现实际上handlers是有两个列表，一个是<code>c.handlers([]martini.handler)</code>和<code>r.handlers(martini.routerContext.handlers)</code>。而且前者先执行。也就是说无论<code>m.Use</code>写在哪儿，都要比router添加的func先执行。</p>
+
+<p><code>c.Written</code>判断请求是否已经发送。他实际上是判断<code>martini.ResponseWriter.status</code>是否大于0。因此只要发送了response status，handlers过程就会停止。</p>
+
+<h4>路由调用</h4>
+
+<p>从上面可以知道，路由调用过程有两个方面：一是<code>m.Use()</code>添加的handlers，二是路由添加比如<code>m.Get(&quot;/&quot;,handlers...)</code>中的handlers。<code>m.Use</code>的handlers调用就是上文的<code>*martini.context.run</code>方法，不再赘述。路由中的handlers执行是在<a href="https://github.com/go-martini/martini/blob/master/router.go#L218">router.go#L218</a>:</p>
+<pre><code class="language-go">func (r *route) Handle(c Context, res http.ResponseWriter) {
+    context := &amp;routeContext{c, 0, r.handlers}
+    c.MapTo(context, (*Context)(nil))
+    context.run()
+}
+</code></pre>
+
+<p>和<a href="https://github.com/go-martini/martini/blob/master/router.go#L315">router.go#L315</a>:</p>
+<pre><code class="language-go">func (r *routeContext) run() {
+    for r.index &lt; len(r.handlers) {
+        handler := r.handlers[r.index]
+        vals, err := r.Invoke(handler)
+        if err != nil {
+            panic(err)
+        }
+        r.index += 1
+
+        // if the handler returned something, write it to the http response
+        if len(vals) &gt; 0 {
+            ev := r.Get(reflect.TypeOf(ReturnHandler(nil)))
+            handleReturn := ev.Interface().(ReturnHandler)
+            handleReturn(r, vals)
+        }
+
+        if r.Written() {
+            return
+        }
+    }
+}
+</code></pre>
+
+<p>如果你已经理解上文中说明，这个过程和<code>martini.context.run</code>是一样的。唯一这里要解释的是<code>martini.ReturnHandler</code>。它与很上文中的<code>m.Map(defaultReturnHandler())</code>遥相呼应。</p>
+
+<h2>中间件</h2>
+
+<p>从上文不难理解，中间件其实就是<code>martini.Handler</code>被<code>m.Use</code>添加到<code>m.handlers</code>中。这里我们来说明官方的一个中间件<code>martini.Logger()</code>，实现代码在<a href="https://github.com/go-martini/martini/blob/master/logger.go">logger.go</a>:</p>
+<pre><code class="language-go">func Logger() Handler {
+    return func(res http.ResponseWriter, req *http.Request, c Context, log *log.Logger) {
+        start := time.Now()
+        log.Printf(&quot;Started %s %s&quot;, req.Method, req.URL.Path)
+
+        rw := res.(ResponseWriter)
+        c.Next()
+
+        log.Printf(&quot;Completed %v %s in %v\n&quot;, rw.Status(), http.StatusText(rw.Status()), time.Since(start))
+    }
+}
+</code></pre>
+
+<p>首先看func的传入参数，<code>http.ResponseWriter</code>和<code>*http.Request</code>来自：</p>
+<pre><code>c := &amp;context{inject.New(), m.handlers, m.action, NewResponseWriter(res), 0}
+// ...
+c.MapTo(c.rw, (*http.ResponseWriter)(nil))
+c.Map(req)
+</code></pre>
+
+<p><code>Context</code>来自：</p>
+<pre><code>context := &amp;routeContext{c, 0, r.handlers}
+c.MapTo(context, (*Context)(nil))
+</code></pre>
+
+<p><code>*log.Logger</code>来自：</p>
+<pre><code>m := &amp;Martini{Injector: inject.New(), action: func() {}, logger: log.New(os.Stdout, &quot;[martini] &quot;, 0)}
+m.Map(m.logger)
+</code></pre>
+
+<p>然后看<code>rw := res.(ResponseWriter)</code>。实际上<code>c.rw</code>是<code>NewReponseWriter(res)</code>返回的<code>martini.ResponseWriter</code>类型，一次可以在这里直接转换（注意在外部调用，不是martini包中，要import并写<code>res.(martini.ResponseWriter)</code>）。</p>
+
+<p>最后是<code>c.Next()</code>方法，源码在<a href="#">martini.go#L154</a>:</p>
+<pre><code class="language-go">func (c *context) Next() {
+    c.index += 1
+    c.run()
+}
+</code></pre>
+
+<p>意思就是index自增，指向下一个handler，<code>c.run</code>走完所有handler，然后继续中间件里的<code>log.Printf...</code>。</p>
+
+<h2>总结</h2>
+
+<p>martini的对外API很简单，但是内部实现其实比较复杂的。需要仔细的阅读，并且有一定标准库的基础，才能很好的理解他代码的用意。</p>
+
+<p>我这里只是按照自己的理解说明，如果有错误请在评论中指正。</p>
+</section>
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+    </div>
+</section>
+<footer id="footer">
+    <div class="container text-center">
+        <p>© 2015 Pugo.Static.
+            <a href="http://creativecommons.org/licenses/by/3.0/">Some rights reserved </a> |
+            <a href="/feed.xml">Feed</a> |
+            <a href="/sitemap.xml">Sitemap</a>
+        </p>
+        <p>Powered by <a href="https://github.com/go-xiaohei/pugo-static">Pugo 0.8.4</a>. Theme by Default.
+        </p>
+    </div>
+</footer>
+<script src="/static/js/jquery-2.1.4.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/prism.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("pre code").addClass("line-numbers")
+    });
+</script>
+</body>
+</html>

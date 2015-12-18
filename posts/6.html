@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Page 6 - Pugo.Static</title>
+    <meta name="keywords" content="pugo,golang,static,site,generator"/>
+    <meta name="description" content="pugo is a simple static site generator"/>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/css/prism.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<header id="header">
+    <div class="container">
+        <div class="header clearfix">
+            <nav id="site-nav">
+                <ul class="nav nav-inverse nav-pills pull-right">
+                    <li role="presentation" class="">
+                        <a href="/" class="">Home
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/archive.html" class="">Archive
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/about.html" class="" target="_blank" >About
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 id="site-title">
+                <a href="/">Pugo.Static</a>
+            </h3>
+        </div>
+    </div>
+</header>
+
+<section id="main">
+    <div class="container">
+        <div id="article-list">
+            <article class="article">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 panel panel-default">
+                        <header class="header">
+                            <div class="meta">
+                        <span class="date">
+                            <span class="month">1</span>
+                            <span class="day">19</span>
+                        </span>
+                            </div>
+                            <h3 class="title">
+                                <a href="/2014/1/19/first-blog.html">换新博客了</a>
+                            </h3>
+                        </header>
+                        <section class="brief"><p>终于，Go语言开发的博客算发布了，<a href="http://github.com/fuxiaohei/GoBlog/">Fxh.Go</a>。和原来的php相比，变化还是很大的。</p>
+
+<p>首先是程序上：</p>
+
+<ul>
+<li>花了很长时间的学习和研究，终于完全用Go语言，搭建自己的框架，实现了这个程序。</li>
+<li>没用数据库，完全是json储存，数据全部维持在内存，读取速度非常快。</li>
+<li>再三思索，还是没用.me的域名，用回了更早买的.net。同时，没用大的512M的VPS，用了手里最小的128M的。</li>
+<li>前端都是自己设计实现的。</li>
+</ul>
+</section>
+                        <aside class="aside clearfix">
+                            <a class="btn btn-primary btn-lg pull-right" href="/2014/1/19/first-blog.html">Read More</a>
+                        </aside>
+                    </div>
+                </div>
+            </article>
+            
+            <div class="article-pager text-center">
+                <a class="btn btn-lg btn-info" href="/posts/5.html">prev</a>
+                
+            </div>
+        </div>
+    </div>
+</section>
+<footer id="footer">
+    <div class="container text-center">
+        <p>© 2015 Pugo.Static.
+            <a href="http://creativecommons.org/licenses/by/3.0/">Some rights reserved </a> |
+            <a href="/feed.xml">Feed</a> |
+            <a href="/sitemap.xml">Sitemap</a>
+        </p>
+        <p>Powered by <a href="https://github.com/go-xiaohei/pugo-static">Pugo 0.8.4</a>. Theme by Default.
+        </p>
+    </div>
+</footer>
+<script src="/static/js/jquery-2.1.4.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/prism.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("pre code").addClass("line-numbers")
+    });
+</script>
+</body>
+</html>

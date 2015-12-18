@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>换新博客了 - Pugo.Static</title>
+    <meta name="keywords" content="pugo,golang,static,site,generator"/>
+    <meta name="description" content=""/>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/css/prism.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<header id="header">
+    <div class="container">
+        <div class="header clearfix">
+            <nav id="site-nav">
+                <ul class="nav nav-inverse nav-pills pull-right">
+                    <li role="presentation" class="">
+                        <a href="/" class="">Home
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/archive.html" class="">Archive
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/about.html" class="" target="_blank" >About
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 id="site-title">
+                <a href="/">Pugo.Static</a>
+            </h3>
+        </div>
+    </div>
+</header>
+
+<section id="main">
+    <div class="container">
+        <div id="article-single">
+            <article class="article">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 panel panel-default">
+                        <header class="header">
+                            <div class="meta">
+                        <span class="date">
+                            <span class="month">1</span>
+                            <span class="day">19</span>
+                        </span>
+                            </div>
+                            <h3 class="title">
+                                <a href="/2014/1/19/first-blog.html">换新博客了</a>
+                            </h3>
+                        </header>
+                        <aside class="aside clearfix">
+                            <a class="tag label label-info" href="/tags/Fxh.Go.html">Fxh.Go</a>
+                            <a class="stat label label-default pull-right" href="http://fuxiaohei.me/" target="_blank">傅小黑</a>
+                        </aside>
+                        <section class="brief"><p>终于，Go语言开发的博客算发布了，<a href="http://github.com/fuxiaohei/GoBlog/">Fxh.Go</a>。和原来的php相比，变化还是很大的。</p>
+
+<p>首先是程序上：</p>
+
+<ul>
+<li>花了很长时间的学习和研究，终于完全用Go语言，搭建自己的框架，实现了这个程序。</li>
+<li>没用数据库，完全是json储存，数据全部维持在内存，读取速度非常快。</li>
+<li>再三思索，还是没用.me的域名，用回了更早买的.net。同时，没用大的512M的VPS，用了手里最小的128M的。</li>
+<li>前端都是自己设计实现的。
+&lt;!&ndash;more&ndash;&gt;</li>
+</ul>
+
+<p>然后是内容上：</p>
+
+<p>这里可能要更多的谈技术分享，尤其是php，nodejs和go语言的一些想法。
+另外主要的领域是web开发，其他方面涉猎不深，能力有限。</p>
+
+<p>这次更新在我的<a href="http://hexiaz.com">php站点</a>上有预告，不过因为种种原因，耽搁至今。
+不过总算有所结果，聊以欣慰。</p>
+
+<p>最后的说明：</p>
+
+<p><code>Fxh.Go</code>这个程序功能尚未全面，仍在持续开发。
+主体结构不会再有巨大的变动，应该已经可用。
+有兴趣可以尝试一下，如果发现问题可以到github提issue或直接pull request，欢迎你的参与。</p>
+</section>
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+    </div>
+</section>
+<footer id="footer">
+    <div class="container text-center">
+        <p>© 2015 Pugo.Static.
+            <a href="http://creativecommons.org/licenses/by/3.0/">Some rights reserved </a> |
+            <a href="/feed.xml">Feed</a> |
+            <a href="/sitemap.xml">Sitemap</a>
+        </p>
+        <p>Powered by <a href="https://github.com/go-xiaohei/pugo-static">Pugo 0.8.4</a>. Theme by Default.
+        </p>
+    </div>
+</footer>
+<script src="/static/js/jquery-2.1.4.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/prism.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("pre code").addClass("line-numbers")
+    });
+</script>
+</body>
+</html>

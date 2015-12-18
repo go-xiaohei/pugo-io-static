@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>在做一些自己想做的事情 - Pugo.Static</title>
+    <meta name="keywords" content="pugo,golang,static,site,generator"/>
+    <meta name="description" content=""/>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/css/prism.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<header id="header">
+    <div class="container">
+        <div class="header clearfix">
+            <nav id="site-nav">
+                <ul class="nav nav-inverse nav-pills pull-right">
+                    <li role="presentation" class="">
+                        <a href="/" class="">Home
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/archive.html" class="">Archive
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/about.html" class="" target="_blank" >About
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 id="site-title">
+                <a href="/">Pugo.Static</a>
+            </h3>
+        </div>
+    </div>
+</header>
+
+<section id="main">
+    <div class="container">
+        <div id="article-single">
+            <article class="article">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 panel panel-default">
+                        <header class="header">
+                            <div class="meta">
+                        <span class="date">
+                            <span class="month">5</span>
+                            <span class="day">28</span>
+                        </span>
+                            </div>
+                            <h3 class="title">
+                                <a href="/2014/5/28/something-want-to-do.html">在做一些自己想做的事情</a>
+                            </h3>
+                        </header>
+                        <aside class="aside clearfix">
+                            <a class="tag label label-info" href="/tags/Go%e8%af%ad%e8%a8%80.html">Go语言</a>
+                            <a class="tag label label-info" href="/tags/%e5%b7%a5%e4%bd%9c.html">工作</a>
+                            <a class="tag label label-info" href="/tags/%e5%ad%a6%e4%b9%a0.html">学习</a>
+                            <a class="stat label label-default pull-right" href="http://fuxiaohei.me/" target="_blank">傅小黑</a>
+                        </aside>
+                        <section class="brief"><p>小站长草一个月，本来的计划有很多变化。我也不知道要说些什么好。生活总有如意不如意，自己负责就好。反正，终极的希望，<strong>做一些自己想做的事情就好</strong>。</p>
+
+<h3>GoGs</h3>
+
+<p><a href="http://gogs.io">GoGs</a>是Go实现的类Github服务。最初这个项目是<a href="https://github.com/Unknwon/">无闻</a>倡导的，他和<a href="https://github.com/lunny">lunny</a>最开始折腾。后来缺一个前端，就把我拉进来了。这是我第一次完整的参与一个开源项目的工作。GoGs在<a href="https://github.com/gogits/gogs">Github</a>已经1900个star，非常开心。</p>
+
+<p>其实我是知道自己的，UI设计和JavaScript功力都不是高手，只是有点熟悉罢了。真正专业的JavaScript代码我也是看得一头雾水，什么<code>promise</code>，<code>event-proxy</code>我理解也有困难。不过现在来看，目前的能力还是足够处理这个工作的。</p>
+
+<p>6月GoGs发布v0.4之后，前端会面临一次重构甚至重设计。希望我还可以做好。这就是我下班之余最忙活，也是最开心的事情吧。</p>
+
+<!--more-->
+
+<h3>Go语言</h3>
+
+<p>Go语言其实我一直只是自学，用武之地很匮乏。唯一上线的服务就是这个博客<a href="http://github.com/fuxiaohei/GoBlog">GoBlog</a>。当初写的非常殷情，觉得这会是个很漂亮的产品。但是如今回头来看，还是个非常初级的玩具。</p>
+
+<p>每个程序员都写框架的心理，我也不例外。GoBlog其实是我写Web框架<a href="https://github.com/fuxiaohei/GoInk">GoInk</a>同时的副产品。当然这个框架只是练习，不能真的生产使用。现在来看，也是太过简单，一直在走别的老路。因此，我想重构GoBlog，用全新的想法来写。</p>
+
+<p>其实我也不知道全新的想法是啥现在。一个新的项目<a href="https://github.com/fuxiaohei/fob">fob</a>，打算写一个简单的存储引擎，用来替换GoBlog原始的json文件方式。只是没想到<a href="http://github.com/astaxie">Asta谢</a>似乎对这个想法有些兴趣，非常感谢他在我疑惑的时候给我的解答。我没有学过什么数据库理论，在按自己的简单想法实现。不过雏形就好，能用先。</p>
+
+<p>另一方面要替换GoInk。曾经想用<a href="https://github.com/go-martini/martini">martini</a>，但是它的中间件通用型太差，为了满足我的特殊要求，非得自己改造。最后决定还是自己写一个算了。可能的方向会比较类似于<a href="http://compoundjs.com/">CompoundJS</a>。还在研究中。</p>
+
+<h3>手机和电脑</h3>
+
+<p>看了老罗的发布会，被他的演讲感染，觉得T1会是个好手机吧。不过对市场反应期待不高。无论说的多么优秀，多么体贴入微，对大多数手机用户而言都是扯淡。想到大多数的iPhone用户连用地图找公交车都不会，就更别想他们会花心思研究T1的使用技巧了。罗永浩也明白，T1的消费人群是粉丝和理性用户，就看他怎么继续下去咯。</p>
+
+<p>我自己的笔记本是4年前买的ASUS，已经跟不上时代咯。现在用的是公司的ThinkPad X201。6月份合同到期，我就得还给公司咯。因而，最近一直在看买个新的。最终很可能的是苹果 Macbook Pro 的 13 寸中配，不到9000。6月份开始来详细研究吧。</p>
+
+<h3>源码阅读</h3>
+
+<p>4月底我阅读了martini和<a href="https://github.com/astaxie/beego">beego</a>的源码，并写了简单的分析。真正的要理解这些框架，不仅仅是研究源码，还有使用体验。我所做的只是浅尝辄止。</p>
+
+<p>下一步的计划是lunny的<a href="https://github.com/go-xorm/xorm">xorm</a>和毛剑的<a href="https://github.com/Terry-Mao/gopush-cluster">gopush-cluster</a>。我功力有限，而且发觉真的要说清楚他们，需要写很多前瞻只是。比如ORM是什么，Go语言里<code>database/sql</code>库的操作，以及为什么选择使用ORM而不是标准库。对于大多数初学者，应该不会容易理解我写的分析吧。</p>
+
+<p>其实我也不知道该怎么写比较深入浅出。先做下去，希望阅读之后，多给我提提建议吧。</p>
+
+<h3>工作前后</h3>
+
+<p>工作合同在6月份到期，我却反而越来越不急切了。我应该会离开西安这个城市，回到家乡南方去，寻找新的工作机会。不过更多的，可能先去一些地方走走看看，旅游也好散心也好。放下自己一段时间，做一些自己想做的事情吧。</p>
+</section>
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+    </div>
+</section>
+<footer id="footer">
+    <div class="container text-center">
+        <p>© 2015 Pugo.Static.
+            <a href="http://creativecommons.org/licenses/by/3.0/">Some rights reserved </a> |
+            <a href="/feed.xml">Feed</a> |
+            <a href="/sitemap.xml">Sitemap</a>
+        </p>
+        <p>Powered by <a href="https://github.com/go-xiaohei/pugo-static">Pugo 0.8.4</a>. Theme by Default.
+        </p>
+    </div>
+</footer>
+<script src="/static/js/jquery-2.1.4.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/prism.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("pre code").addClass("line-numbers")
+    });
+</script>
+</body>
+</html>

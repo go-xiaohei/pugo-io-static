@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Ubuntu 下 nginx , php , mysql 和 golang 的简单安装 - Pugo.Static</title>
+    <meta name="keywords" content="pugo,golang,static,site,generator"/>
+    <meta name="description" content=""/>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/css/prism.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<header id="header">
+    <div class="container">
+        <div class="header clearfix">
+            <nav id="site-nav">
+                <ul class="nav nav-inverse nav-pills pull-right">
+                    <li role="presentation" class="">
+                        <a href="/" class="">Home
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/archive.html" class="">Archive
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="/about.html" class="" target="_blank" >About
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 id="site-title">
+                <a href="/">Pugo.Static</a>
+            </h3>
+        </div>
+    </div>
+</header>
+
+<section id="main">
+    <div class="container">
+        <div id="article-single">
+            <article class="article">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 panel panel-default">
+                        <header class="header">
+                            <div class="meta">
+                        <span class="date">
+                            <span class="month">2</span>
+                            <span class="day">19</span>
+                        </span>
+                            </div>
+                            <h3 class="title">
+                                <a href="/2014/2/19/ubuntu-lnmp-golang-installation.html">Ubuntu 下 nginx , php , mysql 和 golang 的简单安装</a>
+                            </h3>
+                        </header>
+                        <aside class="aside clearfix">
+                            <a class="tag label label-info" href="/tags/LNMP.html">LNMP</a>
+                            <a class="tag label label-info" href="/tags/Go%e8%af%ad%e8%a8%80.html">Go语言</a>
+                            <a class="stat label label-default pull-right" href="http://fuxiaohei.me/" target="_blank">傅小黑</a>
+                        </aside>
+                        <section class="brief"><p>我是搞php出身，自然安装lnmp是常规技能。以前的手段还是lnmp安装包，比如军哥的<a href="http://lnmp.org/">lnmp1.0</a>。随着php和mysql的更新，大多数一键安装都开始版本老化，更新困难的问题。因此，重新研究了一下Ubuntu下lnmp的安装，发现现在简单的多，记录一下。</p>
+
+<p>另外最近在学习golang，Ubuntu下安装自然也是必须的过程。不过golang的安装也有一些奥妙。当然，不是源码安装的啦。&lt;!&ndash;more&ndash;&gt;</p>
+
+<h4>Nginx Stable/Development</h4>
+
+<p>Ubuntu下的包管理器是<code>apt-get</code>或者说<code>dpkg</code>。常规的安装命令<code>apt-get install</code>(注意权限<code>sudo apt-get install</code>)。Nginx是这几个软件里最友好的，直接可以添加stable源：</p>
+<pre><code>add-apt-repository ppa:nginx/stable
+</code></pre>
+
+<p>或者development源：</p>
+<pre><code>add-apt-repository ppa:nginx/development
+</code></pre>
+
+<p>如果没有安装命令<code>add-apt-repository</code>,安装：</p>
+<pre><code>apt-get install python-software-properties 
+</code></pre>
+
+<p>之后常规的操作：</p>
+<pre><code>apt-get update
+apt-get install nginx
+service nginx start
+</code></pre>
+
+<h4>PHP 5.4+</h4>
+
+<p>PHP的ppa源有个老兄专门在做，<a href="https://launchpad.net/~ondrej/">Ondrej Sury</a>。有<a href="https://launchpad.net/~ondrej/+archive/php5-oldstable">php5.4</a>，<a href="https://launchpad.net/~ondrej/+archive/php5">php5.5</a>和<a href="https://launchpad.net/~ondrej/+archive/php5-5.6">php5.6</a>的源，具体的可以看官方页面。
+为什么没有5.3？你落伍啦！5.4+性能提高很多，5.5还有内置的<code>ZendOpCache</code>。安装php5.5:</p>
+<pre><code>add-apt-repository ppa:ondrej/php5
+apt-get update
+apt-get install php5 php5-fpm
+service php5-fpm start
+</code></pre>
+
+<p>还有些必要的包，安装一下，记得重启php5-fpm：</p>
+<pre><code>apt-get install php5-gd php5-curl php5-sqlite php5-mysqlnd php5-mcrypt
+service php5-fpm restart
+</code></pre>
+
+<p>至于nginx怎么配置php-fpm，一搜一大把，不多说。</p>
+
+<h4>MySQL 5.5+ &amp; MariaDB</h4>
+
+<p>还是这个老兄，维护着<a href="https://launchpad.net/~ondrej/+archive/mysql-5.5">mysql5.5</a>, <a href="https://launchpad.net/~ondrej/+archive/mysql-5.6">mysql5.6</a> 和 <a href="https://launchpad.net/~ondrej/+archive/mariadb-5.5">MariaDB5.5</a>。所以，很简单，比如安装MariaDB(不喜欢mysql，被oracle摧残了)：</p>
+<pre><code>add-apt-repository ppa:ondrej/mariadb-5.5
+apt-get update
+apt-get install mariadb-server-5.5
+service mysql start
+</code></pre>
+
+<p>这里注意，安装会提示<code>InnoDB Plugin Disabled</code>。不要紧，MariaDB把InnoDB内置进去了，其实是已经启动的。具体的可以：</p>
+<pre><code>mysql SHOW ENGINE INNODB STATUS;
+</code></pre>
+
+<h4>Golang</h4>
+
+<p>重头戏是golang啦。我搜寻了半天ppa源，只找到一个可以安装golang1.1.1的源，很不爽。其实可以golang官方下载已经编译好的<a href="https://code.google.com/p/go/downloads/list">linux.tar.gz</a>。但是需要自己手动设置<code>GOROOT</code>，有点麻烦啊。</p>
+
+<p>终于还是发现了个好工具<a href="http://blog.labix.org/2013/06/15/in-flight-deb-packages-of-go">Godeb</a>。实际上这就是一个deb包构建器。先把官方编译好的tar.gz下载，打包成deb然后执行安装。</p>
+
+<p>以64位安装为例：</p>
+<pre><code>wget https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz
+tar -zxvf godeb-amd64.tar.gz
+./godeb install
+</code></pre>
+
+<p>就开始安装最新版本。还可查看支持的版本，并安装特定版本：</p>
+<pre><code>./godeb list
+1.2
+1.2rc5
+1.2rc4
+1.2rc3
+1.2rc2
+1.2rc1
+1.1.2
+1.1.1
+1.1
+(...)
+
+./godeb install 1.1
+</code></pre>
+
+<p>安装好后，可以用<code>go env</code>查看，是否安装完成。</p>
+
+<p>剩下的设置<code>GOPATH</code>,<code>GOBIN</code>就不赘述了。我是修改在<code>/etc/profile</code>里面的。</p>
+
+<h4>写在最后</h4>
+
+<p>Ubuntu下很多东西都有源，容易安装，也是好事啊。</p>
+</section>
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+    </div>
+</section>
+<footer id="footer">
+    <div class="container text-center">
+        <p>© 2015 Pugo.Static.
+            <a href="http://creativecommons.org/licenses/by/3.0/">Some rights reserved </a> |
+            <a href="/feed.xml">Feed</a> |
+            <a href="/sitemap.xml">Sitemap</a>
+        </p>
+        <p>Powered by <a href="https://github.com/go-xiaohei/pugo-static">Pugo 0.8.4</a>. Theme by Default.
+        </p>
+    </div>
+</footer>
+<script src="/static/js/jquery-2.1.4.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/prism.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("pre code").addClass("line-numbers")
+    });
+</script>
+</body>
+</html>
