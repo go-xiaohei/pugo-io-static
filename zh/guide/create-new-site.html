@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新建站点 - PuGo</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web" type="text/css"/>
+    <link rel="stylesheet" href="/css/pure-min.css"/>
+    <link rel="stylesheet" href="/css/railscasts.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+<header id="header">
+    <div class="wrapper">
+        <div class="pure-menu pure-menu-horizontal" id="nav">
+            <a href="/" class="pure-menu-heading pure-menu-link">PUGO</a>
+            <ul class="pure-menu-list" id="nav-list">
+                <li class="pure-menu-item pure-menu-selected"><a href="/zh/guide.html" class="pure-menu-link">入门</a></li>
+                <li class="pure-menu-item"><a href="/zh/docs.html" class="pure-menu-link">文档</a></li>
+                <li class="pure-menu-item"><a href="/zh/showcases.html" class="pure-menu-link">案例</a></li>
+                <li class="pure-menu-item"><a href="https://github.com/go-xiaohei/pugo" class="pure-menu-link">源码</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div id="main">
+    <div class="wrapper">
+       <div class="pure-g">
+           <div class="pure-u-1-4">
+               <div class="pure-menu">
+    <ul class="pure-menu-list guide-nav">
+        <li class="pure-menu-heading">入门导航</li>
+        <li class="pure-menu-item"><a href="/zh/guide/install.html" class="pure-menu-link">安装 PuGo</a></li>
+        <li class="pure-menu-item"><a href="/zh/guide/create-new-site.html" class="pure-menu-link">新建站点</a></li>
+        <li class="pure-menu-item"><a href="/zh/guide/write-new-post.html" class="pure-menu-link">新建文章</a></li>
+        <li class="pure-menu-item"><a href="/zh/guide/write-new-page.html" class="pure-menu-link">新建页面</a></li>
+        <li class="pure-menu-item"><a href="/zh/guide/add-comment-system.html" class="pure-menu-link">添加评论功能</a></li>
+        <li class="pure-menu-item"><a href="/zh/guide/build-files.html" class="pure-menu-link">编译站点</a></li>
+        <li class="pure-menu-item"><a href="/zh/guide/standalone-server.html" class="pure-menu-link">内置 HTTP 服务</a></li>
+        <li class="pure-menu-item"><a href="/zh/guide/deploy-nginx.html" class="pure-menu-link">部署到 Nginx</a></li>
+    </ul>
+</div>         
+           </div>
+           <div class="pure-u-3-4 guide-page">
+               
+               <h1 class="title">新建站点</h1>
+               <div class="content">
+                   <p><code>PuGo</code> 已经将静态资源编码到代码中，你可以从执行文件直接创建站点，无需另外下载资源：</p>
+<pre><code class="language-bash">pugo new site
+</code></pre>
+
+<p>程序解压内容到当前目录，如下：</p>
+<pre><code>- meta.toml // 站点的基本信息
+- source // 站点的所有内容
+--|-- post // 所有文章
+--|-- page // 所有页面
+--|-- lang // 语言文件，如果需要国际化支持
+--|-- media // 资源文件，比如图片，附件等
+- theme // 所有主题文件
+--|-- default // 主题 'default' 的相关文件
+------|-- *.html // 主题文件都是html文件
+------|-- embed // 嵌入用的局部模板文件
+------|-- static // 主题需要的静态文件，如样式表，脚本，图片
+</code></pre>
+
+<h2 id="meta-toml">meta.toml</h2>
+
+<p>站点的基本信息都保存在 <code>meta.toml</code>. 它定义有站点相关的各种信息，你需要先填写完整。</p>
+
+<h3 id="meta">Meta</h3>
+<pre><code class="language-toml">[meta]
+# 站点名称
+title = &quot;PuGo&quot;
+
+# 站点副标题
+# 用于生成页面的标题
+subtitle = &quot;Static Site Generator&quot;
+
+# 站点关键字
+# 用在 &lt;meta content=&quot;keyword&quot;&gt;
+keyword = &quot;pugo,golang,static,site,generator&quot;
+
+# 站点简介
+# 用在 &lt;meta content=&quot;description&quot;&gt;
+desc = &quot;pugo is a simple static site generator&quot;
+
+# domain 和 root 用于生成正确的URL地址
+# root 可以设置为子目录地址，比如 http://domain/blog
+domain = &quot;pugo.io&quot;
+root = &quot;http://pugo.io/&quot;
+</code></pre>
+
+<h3 id="导航">导航</h3>
+
+<p>导航是一组按顺序定义在 <code>[[nav]]</code> 区块下的项目，完整的字段有：</p>
+<pre><code class="language-toml">[[nav]]
+# 导航跳转的地址
+link = &quot;/&quot;
+
+# 导航的标题
+# 显示在超链接中的文本
+title = &quot;Home&quot;
+
+# 国际化支持的字段
+i18n = &quot;home&quot;
+
+# 标记导航选定状态的全局变量
+hover = &quot;home&quot;
+
+# 如果true，让浏览器打开新的选项卡跳转页面
+blank = true
+</code></pre>
+
+<h3 id="作者们">作者们</h3>
+
+<p>您可以添加一些作者给站点。文章和页面可以选中其中一人作为作者。</p>
+<pre><code class="language-toml">[[author]]
+# 作者的名称，需要唯一
+name = &quot;pugo&quot;
+
+# 作者的联系邮箱，请注意保密
+email = &quot;&quot;
+
+# 作者的联系网址
+url = &quot;http://pugo.io&quot;
+
+# 作者的头像，默认用Gravatar的肖像
+avatar = &quot;&quot;
+
+# 作者的个人介绍
+bio = &quot;the robot of pugo, who generates all default contents.&quot;
+</code></pre>
+
+<p>第一个作者被认为是站点的 <strong>拥有者</strong>。</p>
+
+               </div>
+               
+           </div>
+       </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="wrapper">
+        <div class="pure-g">
+            <div class="pure-u-1-3">
+                <div class="box">
+                    <div class="pure-menu custom-restricted-width">
+                        <h4 class="pure-menu-heading">发布日志</h4>
+                        <ul class="pure-menu-list">
+                            <li class="pure-menu-item"><a href="/2016/3/25/0-10-0-release.html" class="pure-menu-link">0.10.0 Released - TOML, I18n, Cloud Deploy</a></li>
+                            <li class="pure-menu-item"><a href="/2015/12/31/0-9-0-release.html" class="pure-menu-link">0.9.0 Released - Deployment support</a></li>
+                            <li class="pure-menu-item"><a href="/2015/11/20/0-8-0-release.html" class="pure-menu-link">0.8.0 Released - &#39;new&#39; Command</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="pure-u-1-3">
+                <div class="box">
+                    <div class="pure-menu custom-restricted-width">
+                        <h4 class="pure-menu-heading">PuGo 相关</h4>
+                        <ul class="pure-menu-list">
+                            <li class="pure-menu-item"><a href="/zh/docs.html" class="pure-menu-link">Documentation</a></li>
+                            <li class="pure-menu-item"><a href="/zh/guide.html" class="pure-menu-link">Quick Start</a></li>
+                            <li class="pure-menu-item"><a href="/posts/1.html" class="pure-menu-link">Releases</a></li>
+                            <li class="pure-menu-item"><a href="/showcases.html" class="pure-menu-link">Showcases</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="pure-u-1-3">
+                <div class="box">
+                    <div class="pure-menu custom-restricted-width">
+                        <div id="language-box">
+                            语言 <select id="lang-select" data-url="guide/create-new-site.html">
+                                <option value="en">English</option>                           
+                                <option value="zh" selected>简体中文</option>     
+                            </select>
+                        </div>
+                        <h4 class="pure-menu-heading">GitHub</h4>
+                        <div id="github-box">
+                            <a class="github-button" href="https://github.com/go-xiaohei/pugo" data-style="mega"
+                               data-count-href="/go-xiaohei/pugo/stargazers"
+                               data-count-api="/repos/go-xiaohei/pugo#stargazers_count"
+                               data-count-aria-label="# stargazers on GitHub" aria-label="Star go-xiaohei/pugo on GitHub">Star</a>
+                        </div>
+                        <div class="cp-box">
+                            Copyright © 2016 PuGo Engine. <br/> All rights reserved.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="/js/jquery-2.1.4.min.js"></script>
+<script src="/js/highlight.pack.js"></script>
+<script>
+    $(document).ready(function() {
+        $('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
+        $('#lang-select').on("change",function(e){
+            var $e = $(e.target);
+            window.location.href = "/"+ $e.val()+"/"+ $e.data("url");
+        });
+        $('.pure-menu-heading').on("click",function(){
+            var c = $(this).data("li");
+            $("."+c).toggle();
+        }).each(function(i,item){
+            var prefix = $(item).data("prefix");
+            if(prefix && window.location.pathname.indexOf(prefix)>0){
+                var c = $(item).data("li");
+                $("."+c).show();
+                $(item).addClass("menu-hover");
+            }
+        });
+        $('a[href="'+window.location.pathname+'"]').parent().addClass("pure-menu-selected");
+    });
+</script>
+<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+</body>
+</html>

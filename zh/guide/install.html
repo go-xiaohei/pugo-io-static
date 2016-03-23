@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive - PuGo</title>
+    <title>安装 PuGo - PuGo</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web" type="text/css"/>
     <link rel="stylesheet" href="/css/pure-min.css"/>
     <link rel="stylesheet" href="/css/railscasts.css"/>
@@ -15,64 +15,55 @@
         <div class="pure-menu pure-menu-horizontal" id="nav">
             <a href="/" class="pure-menu-heading pure-menu-link">PUGO</a>
             <ul class="pure-menu-list" id="nav-list">
-                <li class="pure-menu-item"><a href="/en/guide.html" class="pure-menu-link">Guide</a></li>
-                <li class="pure-menu-item"><a href="/en/docs.html" class="pure-menu-link">Docs</a></li>
-                <li class="pure-menu-item"><a href="/en/showcases.html" class="pure-menu-link">Showcases</a></li>
-                <li class="pure-menu-item"><a href="https://github.com/go-xiaohei/pugo" class="pure-menu-link">Github</a></li>
+                <li class="pure-menu-item pure-menu-selected"><a href="/zh/guide.html" class="pure-menu-link">入门</a></li>
+                <li class="pure-menu-item"><a href="/zh/docs.html" class="pure-menu-link">文档</a></li>
+                <li class="pure-menu-item"><a href="/zh/showcases.html" class="pure-menu-link">案例</a></li>
+                <li class="pure-menu-item"><a href="https://github.com/go-xiaohei/pugo" class="pure-menu-link">源码</a></li>
             </ul>
         </div>
     </div>
 </header>
-<section id="main">
-    <div class="container">
-        <div id="archive-list">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1 panel panel-default">
-                    
-                    <div class="archive">
-                        <h3>2016</h3>
-                        <hr/>
-                        
-                        <h4>
-                            <span class="date">3.25</span>
-                            <a href="/2016/3/25/0-10-0-release.html">0.10.0 Released - TOML, I18n, Cloud Deploy</a>
-                        </h4>
-                        
-                    </div>
-                    
-                    <div class="archive">
-                        <h3>2015</h3>
-                        <hr/>
-                        
-                        <h4>
-                            <span class="date">12.31</span>
-                            <a href="/2015/12/31/0-9-0-release.html">0.9.0 Released - Deployment support</a>
-                        </h4>
-                        
-                        <h4>
-                            <span class="date">11.20</span>
-                            <a href="/2015/11/20/0-8-0-release.html">0.8.0 Released - &#39;new&#39; Command</a>
-                        </h4>
-                        
-                        <h4>
-                            <span class="date">11.14</span>
-                            <a href="/2015/11/14/0-7-0-release.html">0.7.0 Released - First Version</a>
-                        </h4>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
+<div id="main">
+    <div class="wrapper">
+       <div class="pure-g">
+           <div class="pure-u-1-4">
+               <div class="pure-menu">
+    <ul class="pure-menu-list guide-nav">
+        <li class="pure-menu-heading">入门导航</li>
+        <li class="pure-menu-item"><a href="/zh/guide/install.html" class="pure-menu-link">安装 PuGo</a></li>
+        <li class="pure-menu-item"><a href="/zh/guide/create-new-site.html" class="pure-menu-link">新建站点</a></li>
+        <li class="pure-menu-item"><a href="/zh/guide/write-new-post.html" class="pure-menu-link">新建文章</a></li>
+        <li class="pure-menu-item"><a href="/zh/guide/write-new-page.html" class="pure-menu-link">新建页面</a></li>
+        <li class="pure-menu-item"><a href="/zh/guide/add-comment-system.html" class="pure-menu-link">添加评论功能</a></li>
+        <li class="pure-menu-item"><a href="/zh/guide/build-files.html" class="pure-menu-link">编译站点</a></li>
+        <li class="pure-menu-item"><a href="/zh/guide/standalone-server.html" class="pure-menu-link">内置 HTTP 服务</a></li>
+        <li class="pure-menu-item"><a href="/zh/guide/deploy-nginx.html" class="pure-menu-link">部署到 Nginx</a></li>
+    </ul>
+</div>         
+           </div>
+           <div class="pure-u-3-4 guide-page">
+               
+               <h1 class="title">安装 PuGo</h1>
+               <div class="content">
+                   <p><code>PuGo</code> 在 <code>Github</code><a href="https://github.com/go-xiaohei/pugo/releases">link</a> 发布了<code>可执行文件</code>。根据您的系统不同，请下载对应的版本。</p>
+
+<p>默认提供有 <code>windows/386</code>,<code>windows/amd64</code>,<code>linux/386</code>,<code>linux/amd64</code>,<code>darwin/amd64</code>。如果需要其他平台的版本，请阅读 <a href="/zh/docs/dl-compile.html">Compile</a> 文档，手动编译对应的版本。</p>
+
+<p>可执行文件已经经过 zip 压缩。也许你需要安装解压缩工具。</p>
+
+               </div>
+               
+           </div>
+       </div>
     </div>
-</section>
+</div>
 <footer id="footer">
     <div class="wrapper">
         <div class="pure-g">
             <div class="pure-u-1-3">
                 <div class="box">
                     <div class="pure-menu custom-restricted-width">
-                        <h4 class="pure-menu-heading">Release Notes</h4>
+                        <h4 class="pure-menu-heading">发布日志</h4>
                         <ul class="pure-menu-list">
                             <li class="pure-menu-item"><a href="/2016/3/25/0-10-0-release.html" class="pure-menu-link">0.10.0 Released - TOML, I18n, Cloud Deploy</a></li>
                             <li class="pure-menu-item"><a href="/2015/12/31/0-9-0-release.html" class="pure-menu-link">0.9.0 Released - Deployment support</a></li>
@@ -84,10 +75,10 @@
             <div class="pure-u-1-3">
                 <div class="box">
                     <div class="pure-menu custom-restricted-width">
-                        <h4 class="pure-menu-heading">Everything in PuGo</h4>
+                        <h4 class="pure-menu-heading">PuGo 相关</h4>
                         <ul class="pure-menu-list">
-                            <li class="pure-menu-item"><a href="/en/docs.html" class="pure-menu-link">Documentation</a></li>
-                            <li class="pure-menu-item"><a href="/en/guide.html" class="pure-menu-link">Quick Start</a></li>
+                            <li class="pure-menu-item"><a href="/zh/docs.html" class="pure-menu-link">Documentation</a></li>
+                            <li class="pure-menu-item"><a href="/zh/guide.html" class="pure-menu-link">Quick Start</a></li>
                             <li class="pure-menu-item"><a href="/posts/1.html" class="pure-menu-link">Releases</a></li>
                             <li class="pure-menu-item"><a href="/showcases.html" class="pure-menu-link">Showcases</a></li>
                         </ul>
@@ -98,9 +89,9 @@
                 <div class="box">
                     <div class="pure-menu custom-restricted-width">
                         <div id="language-box">
-                            Language <select id="lang-select" data-url="archive">
-                                <option value="en" selected>English</option>                           
-                                <option value="zh">简体中文</option>     
+                            语言 <select id="lang-select" data-url="guide/install.html">
+                                <option value="en">English</option>                           
+                                <option value="zh" selected>简体中文</option>     
                             </select>
                         </div>
                         <h4 class="pure-menu-heading">GitHub</h4>

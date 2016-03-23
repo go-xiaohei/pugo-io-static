@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive - PuGo</title>
+    <title>pugo - PuGo</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web" type="text/css"/>
     <link rel="stylesheet" href="/css/pure-min.css"/>
     <link rel="stylesheet" href="/css/railscasts.css"/>
@@ -24,44 +24,111 @@
     </div>
 </header>
 <section id="main">
-    <div class="container">
-        <div id="archive-list">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1 panel panel-default">
-                    
-                    <div class="archive">
-                        <h3>2016</h3>
-                        <hr/>
-                        
-                        <h4>
-                            <span class="date">3.25</span>
-                            <a href="/2016/3/25/0-10-0-release.html">0.10.0 Released - TOML, I18n, Cloud Deploy</a>
-                        </h4>
-                        
+    <div class="wrapper">
+        
+        <h2 class="tag pure-u">pugo</h2>
+        
+        <div id="article-list" class="pure-g">
+            <article class="article">
+                <div class="pure-u">
+                        <header class="header">
+                            <div class="meta">
+                                <span class="date">
+                                    <span class="month">3</span>.
+                                    <span class="day">25</span>
+                                </span>
+                            </div>
+                            <h2 class="title">
+                                <a href="/2016/3/25/0-10-0-release.html">0.10.0 Released - TOML, I18n, Cloud Deploy</a>
+                            </h2>
+                        </header>
+                        <section class="brief"><p><code>PuGo</code> 0.10.0 <strong>Beta</strong> is released. There are many changes:</p>
+
+<h2 id="toml-support">TOML support</h2>
+
+<p><code>PuGo</code> support <code>TOML</code> to define meta and front-matter. And now, <code>PuGo</code> converts all default data to TOML instead of INI. But INI is continuing supporting.</p>
+
+<p>You can read the new default <code>meta.toml</code> to learn about the TOML format.</p>
+</section>
                     </div>
-                    
-                    <div class="archive">
-                        <h3>2015</h3>
-                        <hr/>
-                        
-                        <h4>
-                            <span class="date">12.31</span>
-                            <a href="/2015/12/31/0-9-0-release.html">0.9.0 Released - Deployment support</a>
-                        </h4>
-                        
-                        <h4>
-                            <span class="date">11.20</span>
-                            <a href="/2015/11/20/0-8-0-release.html">0.8.0 Released - &#39;new&#39; Command</a>
-                        </h4>
-                        
-                        <h4>
-                            <span class="date">11.14</span>
-                            <a href="/2015/11/14/0-7-0-release.html">0.7.0 Released - First Version</a>
-                        </h4>
-                        
+            </article>
+            
+            <article class="article">
+                <div class="pure-u">
+                        <header class="header">
+                            <div class="meta">
+                                <span class="date">
+                                    <span class="month">12</span>.
+                                    <span class="day">31</span>
+                                </span>
+                            </div>
+                            <h2 class="title">
+                                <a href="/2015/12/31/0-9-0-release.html">0.9.0 Released - Deployment support</a>
+                            </h2>
+                        </header>
+                        <section class="brief"><p><code>PuGo</code> 0.9.0 <strong>stable</strong> version is released. It contains many updates.</p>
+
+<h2 id="deploy-support">Deploy support</h2>
+
+<p><code>PuGo</code> support <code>deploy</code> to other platforms, such as git, ftp and sftp. The <code>build</code> command can deploy compiled files directly:</p>
+<pre><code class="language-bash">$ ./pugo deploy ftp [--options]
+</code></pre>
+
+<p>More details in <a href="/en/docs/cmd/deploy.html">Deploy Doc</a>.</p>
+</section>
                     </div>
-                    
-                </div>
+            </article>
+            
+            <article class="article">
+                <div class="pure-u">
+                        <header class="header">
+                            <div class="meta">
+                                <span class="date">
+                                    <span class="month">11</span>.
+                                    <span class="day">20</span>
+                                </span>
+                            </div>
+                            <h2 class="title">
+                                <a href="/2015/11/20/0-8-0-release.html">0.8.0 Released - &#39;new&#39; Command</a>
+                            </h2>
+                        </header>
+                        <section class="brief"><p><code>PuGo</code> 0.8.0 <strong>stable</strong> version is released. It contains some updates.</p>
+
+<h2 id="new-commands">New Commands</h2>
+
+<ul>
+<li><code>new</code> creates new <code>site</code>, <code>post</code> and <code>page</code>.</li>
+</ul>
+<pre><code class="language-bash">
+$ ./pugo new site
+$ ./pugo new post
+
+</code></pre>
+</section>
+                    </div>
+            </article>
+            
+            <article class="article">
+                <div class="pure-u">
+                        <header class="header">
+                            <div class="meta">
+                                <span class="date">
+                                    <span class="month">11</span>.
+                                    <span class="day">14</span>
+                                </span>
+                            </div>
+                            <h2 class="title">
+                                <a href="/2015/11/14/0-7-0-release.html">0.7.0 Released - First Version</a>
+                            </h2>
+                        </header>
+                        <section class="brief"><p>I&rsquo;m excited to announce <code>Pugo.Static</code> 0.7.0 <strong>stable</strong> version. It&rsquo;s the first version to public. So it finished all basic features and is reliable in production.</p>
+</section>
+                    </div>
+            </article>
+            
+            <div class="article-pager text-center">
+                
+                
             </div>
         </div>
     </div>
@@ -98,7 +165,7 @@
                 <div class="box">
                     <div class="pure-menu custom-restricted-width">
                         <div id="language-box">
-                            Language <select id="lang-select" data-url="archive">
+                            Language <select id="lang-select" data-url="tags/pugo.html">
                                 <option value="en" selected>English</option>                           
                                 <option value="zh">简体中文</option>     
                             </select>

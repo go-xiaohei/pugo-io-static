@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive - PuGo</title>
+    <title>Format - PuGo</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web" type="text/css"/>
     <link rel="stylesheet" href="/css/pure-min.css"/>
     <link rel="stylesheet" href="/css/railscasts.css"/>
@@ -16,56 +16,105 @@
             <a href="/" class="pure-menu-heading pure-menu-link">PUGO</a>
             <ul class="pure-menu-list" id="nav-list">
                 <li class="pure-menu-item"><a href="/en/guide.html" class="pure-menu-link">Guide</a></li>
-                <li class="pure-menu-item"><a href="/en/docs.html" class="pure-menu-link">Docs</a></li>
+                <li class="pure-menu-item pure-menu-selected"><a href="/en/docs.html" class="pure-menu-link">Docs</a></li>
                 <li class="pure-menu-item"><a href="/en/showcases.html" class="pure-menu-link">Showcases</a></li>
                 <li class="pure-menu-item"><a href="https://github.com/go-xiaohei/pugo" class="pure-menu-link">Github</a></li>
             </ul>
         </div>
     </div>
 </header>
-<section id="main">
-    <div class="container">
-        <div id="archive-list">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1 panel panel-default">
-                    
-                    <div class="archive">
-                        <h3>2016</h3>
-                        <hr/>
-                        
-                        <h4>
-                            <span class="date">3.25</span>
-                            <a href="/2016/3/25/0-10-0-release.html">0.10.0 Released - TOML, I18n, Cloud Deploy</a>
-                        </h4>
-                        
-                    </div>
-                    
-                    <div class="archive">
-                        <h3>2015</h3>
-                        <hr/>
-                        
-                        <h4>
-                            <span class="date">12.31</span>
-                            <a href="/2015/12/31/0-9-0-release.html">0.9.0 Released - Deployment support</a>
-                        </h4>
-                        
-                        <h4>
-                            <span class="date">11.20</span>
-                            <a href="/2015/11/20/0-8-0-release.html">0.8.0 Released - &#39;new&#39; Command</a>
-                        </h4>
-                        
-                        <h4>
-                            <span class="date">11.14</span>
-                            <a href="/2015/11/14/0-7-0-release.html">0.7.0 Released - First Version</a>
-                        </h4>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
+<div id="main">
+    <div class="wrapper">
+       <div class="pure-g">
+           <div class="pure-u-1-4">
+               <div class="pure-menu">
+    <ul class="pure-menu-list doc-nav">
+        <li class="pure-menu-item"><a href="/en/docs" class="pure-menu-link">Documentation</a></li>
+        <li class="pure-menu-item"><a href="/en/docs/dl-compile.html" class="pure-menu-link">Download & Compile</a></li>
+        <li class="pure-menu-heading" data-li="li-1" data-prefix="en/docs/cmd">Command</li>
+        <li class="pure-menu-item li-1"><a href="/en/docs/cmd/build.html" class="pure-menu-link">Build</a></li>
+        <li class="pure-menu-item li-1"><a href="/en/docs/cmd/new.html" class="pure-menu-link">New</a></li>
+        <li class="pure-menu-item li-1"><a href="/en/docs/cmd/server.html" class="pure-menu-link">Server</a></li>
+        <li class="pure-menu-item li-1"><a href="/en/docs/cmd/deploy.html" class="pure-menu-link">Deploy</a></li>
+        <li class="pure-menu-item li-1"><a href="/en/docs/cmd/doc.html" class="pure-menu-link">Doc</a></li>
+        <li class="pure-menu-heading" data-li="li-2" data-prefix="en/docs/cnt">Data</li>
+        <li class="pure-menu-item li-2"><a href="/en/docs/cnt/format.html" class="pure-menu-link">Format</a></li>
+        <li class="pure-menu-item li-2"><a href="/en/docs/cnt/url-slug.html" class="pure-menu-link">URL and Slug</a></li>
+        <li class="pure-menu-item li-2"><a href="/en/docs/cnt/tags.html" class="pure-menu-link">Tags</a></li>
+        <li class="pure-menu-item li-2"><a href="/en/docs/cnt/i18n.html" class="pure-menu-link">Languages</a></li>
+        
+        <li class="pure-menu-heading" data-li="li-3" data-prefix="en/docs/tpl">Template</li>
+        <li class="pure-menu-item li-3"><a href="/en/docs/tpl/syntax.html" class="pure-menu-link">Basic Syntax</a></li>
+        <li class="pure-menu-item li-3"><a href="/en/docs/tpl/global.html" class="pure-menu-link">Global</a></li>
+        <li class="pure-menu-item li-3"><a href="/en/docs/tpl/each.html" class="pure-menu-link">Each Template</a></li>
+        <li class="pure-menu-item li-3"><a href="/en/docs/tpl/helper.html" class="pure-menu-link">Helper Function</a></li>
+        <li class="pure-menu-item li-3"><a href="/en/docs/tpl/i18n.html" class="pure-menu-link">International</a></li>
+        <li class="pure-menu-heading" data-li="li-4" data-prefix="en/docs/deploy">Deployment</li>
+        <li class="pure-menu-item li-4"><a href="/en/docs/deploy/standalone.html" class="pure-menu-link">Standalone</a></li>
+        <li class="pure-menu-item li-4"><a href="/en/docs/deploy/ftp-sftp.html" class="pure-menu-link">FTP and SFTP</a></li>
+        <li class="pure-menu-item li-4"><a href="/en/docs/deploy/git.html" class="pure-menu-link">Git</a></li>
+        <li class="pure-menu-item li-4"><a href="/en/docs/deploy/cloud.html" class="pure-menu-link">AWS S3 and Qiniu</a></li>
+    </ul>
+</div>         
+           </div>
+           <div class="pure-u-3-4 guide-page">
+               
+               <h1 class="title">Format</h1>
+               <div class="content">
+                   <p><code>PuGo</code> support <code>toml</code> and <code>ini</code> as meta and front-matter in post or page. In <a href="/en/guide.html">Guide</a>, it use <code>toml</code> as default. You can read them to write correct fields. This page explains differences in other formats.</p>
+
+<h3 id="ini">INI</h3>
+
+<p><code>ini</code> is familiar to <code>toml</code> but more simple. So it need more words to describe some data.</p>
+
+<h5 id="navigation">Navigation</h5>
+
+<p>In <code>meta.ini</code>:</p>
+<pre><code class="language-ini">[nav]
+- : home
+- : about
+
+[nav.home]
+; navigator to the link
+link = &quot;/&quot;
+; link title to fill text href element
+title = &quot;Home&quot;
+; i18n key if load i18n translation
+i18n = &quot;home&quot;
+; hover class to test whether is active of this navigation item
+hover = &quot;home&quot;
+; if blank is true, it forces browser to open new tab to display the linked page
+blank = true
+
+[nav.about]
+......
+</code></pre>
+
+<h5 id="author">Author</h5>
+
+<p>Same to navigation data:</p>
+<pre><code class="language-ini">[author]
+- : pugo
+
+[author.pugo]
+; author'name, must be unique
+name = &quot;pugo&quot;
+; author's email, please be private as possible
+email = &quot;&quot;
+; author's link
+url = &quot;http://pugo.io&quot;
+; author's avatar, optional. If empty, generate Gravatar image by email
+avatar = &quot;&quot;
+; author's profile 
+bio = &quot;the robot of pugo, who generates all default contents.&quot;
+</code></pre>
+
+               </div>
+               
+           </div>
+       </div>
     </div>
-</section>
+</div>
 <footer id="footer">
     <div class="wrapper">
         <div class="pure-g">
@@ -98,7 +147,7 @@
                 <div class="box">
                     <div class="pure-menu custom-restricted-width">
                         <div id="language-box">
-                            Language <select id="lang-select" data-url="archive">
+                            Language <select id="lang-select" data-url="docs/cnt/format.html">
                                 <option value="en" selected>English</option>                           
                                 <option value="zh">简体中文</option>     
                             </select>

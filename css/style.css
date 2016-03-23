@@ -1,0 +1,234 @@
+html, body,
+.box,
+.pure-g [class *="pure-u"] {
+    font-family: "Titillium Web", "PingHei", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", STXihei, STHeiti, Heiti, SimSun, sans-serif;
+}
+
+a{
+    color: #1F98C7;
+    text-decoration: none;
+}
+
+a:hover{
+    color:#0084B4
+}
+
+pre code,p > code,li>code,a >code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', "Microsoft Yahei", Helvetica, Arial, sans-serif;
+    color:#800;
+}
+
+p > code,li>code,a >code {
+    font-size: 85%;
+    padding: 0.2em 0.4em;
+    white-space: nowrap;
+    background-color: #F2F2F2;
+}
+
+pre{
+    font-size: 75%;
+    line-height: 1.8em;
+}
+
+body {
+    padding: 24px 0;
+    background-color: #FAFAFA;
+    color: #333;
+}
+
+.pure-menu-heading{
+    color: #333;
+}
+
+.pure-menu-link{
+    color: #555;
+}
+
+.wrapper {
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+pre > code{
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.pure-button{
+    padding: .2em .6em;
+}
+
+.button-success {
+    background: rgb(28, 184, 65); /* this is a green */
+}
+
+/*---nav---*/
+
+#nav-list {
+    float: right;
+}
+
+#nav-list .pure-menu-selected > a,
+.guide-nav .pure-menu-selected > a,
+.doc-nav .pure-menu-selected > a{
+    font-weight: bold;
+}
+
+#cover,
+#footer .bottom{
+    text-align: center;
+}
+
+#cover .wrapper,
+#footer .wrapper,
+#main .wrapper{
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #DDD;
+}
+
+#title {
+    font-size: 90px;
+    font-weight: normal;
+    letter-spacing: 6px;
+    margin: 0.3em 0;
+}
+
+#cover .slagon {
+    font-size: 24px;
+    color: #888;
+}
+
+#dl-button {
+    margin: 1em 0 2em 0;
+    font-size: 120%;
+}
+
+#gopher-img {
+    width: 400px;
+}
+
+#footer .box h4 {
+    padding-top: 0;
+    margin-top: 0;
+    padding-bottom: .5em;
+    margin-bottom: .5em;
+}
+
+#github-box,
+#language-box,
+#footer .cp-box{
+    padding: 0 1em;
+}
+
+#language-box{
+    padding-bottom: 1em;
+    position: relative;
+}
+
+#lang-select{
+    margin-left: 1em;
+}
+
+#footer .cp-box{
+    color: #BBB;
+    padding-top: 1em;
+}
+
+/*---main---*/
+
+#main .wrapper{
+    padding-top: 1.5em;
+}
+
+#main .pure-u-1-4{
+    font-size: 95%;
+}
+
+#main .pure-u-1-4 .pure-menu-heading{
+    font-weight: bold;
+}
+
+.guide-nav,
+.doc-nav{
+    margin-top: 8px;
+    margin-right: 2em;
+}
+
+.guide-page .title{
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: .5em;
+    margin-bottom: .5em;
+    border-bottom: 1px solid #DDD;
+}
+
+.guide-page .content{
+    line-height: 2em;
+    font-size: 18px;
+}
+
+.guide-page .content img{
+    max-width: 95%;
+    border:1px solid #CCC;
+}
+
+.guide-page p a{
+    font-size: 90%;
+    padding: 0.2em 0.4em;
+    white-space: nowrap;
+    background-color: #F0F8F8;
+}
+
+.doc-nav .pure-menu-heading{
+    cursor: pointer;
+    padding:.25em 1em;
+    margin: .25em 0;
+}
+
+.doc-nav .li-1,
+.doc-nav .li-2,
+.doc-nav .li-3,
+.doc-nav .li-4{
+    display: none;
+    padding-left: 1.1em;
+}
+
+.doc-nav .pure-menu-heading.menu-hover{
+    border-left: #1F98C7 0.3em inset;
+    padding-left: 0.7em
+}
+.article,
+.article .pure-u{
+    width: 100%;
+}
+
+.article pre{
+    font-size: 90%;
+}
+
+.article .date{
+    font-size: 18px;
+}
+
+.article .meta,
+.article .author{
+    float: right;
+}
+
+.article .aside .button-success{
+    color: #FFF;
+}
+
+.article .brief{
+    margin-top: 2em;
+    padding-top: 1.2em;
+    border-top: 1px dashed #DDD;
+    margin-bottom: 2em;
+    padding-bottom: 1.2em;
+    border-bottom: 1px dashed #DDD;
+}
+
+#article-list h2.tag{
+    text-align: center;
+}

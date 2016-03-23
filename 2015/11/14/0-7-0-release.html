@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive - PuGo</title>
+    <title>0.7.0 Released - First Version - PuGo</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web" type="text/css"/>
     <link rel="stylesheet" href="/css/pure-min.css"/>
     <link rel="stylesheet" href="/css/railscasts.css"/>
@@ -24,46 +24,78 @@
     </div>
 </header>
 <section id="main">
-    <div class="container">
-        <div id="archive-list">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1 panel panel-default">
-                    
-                    <div class="archive">
-                        <h3>2016</h3>
-                        <hr/>
-                        
-                        <h4>
-                            <span class="date">3.25</span>
-                            <a href="/2016/3/25/0-10-0-release.html">0.10.0 Released - TOML, I18n, Cloud Deploy</a>
-                        </h4>
-                        
+    <div class="wrapper">
+        <div id="article-single">
+            <article class="article">
+                <div class="pure-g">
+                    <div class="pure-u">
+                        <header class="header">
+                            <div class="meta">
+                                <span class="date">
+                                    <span class="month">11</span>.
+                                    <span class="day">14</span>
+                                </span>
+                            </div>
+                            <h2 class="title">
+                                <a href="/2015/11/14/0-7-0-release.html">0.7.0 Released - First Version</a>
+                            </h2>
+                        </header>
+                        <aside class="aside">
+                            <a class="tag pure-button button-small" href="/tags/pugo.html">pugo</a>
+                            <a class="tag pure-button button-small" href="/tags/release.html">release</a>
+                            <a class="tag pure-button button-small" href="/tags/stable.html">stable</a>
+                            
+                            <a class="author pure-button button-small button-success" href="http://pugo.io" target="_blank">pugo</a>
+                            
+                        </aside>
+                        <section class="brief"><p>I&rsquo;m excited to announce <code>Pugo.Static</code> 0.7.0 <strong>stable</strong> version. It&rsquo;s the first version to public. So it finished all basic features and is reliable in production.</p>
+
+<!--more-->
+
+<p>In this version, it contains major features as site generator:</p>
+
+<ul>
+<li>compile <code>markdown</code> content to a post or page with several meta values</li>
+<li>watch content files to rebuild static pages automatically</li>
+<li>post tags, post archive, rss feed, xml sitemap are supported</li>
+<li>simply customize the navbar, template and site info</li>
+<li>a rough debug mode for developers</li>
+</ul>
+
+<p>In next version, it plans to add:</p>
+
+<ul>
+<li><code>new</code> command line method to create site, post and page (probably)</li>
+<li><code>toml</code> support and use to instead of ini cases (probably)</li>
+</ul>
+</section>
                     </div>
-                    
-                    <div class="archive">
-                        <h3>2015</h3>
-                        <hr/>
-                        
-                        <h4>
-                            <span class="date">12.31</span>
-                            <a href="/2015/12/31/0-9-0-release.html">0.9.0 Released - Deployment support</a>
-                        </h4>
-                        
-                        <h4>
-                            <span class="date">11.20</span>
-                            <a href="/2015/11/20/0-8-0-release.html">0.8.0 Released - &#39;new&#39; Command</a>
-                        </h4>
-                        
-                        <h4>
-                            <span class="date">11.14</span>
-                            <a href="/2015/11/14/0-7-0-release.html">0.7.0 Released - First Version</a>
-                        </h4>
-                        
-                    </div>
-                    
                 </div>
-            </div>
+            </article>
         </div>
+        
+<section id="comment">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div id="disqus_thread"></div>
+            <script>
+                var disqus_config = function () {
+                    this.page.url = "http:\/\/pugo.io\/2015\/11\/14\/0-7-0-release"; 
+                };
+                (function () {
+                    var d = document, s = d.createElement('script');
+                    s.src = '//fuxiaohei.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+                powered by Disqus.</a></noscript>
+        </div>
+    </div>
+    
+</section>
+
     </div>
 </section>
 <footer id="footer">
@@ -98,7 +130,7 @@
                 <div class="box">
                     <div class="pure-menu custom-restricted-width">
                         <div id="language-box">
-                            Language <select id="lang-select" data-url="archive">
+                            Language <select id="lang-select" data-url="2015/11/14/0-7-0-release.html">
                                 <option value="en" selected>English</option>                           
                                 <option value="zh">简体中文</option>     
                             </select>

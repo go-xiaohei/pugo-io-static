@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive - PuGo</title>
+    <title>Download &amp; Compile - PuGo</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web" type="text/css"/>
     <link rel="stylesheet" href="/css/pure-min.css"/>
     <link rel="stylesheet" href="/css/railscasts.css"/>
@@ -16,56 +16,86 @@
             <a href="/" class="pure-menu-heading pure-menu-link">PUGO</a>
             <ul class="pure-menu-list" id="nav-list">
                 <li class="pure-menu-item"><a href="/en/guide.html" class="pure-menu-link">Guide</a></li>
-                <li class="pure-menu-item"><a href="/en/docs.html" class="pure-menu-link">Docs</a></li>
+                <li class="pure-menu-item pure-menu-selected"><a href="/en/docs.html" class="pure-menu-link">Docs</a></li>
                 <li class="pure-menu-item"><a href="/en/showcases.html" class="pure-menu-link">Showcases</a></li>
                 <li class="pure-menu-item"><a href="https://github.com/go-xiaohei/pugo" class="pure-menu-link">Github</a></li>
             </ul>
         </div>
     </div>
 </header>
-<section id="main">
-    <div class="container">
-        <div id="archive-list">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1 panel panel-default">
-                    
-                    <div class="archive">
-                        <h3>2016</h3>
-                        <hr/>
-                        
-                        <h4>
-                            <span class="date">3.25</span>
-                            <a href="/2016/3/25/0-10-0-release.html">0.10.0 Released - TOML, I18n, Cloud Deploy</a>
-                        </h4>
-                        
-                    </div>
-                    
-                    <div class="archive">
-                        <h3>2015</h3>
-                        <hr/>
-                        
-                        <h4>
-                            <span class="date">12.31</span>
-                            <a href="/2015/12/31/0-9-0-release.html">0.9.0 Released - Deployment support</a>
-                        </h4>
-                        
-                        <h4>
-                            <span class="date">11.20</span>
-                            <a href="/2015/11/20/0-8-0-release.html">0.8.0 Released - &#39;new&#39; Command</a>
-                        </h4>
-                        
-                        <h4>
-                            <span class="date">11.14</span>
-                            <a href="/2015/11/14/0-7-0-release.html">0.7.0 Released - First Version</a>
-                        </h4>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
+<div id="main">
+    <div class="wrapper">
+       <div class="pure-g">
+           <div class="pure-u-1-4">
+               <div class="pure-menu">
+    <ul class="pure-menu-list doc-nav">
+        <li class="pure-menu-item"><a href="/en/docs" class="pure-menu-link">Documentation</a></li>
+        <li class="pure-menu-item"><a href="/en/docs/dl-compile.html" class="pure-menu-link">Download & Compile</a></li>
+        <li class="pure-menu-heading" data-li="li-1" data-prefix="en/docs/cmd">Command</li>
+        <li class="pure-menu-item li-1"><a href="/en/docs/cmd/build.html" class="pure-menu-link">Build</a></li>
+        <li class="pure-menu-item li-1"><a href="/en/docs/cmd/new.html" class="pure-menu-link">New</a></li>
+        <li class="pure-menu-item li-1"><a href="/en/docs/cmd/server.html" class="pure-menu-link">Server</a></li>
+        <li class="pure-menu-item li-1"><a href="/en/docs/cmd/deploy.html" class="pure-menu-link">Deploy</a></li>
+        <li class="pure-menu-item li-1"><a href="/en/docs/cmd/doc.html" class="pure-menu-link">Doc</a></li>
+        <li class="pure-menu-heading" data-li="li-2" data-prefix="en/docs/cnt">Data</li>
+        <li class="pure-menu-item li-2"><a href="/en/docs/cnt/format.html" class="pure-menu-link">Format</a></li>
+        <li class="pure-menu-item li-2"><a href="/en/docs/cnt/url-slug.html" class="pure-menu-link">URL and Slug</a></li>
+        <li class="pure-menu-item li-2"><a href="/en/docs/cnt/tags.html" class="pure-menu-link">Tags</a></li>
+        <li class="pure-menu-item li-2"><a href="/en/docs/cnt/i18n.html" class="pure-menu-link">Languages</a></li>
+        
+        <li class="pure-menu-heading" data-li="li-3" data-prefix="en/docs/tpl">Template</li>
+        <li class="pure-menu-item li-3"><a href="/en/docs/tpl/syntax.html" class="pure-menu-link">Basic Syntax</a></li>
+        <li class="pure-menu-item li-3"><a href="/en/docs/tpl/global.html" class="pure-menu-link">Global</a></li>
+        <li class="pure-menu-item li-3"><a href="/en/docs/tpl/each.html" class="pure-menu-link">Each Template</a></li>
+        <li class="pure-menu-item li-3"><a href="/en/docs/tpl/helper.html" class="pure-menu-link">Helper Function</a></li>
+        <li class="pure-menu-item li-3"><a href="/en/docs/tpl/i18n.html" class="pure-menu-link">International</a></li>
+        <li class="pure-menu-heading" data-li="li-4" data-prefix="en/docs/deploy">Deployment</li>
+        <li class="pure-menu-item li-4"><a href="/en/docs/deploy/standalone.html" class="pure-menu-link">Standalone</a></li>
+        <li class="pure-menu-item li-4"><a href="/en/docs/deploy/ftp-sftp.html" class="pure-menu-link">FTP and SFTP</a></li>
+        <li class="pure-menu-item li-4"><a href="/en/docs/deploy/git.html" class="pure-menu-link">Git</a></li>
+        <li class="pure-menu-item li-4"><a href="/en/docs/deploy/cloud.html" class="pure-menu-link">AWS S3 and Qiniu</a></li>
+    </ul>
+</div>         
+           </div>
+           <div class="pure-u-3-4 guide-page">
+               
+               <h1 class="title">Download &amp; Compile</h1>
+               <div class="content">
+                   <p>To install <code>PuGo</code>, you must have <code>Go</code> language. Download <strong>Go</strong> and install it from <a href="https://golang.org">official site</a>.</p>
+
+<p><code>PuGo</code> need <strong>Go 1.4+</strong>.</p>
+
+<p>If Go is ready, get <code>PuGo</code>&rsquo;s source code:</p>
+<pre><code class="language-go">go get github.com/go-xiaohei/pugo
+</code></pre>
+
+<p>Then you can modify source codes and build your own binary.</p>
+
+<h3 id="asset">Asset</h3>
+
+<p><code>PuGo</code> use <a href="https://github.com/jteeuwen/go-bindata">go-bindata</a> to bundle assets to source code.</p>
+<pre><code class="language-go">go get github.com/jteeuwen/go-bindata
+</code></pre>
+
+<p>Add <code>$GOPATH/bin</code> to <code>PATH</code>, then:</p>
+<pre><code class="language-go">go generate -x
+</code></pre>
+
+<p>It packs <code>doc</code>, <code>source</code>, <code>theme</code> to go source code in <code>app/asset/asset.go</code>.</p>
+
+<h3 id="notice">Notice</h3>
+
+<ul>
+<li><code>PuGo</code> need <code>fsnotify</code> to watch file changes. It&rsquo;s not tested on <strong>arm</strong> platform.</li>
+<li><code>PuGo</code> use <code>log15.v2</code> to print logs. But it can&rsquo;t be compiled in <strong>openbsd</strong> &amp; <strong>netbsd</strong>.</li>
+</ul>
+
+               </div>
+               
+           </div>
+       </div>
     </div>
-</section>
+</div>
 <footer id="footer">
     <div class="wrapper">
         <div class="pure-g">
@@ -98,7 +128,7 @@
                 <div class="box">
                     <div class="pure-menu custom-restricted-width">
                         <div id="language-box">
-                            Language <select id="lang-select" data-url="archive">
+                            Language <select id="lang-select" data-url="docs/dl-compile.html">
                                 <option value="en" selected>English</option>                           
                                 <option value="zh">简体中文</option>     
                             </select>

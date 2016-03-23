@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive - PuGo</title>
+    <title>Build Files - PuGo</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web" type="text/css"/>
     <link rel="stylesheet" href="/css/pure-min.css"/>
     <link rel="stylesheet" href="/css/railscasts.css"/>
@@ -15,7 +15,7 @@
         <div class="pure-menu pure-menu-horizontal" id="nav">
             <a href="/" class="pure-menu-heading pure-menu-link">PUGO</a>
             <ul class="pure-menu-list" id="nav-list">
-                <li class="pure-menu-item"><a href="/en/guide.html" class="pure-menu-link">Guide</a></li>
+                <li class="pure-menu-item pure-menu-selected"><a href="/en/guide.html" class="pure-menu-link">Guide</a></li>
                 <li class="pure-menu-item"><a href="/en/docs.html" class="pure-menu-link">Docs</a></li>
                 <li class="pure-menu-item"><a href="/en/showcases.html" class="pure-menu-link">Showcases</a></li>
                 <li class="pure-menu-item"><a href="https://github.com/go-xiaohei/pugo" class="pure-menu-link">Github</a></li>
@@ -23,49 +23,62 @@
         </div>
     </div>
 </header>
-<section id="main">
-    <div class="container">
-        <div id="archive-list">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1 panel panel-default">
-                    
-                    <div class="archive">
-                        <h3>2016</h3>
-                        <hr/>
-                        
-                        <h4>
-                            <span class="date">3.25</span>
-                            <a href="/2016/3/25/0-10-0-release.html">0.10.0 Released - TOML, I18n, Cloud Deploy</a>
-                        </h4>
-                        
-                    </div>
-                    
-                    <div class="archive">
-                        <h3>2015</h3>
-                        <hr/>
-                        
-                        <h4>
-                            <span class="date">12.31</span>
-                            <a href="/2015/12/31/0-9-0-release.html">0.9.0 Released - Deployment support</a>
-                        </h4>
-                        
-                        <h4>
-                            <span class="date">11.20</span>
-                            <a href="/2015/11/20/0-8-0-release.html">0.8.0 Released - &#39;new&#39; Command</a>
-                        </h4>
-                        
-                        <h4>
-                            <span class="date">11.14</span>
-                            <a href="/2015/11/14/0-7-0-release.html">0.7.0 Released - First Version</a>
-                        </h4>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
+<div id="main">
+    <div class="wrapper">
+       <div class="pure-g">
+           <div class="pure-u-1-4">
+               <div class="pure-menu">
+    <ul class="pure-menu-list guide-nav">
+        <li class="pure-menu-heading">Getting Started</li>
+        <li class="pure-menu-item"><a href="/en/guide/install.html" class="pure-menu-link">Install PuGo</a></li>
+        <li class="pure-menu-item"><a href="/en/guide/create-new-site.html" class="pure-menu-link">Create New Site</a></li>
+        <li class="pure-menu-item"><a href="/en/guide/write-new-post.html" class="pure-menu-link">Write New Post</a></li>
+        <li class="pure-menu-item"><a href="/en/guide/write-new-page.html" class="pure-menu-link">Write New Page</a></li>
+        <li class="pure-menu-item"><a href="/en/guide/add-comment-system.html" class="pure-menu-link">Add Comment System</a></li>
+        <li class="pure-menu-item"><a href="/en/guide/build-files.html" class="pure-menu-link">Build Files</a></li>
+        <li class="pure-menu-item"><a href="/en/guide/standalone-server.html" class="pure-menu-link">Standalone Server</a></li>
+        <li class="pure-menu-item"><a href="/en/guide/deploy-nginx.html" class="pure-menu-link">Deploy to Nginx</a></li>
+    </ul>
+</div>         
+           </div>
+           <div class="pure-u-3-4 guide-page">
+               
+               <h1 class="title">Build Files</h1>
+               <div class="content">
+                   <p>Use <code>build</code> command to build files:</p>
+<pre><code class="language-bash">pugo build 
+</code></pre>
+
+<h3 id="watch">Watch</h3>
+
+<p><code>PuGo</code> can watch changes and re-build files immediately. It overwrites any html files and checks md5sum to replace static files that needed.</p>
+<pre><code class="language-bash">pugo build --watch
+</code></pre>
+
+<h3 id="custom-source">Custom Source</h3>
+
+<p>Build files from custom source:</p>
+<pre><code class="language-bash">pugo build --source=&quot;your-source&quot;
+</code></pre>
+
+<h3 id="custom-destination">Custom Destination</h3>
+
+<p>Build files to custom destination:</p>
+<pre><code class="language-bash">pugo build --dest=&quot;your-directory&quot;
+</code></pre>
+
+<h3 id="custom-theme">Custom Theme</h3>
+
+<p>Build files with specific theme:</p>
+<pre><code class="language-bash">pugo build --theme=&quot;your-theme-directory&quot;
+</code></pre>
+
+               </div>
+               
+           </div>
+       </div>
     </div>
-</section>
+</div>
 <footer id="footer">
     <div class="wrapper">
         <div class="pure-g">
@@ -98,7 +111,7 @@
                 <div class="box">
                     <div class="pure-menu custom-restricted-width">
                         <div id="language-box">
-                            Language <select id="lang-select" data-url="archive">
+                            Language <select id="lang-select" data-url="guide/build-files.html">
                                 <option value="en" selected>English</option>                           
                                 <option value="zh">简体中文</option>     
                             </select>

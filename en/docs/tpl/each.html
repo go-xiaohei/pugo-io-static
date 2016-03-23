@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Each Template - PuGo</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web" type="text/css"/>
+    <link rel="stylesheet" href="/css/pure-min.css"/>
+    <link rel="stylesheet" href="/css/railscasts.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+<header id="header">
+    <div class="wrapper">
+        <div class="pure-menu pure-menu-horizontal" id="nav">
+            <a href="/" class="pure-menu-heading pure-menu-link">PUGO</a>
+            <ul class="pure-menu-list" id="nav-list">
+                <li class="pure-menu-item"><a href="/en/guide.html" class="pure-menu-link">Guide</a></li>
+                <li class="pure-menu-item pure-menu-selected"><a href="/en/docs.html" class="pure-menu-link">Docs</a></li>
+                <li class="pure-menu-item"><a href="/en/showcases.html" class="pure-menu-link">Showcases</a></li>
+                <li class="pure-menu-item"><a href="https://github.com/go-xiaohei/pugo" class="pure-menu-link">Github</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div id="main">
+    <div class="wrapper">
+       <div class="pure-g">
+           <div class="pure-u-1-4">
+               <div class="pure-menu">
+    <ul class="pure-menu-list doc-nav">
+        <li class="pure-menu-item"><a href="/en/docs" class="pure-menu-link">Documentation</a></li>
+        <li class="pure-menu-item"><a href="/en/docs/dl-compile.html" class="pure-menu-link">Download & Compile</a></li>
+        <li class="pure-menu-heading" data-li="li-1" data-prefix="en/docs/cmd">Command</li>
+        <li class="pure-menu-item li-1"><a href="/en/docs/cmd/build.html" class="pure-menu-link">Build</a></li>
+        <li class="pure-menu-item li-1"><a href="/en/docs/cmd/new.html" class="pure-menu-link">New</a></li>
+        <li class="pure-menu-item li-1"><a href="/en/docs/cmd/server.html" class="pure-menu-link">Server</a></li>
+        <li class="pure-menu-item li-1"><a href="/en/docs/cmd/deploy.html" class="pure-menu-link">Deploy</a></li>
+        <li class="pure-menu-item li-1"><a href="/en/docs/cmd/doc.html" class="pure-menu-link">Doc</a></li>
+        <li class="pure-menu-heading" data-li="li-2" data-prefix="en/docs/cnt">Data</li>
+        <li class="pure-menu-item li-2"><a href="/en/docs/cnt/format.html" class="pure-menu-link">Format</a></li>
+        <li class="pure-menu-item li-2"><a href="/en/docs/cnt/url-slug.html" class="pure-menu-link">URL and Slug</a></li>
+        <li class="pure-menu-item li-2"><a href="/en/docs/cnt/tags.html" class="pure-menu-link">Tags</a></li>
+        <li class="pure-menu-item li-2"><a href="/en/docs/cnt/i18n.html" class="pure-menu-link">Languages</a></li>
+        
+        <li class="pure-menu-heading" data-li="li-3" data-prefix="en/docs/tpl">Template</li>
+        <li class="pure-menu-item li-3"><a href="/en/docs/tpl/syntax.html" class="pure-menu-link">Basic Syntax</a></li>
+        <li class="pure-menu-item li-3"><a href="/en/docs/tpl/global.html" class="pure-menu-link">Global</a></li>
+        <li class="pure-menu-item li-3"><a href="/en/docs/tpl/each.html" class="pure-menu-link">Each Template</a></li>
+        <li class="pure-menu-item li-3"><a href="/en/docs/tpl/helper.html" class="pure-menu-link">Helper Function</a></li>
+        <li class="pure-menu-item li-3"><a href="/en/docs/tpl/i18n.html" class="pure-menu-link">International</a></li>
+        <li class="pure-menu-heading" data-li="li-4" data-prefix="en/docs/deploy">Deployment</li>
+        <li class="pure-menu-item li-4"><a href="/en/docs/deploy/standalone.html" class="pure-menu-link">Standalone</a></li>
+        <li class="pure-menu-item li-4"><a href="/en/docs/deploy/ftp-sftp.html" class="pure-menu-link">FTP and SFTP</a></li>
+        <li class="pure-menu-item li-4"><a href="/en/docs/deploy/git.html" class="pure-menu-link">Git</a></li>
+        <li class="pure-menu-item li-4"><a href="/en/docs/deploy/cloud.html" class="pure-menu-link">AWS S3 and Qiniu</a></li>
+    </ul>
+</div>         
+           </div>
+           <div class="pure-u-3-4 guide-page">
+               
+               <h1 class="title">Each Template</h1>
+               <div class="content">
+                   <p>There are some different global variable in different page.</p>
+
+<h3 id="post-html">post.html</h3>
+
+<p><code>{{.Post}}</code> is data of one post.</p>
+<pre><code class="language-html">&lt;article class=&quot;article&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-md-10 col-md-offset-1 panel panel-default&quot;&gt;
+            &lt;header class=&quot;header&quot;&gt;
+                &lt;div class=&quot;meta&quot;&gt;
+                    &lt;span class=&quot;date&quot;&gt;
+                        &lt;span class=&quot;month&quot;&gt;{{printf &quot;%d&quot; .Post.Created.Month}}&lt;/span&gt;
+                        &lt;span class=&quot;day&quot;&gt;{{.Post.Created.Day}}&lt;/span&gt;
+                    &lt;/span&gt;
+                &lt;/div&gt;
+                &lt;h3 class=&quot;title&quot;&gt;
+                    &lt;a href=&quot;{{.Post.URL}}&quot;&gt;{{.Post.Title}}&lt;/a&gt;
+                &lt;/h3&gt;
+            &lt;/header&gt;
+            &lt;aside class=&quot;aside clearfix&quot;&gt;
+                {{range .Post.Tags}}
+                &lt;a class=&quot;tag label label-info&quot; href=&quot;{{.URL}}&quot;&gt;{{.Name}}&lt;/a&gt;
+                {{end}}
+                {{if .Post.Author}}
+                &lt;a class=&quot;stat label label-default pull-right&quot;{{if .Post.Author.URL}} href=&quot;{{.Post.Author.URL}}&quot; target=&quot;_blank&quot;{{end}}&gt;{{.Post.Author.Name}}&lt;/a&gt;
+                {{end}}
+            &lt;/aside&gt;
+            &lt;section class=&quot;brief&quot;&gt;{{.Post.ContentHTML}}&lt;/section&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/article&gt;
+</code></pre>
+
+<h3 id="posts-html">posts.html</h3>
+
+<p><code>{{.Posts}}</code> is data of list of posts. <code>{{.Pager}}</code> is pagination tool to generate paged URL. If the list in one tag, <code>{{.Tag}}</code> is the tag data.</p>
+<pre><code class="language-html">{{range .Posts}}
+&lt;article class=&quot;article&quot;&gt;
+......
+&lt;/article&gt;
+{{end}}
+&lt;div class=&quot;article-pager text-center&quot;&gt;
+    {{if .Pager.Prev}}&lt;a class=&quot;btn btn-lg btn-info&quot; href=&quot;{{.Pager.PrevURL}}&quot;&gt;{{.I18n.Tr &quot;pager.prev&quot;}}&lt;/a&gt;{{end}}
+    {{if .Pager.Next}}&lt;a class=&quot;btn btn-lg btn-info&quot; href=&quot;{{.Pager.NextURL}}&quot;&gt;{{.I18n.Tr &quot;pager.next&quot;}}&lt;/a&gt;{{end}}
+&lt;/div&gt;
+</code></pre>
+
+<h3 id="page-html">page.html</h3>
+
+<p><code>{{.Page}}</code> is data of this page.</p>
+<pre><code class="language-html">&lt;article class=&quot;article&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-md-10 col-md-offset-1 panel panel-default&quot;&gt;
+            &lt;header class=&quot;header&quot;&gt;
+                &lt;div class=&quot;meta&quot;&gt;
+                    &lt;span class=&quot;date&quot;&gt;
+                        &lt;span class=&quot;month&quot;&gt;{{printf &quot;%d&quot; .Page.Created.Month}}&lt;/span&gt;
+                        &lt;span class=&quot;day&quot;&gt;{{.Page.Created.Day}}&lt;/span&gt;
+                    &lt;/span&gt;
+                &lt;/div&gt;
+                &lt;h3 class=&quot;title&quot;&gt;
+                    &lt;a href=&quot;{{.Page.URL}}&quot;&gt;{{.Page.Title}}&lt;/a&gt;
+                &lt;/h3&gt;
+            &lt;/header&gt;
+            {{if .Page.Author}}
+            &lt;aside class=&quot;aside clearfix&quot;&gt;
+                &lt;a class=&quot;stat label label-default pull-right&quot;{{if .Page.Author.URL}} href=&quot;{{.Page.Author.URL}}&quot; target=&quot;_blank&quot;{{end}}&gt;{{.Page.Author.Name}}&lt;/a&gt;
+            &lt;/aside&gt;
+            {{end}}
+            &lt;section class=&quot;brief&quot;&gt;{{.Page.ContentHTML}}&lt;/section&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/article&gt;
+</code></pre>
+
+               </div>
+               
+           </div>
+       </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="wrapper">
+        <div class="pure-g">
+            <div class="pure-u-1-3">
+                <div class="box">
+                    <div class="pure-menu custom-restricted-width">
+                        <h4 class="pure-menu-heading">Release Notes</h4>
+                        <ul class="pure-menu-list">
+                            <li class="pure-menu-item"><a href="/2016/3/25/0-10-0-release.html" class="pure-menu-link">0.10.0 Released - TOML, I18n, Cloud Deploy</a></li>
+                            <li class="pure-menu-item"><a href="/2015/12/31/0-9-0-release.html" class="pure-menu-link">0.9.0 Released - Deployment support</a></li>
+                            <li class="pure-menu-item"><a href="/2015/11/20/0-8-0-release.html" class="pure-menu-link">0.8.0 Released - &#39;new&#39; Command</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="pure-u-1-3">
+                <div class="box">
+                    <div class="pure-menu custom-restricted-width">
+                        <h4 class="pure-menu-heading">Everything in PuGo</h4>
+                        <ul class="pure-menu-list">
+                            <li class="pure-menu-item"><a href="/en/docs.html" class="pure-menu-link">Documentation</a></li>
+                            <li class="pure-menu-item"><a href="/en/guide.html" class="pure-menu-link">Quick Start</a></li>
+                            <li class="pure-menu-item"><a href="/posts/1.html" class="pure-menu-link">Releases</a></li>
+                            <li class="pure-menu-item"><a href="/showcases.html" class="pure-menu-link">Showcases</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="pure-u-1-3">
+                <div class="box">
+                    <div class="pure-menu custom-restricted-width">
+                        <div id="language-box">
+                            Language <select id="lang-select" data-url="docs/tpl/each.html">
+                                <option value="en" selected>English</option>                           
+                                <option value="zh">简体中文</option>     
+                            </select>
+                        </div>
+                        <h4 class="pure-menu-heading">GitHub</h4>
+                        <div id="github-box">
+                            <a class="github-button" href="https://github.com/go-xiaohei/pugo" data-style="mega"
+                               data-count-href="/go-xiaohei/pugo/stargazers"
+                               data-count-api="/repos/go-xiaohei/pugo#stargazers_count"
+                               data-count-aria-label="# stargazers on GitHub" aria-label="Star go-xiaohei/pugo on GitHub">Star</a>
+                        </div>
+                        <div class="cp-box">
+                            Copyright © 2016 PuGo Engine. <br/> All rights reserved.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="/js/jquery-2.1.4.min.js"></script>
+<script src="/js/highlight.pack.js"></script>
+<script>
+    $(document).ready(function() {
+        $('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
+        $('#lang-select').on("change",function(e){
+            var $e = $(e.target);
+            window.location.href = "/"+ $e.val()+"/"+ $e.data("url");
+        });
+        $('.pure-menu-heading').on("click",function(){
+            var c = $(this).data("li");
+            $("."+c).toggle();
+        }).each(function(i,item){
+            var prefix = $(item).data("prefix");
+            if(prefix && window.location.pathname.indexOf(prefix)>0){
+                var c = $(item).data("li");
+                $("."+c).show();
+                $(item).addClass("menu-hover");
+            }
+        });
+        $('a[href="'+window.location.pathname+'"]').parent().addClass("pure-menu-selected");
+    });
+</script>
+<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+</body>
+</html>

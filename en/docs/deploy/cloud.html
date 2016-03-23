@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive - PuGo</title>
+    <title>AWS S3 and Qiniu - PuGo</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web" type="text/css"/>
     <link rel="stylesheet" href="/css/pure-min.css"/>
     <link rel="stylesheet" href="/css/railscasts.css"/>
@@ -16,56 +16,72 @@
             <a href="/" class="pure-menu-heading pure-menu-link">PUGO</a>
             <ul class="pure-menu-list" id="nav-list">
                 <li class="pure-menu-item"><a href="/en/guide.html" class="pure-menu-link">Guide</a></li>
-                <li class="pure-menu-item"><a href="/en/docs.html" class="pure-menu-link">Docs</a></li>
+                <li class="pure-menu-item pure-menu-selected"><a href="/en/docs.html" class="pure-menu-link">Docs</a></li>
                 <li class="pure-menu-item"><a href="/en/showcases.html" class="pure-menu-link">Showcases</a></li>
                 <li class="pure-menu-item"><a href="https://github.com/go-xiaohei/pugo" class="pure-menu-link">Github</a></li>
             </ul>
         </div>
     </div>
 </header>
-<section id="main">
-    <div class="container">
-        <div id="archive-list">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1 panel panel-default">
-                    
-                    <div class="archive">
-                        <h3>2016</h3>
-                        <hr/>
-                        
-                        <h4>
-                            <span class="date">3.25</span>
-                            <a href="/2016/3/25/0-10-0-release.html">0.10.0 Released - TOML, I18n, Cloud Deploy</a>
-                        </h4>
-                        
-                    </div>
-                    
-                    <div class="archive">
-                        <h3>2015</h3>
-                        <hr/>
-                        
-                        <h4>
-                            <span class="date">12.31</span>
-                            <a href="/2015/12/31/0-9-0-release.html">0.9.0 Released - Deployment support</a>
-                        </h4>
-                        
-                        <h4>
-                            <span class="date">11.20</span>
-                            <a href="/2015/11/20/0-8-0-release.html">0.8.0 Released - &#39;new&#39; Command</a>
-                        </h4>
-                        
-                        <h4>
-                            <span class="date">11.14</span>
-                            <a href="/2015/11/14/0-7-0-release.html">0.7.0 Released - First Version</a>
-                        </h4>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
+<div id="main">
+    <div class="wrapper">
+       <div class="pure-g">
+           <div class="pure-u-1-4">
+               <div class="pure-menu">
+    <ul class="pure-menu-list doc-nav">
+        <li class="pure-menu-item"><a href="/en/docs" class="pure-menu-link">Documentation</a></li>
+        <li class="pure-menu-item"><a href="/en/docs/dl-compile.html" class="pure-menu-link">Download & Compile</a></li>
+        <li class="pure-menu-heading" data-li="li-1" data-prefix="en/docs/cmd">Command</li>
+        <li class="pure-menu-item li-1"><a href="/en/docs/cmd/build.html" class="pure-menu-link">Build</a></li>
+        <li class="pure-menu-item li-1"><a href="/en/docs/cmd/new.html" class="pure-menu-link">New</a></li>
+        <li class="pure-menu-item li-1"><a href="/en/docs/cmd/server.html" class="pure-menu-link">Server</a></li>
+        <li class="pure-menu-item li-1"><a href="/en/docs/cmd/deploy.html" class="pure-menu-link">Deploy</a></li>
+        <li class="pure-menu-item li-1"><a href="/en/docs/cmd/doc.html" class="pure-menu-link">Doc</a></li>
+        <li class="pure-menu-heading" data-li="li-2" data-prefix="en/docs/cnt">Data</li>
+        <li class="pure-menu-item li-2"><a href="/en/docs/cnt/format.html" class="pure-menu-link">Format</a></li>
+        <li class="pure-menu-item li-2"><a href="/en/docs/cnt/url-slug.html" class="pure-menu-link">URL and Slug</a></li>
+        <li class="pure-menu-item li-2"><a href="/en/docs/cnt/tags.html" class="pure-menu-link">Tags</a></li>
+        <li class="pure-menu-item li-2"><a href="/en/docs/cnt/i18n.html" class="pure-menu-link">Languages</a></li>
+        
+        <li class="pure-menu-heading" data-li="li-3" data-prefix="en/docs/tpl">Template</li>
+        <li class="pure-menu-item li-3"><a href="/en/docs/tpl/syntax.html" class="pure-menu-link">Basic Syntax</a></li>
+        <li class="pure-menu-item li-3"><a href="/en/docs/tpl/global.html" class="pure-menu-link">Global</a></li>
+        <li class="pure-menu-item li-3"><a href="/en/docs/tpl/each.html" class="pure-menu-link">Each Template</a></li>
+        <li class="pure-menu-item li-3"><a href="/en/docs/tpl/helper.html" class="pure-menu-link">Helper Function</a></li>
+        <li class="pure-menu-item li-3"><a href="/en/docs/tpl/i18n.html" class="pure-menu-link">International</a></li>
+        <li class="pure-menu-heading" data-li="li-4" data-prefix="en/docs/deploy">Deployment</li>
+        <li class="pure-menu-item li-4"><a href="/en/docs/deploy/standalone.html" class="pure-menu-link">Standalone</a></li>
+        <li class="pure-menu-item li-4"><a href="/en/docs/deploy/ftp-sftp.html" class="pure-menu-link">FTP and SFTP</a></li>
+        <li class="pure-menu-item li-4"><a href="/en/docs/deploy/git.html" class="pure-menu-link">Git</a></li>
+        <li class="pure-menu-item li-4"><a href="/en/docs/deploy/cloud.html" class="pure-menu-link">AWS S3 and Qiniu</a></li>
+    </ul>
+</div>         
+           </div>
+           <div class="pure-u-3-4 guide-page">
+               
+               <h1 class="title">AWS S3 and Qiniu</h1>
+               <div class="content">
+                   <p><code>PuGo</code> can upload static files to cloud storage service. Now it supports <code>AWS S3</code> and <code>Qiniu</code> cloud storage.</p>
+<pre><code class="language-bash">pugo deploy qiniu --local=&quot;dest&quot; --ak=&quot;ak&quot; --sk=&quot;sk&quot; --bucket=&quot;bucket&quot;
+pugo deploy aws-s3 --local=&quot;dest&quot; --ak=&quot;ak&quot; --sk=&quot;sk&quot; --bucket=&quot;bucket&quot; --region=&quot;region&quot;
+</code></pre>
+
+<p><code>--local</code> set local directory that saving static files after building.</p>
+
+<p><code>--ak</code> and <code>--sk</code> set access-key and secret-key from cloud service.</p>
+
+<p><code>--bucket</code> set uploading bucket name.</p>
+
+<p>In AWS S3, <code>--region</code> set the region of bucket, such as <code>us-east-1</code>.</p>
+
+<p>When use cloud storage, please make sure your bucket is public. Then you can set domain alias to the bucket as static website host.</p>
+
+               </div>
+               
+           </div>
+       </div>
     </div>
-</section>
+</div>
 <footer id="footer">
     <div class="wrapper">
         <div class="pure-g">
@@ -98,7 +114,7 @@
                 <div class="box">
                     <div class="pure-menu custom-restricted-width">
                         <div id="language-box">
-                            Language <select id="lang-select" data-url="archive">
+                            Language <select id="lang-select" data-url="docs/deploy/cloud.html">
                                 <option value="en" selected>English</option>                           
                                 <option value="zh">简体中文</option>     
                             </select>

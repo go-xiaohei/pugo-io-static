@@ -1,238 +1,116 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Pugo.Static - site generator</title>
-    <meta name="keywords" content="pugo,golang,static,site,generator"/>
-    <meta name="description" content="pugo is a simple static site generator"/>
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="/static/css/prism.css"/>
-    <link rel="stylesheet" href="/static/css/style.css"/>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuGo - Static Site Generator</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web" type="text/css"/>
+    <link rel="stylesheet" href="/css/pure-min.css"/>
+    <link rel="stylesheet" href="/css/railscasts.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
 <header id="header">
-    <div class="container">
-        <div class="header clearfix">
-            <nav id="site-nav">
-                <ul class="nav nav-inverse nav-pills pull-right">
-                    <li role="presentation" class="active">
-                        <a href="/" class="">Home
-                        </a>
-                    </li>
-                    <li role="presentation" class="">
-                        <a href="/archive.html" class="">Archive
-                        </a>
-                    </li>
-                    <li role="presentation" class="">
-                        <a href="/about.html" class="" target="_blank" >About
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <h3 id="site-title">
-                <a href="/">Pugo.Static</a>
-            </h3>
+    <div class="wrapper">
+        <div class="pure-menu pure-menu-horizontal" id="nav">
+            <a href="/" class="pure-menu-heading pure-menu-link">PUGO</a>
+            <ul class="pure-menu-list" id="nav-list">
+                <li class="pure-menu-item"><a href="/en/guide.html" class="pure-menu-link">Guide</a></li>
+                <li class="pure-menu-item"><a href="/en/docs.html" class="pure-menu-link">Docs</a></li>
+                <li class="pure-menu-item"><a href="/en/showcases.html" class="pure-menu-link">Showcases</a></li>
+                <li class="pure-menu-item"><a href="https://github.com/go-xiaohei/pugo" class="pure-menu-link">Github</a></li>
+            </ul>
         </div>
     </div>
 </header>
-
-<section id="main">
-    <div class="container">
-        <div id="article-list">
-            <article class="article">
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1 panel panel-default">
-                        <header class="header">
-                            <div class="meta">
-                        <span class="date">
-                            <span class="month">12</span>
-                            <span class="day">29</span>
-                        </span>
-                            </div>
-                            <h3 class="title">
-                                <a href="/2015/12/29/welcome.html">Welcome</a>
-                            </h3>
-                        </header>
-                        <section class="brief"><p>When you read the blog, <code>pugo</code> is running successfully. Then enjoy your blog journey.</p>
-
-<p>This blog is generated from file <code>source/welcome.md</code>. You can learn it and try to write your own blog article with following guide together.</p>
-
-<h4>blog meta</h4>
-
-<p>Blog&rsquo;s meta data, such as title, author, are created by first <code>ini</code> section with block <strong>```ini &hellip;.. ```</strong>:</p>
-<pre><code class="language-ini">; post title, required
-title = Welcome to Pugo.Static
-
-; post slug, use to build permalink and url, required
-slug = welcome-pugo-static
-
-; post created time, support
-; 2015-11-28, 2015-11-28 12:28, 2015-11-28 12:28:38
-date = 2015-11-28 11:28
-
-; post updated time, optional
-; if null, use created time
-update_date = 2015-11-28 12:28
-
-; author identifier, reference to meta.md [author.pugo], required
-author = pugo-robot
-
-; tags, optional
-tags = pugo,welcome
-</code></pre>
-
-<h4>blog content</h4>
-
-<p>Content are from the second section as <code>markdown</code> format:</p>
-<pre><code class="language-markdown">When you read the blog, `pugo` is running successfully. Then enjoy your blog journey.
-
-This blog is generated from file `source/welcome.md`. You can learn it and try to write your own blog article with following guide together.
-
-...... (markdown content)
-</code></pre>
-
-<p>Just write content after blog meta, all words will be parsed as markdown content.</p>
-</section>
-                        <aside class="aside clearfix">
-                            <a class="btn btn-primary btn-lg pull-right" href="/2015/12/29/welcome.html">Read More</a>
-                        </aside>
+<div id="cover">
+    <div class="wrapper">
+        <h1 id="title">PuGo</h1>
+        <p class="slagon">Write easily, Build quickly</p>
+        <button class="pure-button pure-button-primary" id="dl-button">0.10.0 (Beta)</button>
+        <p>
+            <img src="/img/gopher.svg" alt="gopher" id="gopher-img"/>
+        </p>
+    </div>
+</div>
+<footer id="footer">
+    <div class="wrapper">
+        <div class="pure-g">
+            <div class="pure-u-1-3">
+                <div class="box">
+                    <div class="pure-menu custom-restricted-width">
+                        <h4 class="pure-menu-heading">Release Notes</h4>
+                        <ul class="pure-menu-list">
+                            <li class="pure-menu-item"><a href="/2016/3/25/0-10-0-release.html" class="pure-menu-link">0.10.0 Released - TOML, I18n, Cloud Deploy</a></li>
+                            <li class="pure-menu-item"><a href="/2015/12/31/0-9-0-release.html" class="pure-menu-link">0.9.0 Released - Deployment support</a></li>
+                            <li class="pure-menu-item"><a href="/2015/11/20/0-8-0-release.html" class="pure-menu-link">0.8.0 Released - &#39;new&#39; Command</a></li>
+                        </ul>
                     </div>
                 </div>
-            </article>
-            
-            <article class="article">
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1 panel panel-default">
-                        <header class="header">
-                            <div class="meta">
-                        <span class="date">
-                            <span class="month">11</span>
-                            <span class="day">25</span>
-                        </span>
-                            </div>
-                            <h3 class="title">
-                                <a href="/2015/11/25/deep-in-fasthttp-package.html">阅读 valyala/fasthttp —— 比官方库更快的 HTTP 包</a>
-                            </h3>
-                        </header>
-                        <section class="brief"><p><a href="https://github.com/valyala/fasthttp">valyala/fasthttp</a> 是号称比官方<code>net/http</code>库更快的 http server 库。就去顺便研究了，发现一些细节的不同。</p>
-
-<h3>处理 net.Conn 的 goroutine</h3>
-
-<p><strong>处理net.Conn的goroutine的使用方式</strong>，和标准库有很大差别。在标准库，<code>net.Listener.Accept()</code> 到一个连接，就会开启一个goroutine：</p>
-<pre><code class="language-go">// Serve accepts incoming connections on the Listener l, creating a
-// new service goroutine for each.  The service goroutines read requests and
-// then call srv.Handler to reply to them.
-func (srv *Server) Serve(l net.Listener) error {
-    defer l.Close()
-    var tempDelay time.Duration // how long to sleep on accept failure
-    for {
-        rw, e := l.Accept()
-        if e != nil {
-            ......
-        }
-        ......
-        c, err := srv.newConn(rw)
-        if err != nil {
-            continue
-        }
-        c.setState(c.rwc, StateNew) // before Serve can return
-        go c.serve() // 在这里创建一个goroutine处理net.Conn的实际逻辑
-    }
-}
-</code></pre>
-
-<p>但是在<code>valyala/fasthttp</code>中使用的是worker的形式，开启固定数量的goroutine处理<code>net.Conn</code>。</p>
-</section>
-                        <aside class="aside clearfix">
-                            <a class="btn btn-primary btn-lg pull-right" href="/2015/11/25/deep-in-fasthttp-package.html">Read More</a>
-                        </aside>
+            </div>
+            <div class="pure-u-1-3">
+                <div class="box">
+                    <div class="pure-menu custom-restricted-width">
+                        <h4 class="pure-menu-heading">Everything in PuGo</h4>
+                        <ul class="pure-menu-list">
+                            <li class="pure-menu-item"><a href="/en/docs.html" class="pure-menu-link">Documentation</a></li>
+                            <li class="pure-menu-item"><a href="/en/guide.html" class="pure-menu-link">Quick Start</a></li>
+                            <li class="pure-menu-item"><a href="/posts/1.html" class="pure-menu-link">Releases</a></li>
+                            <li class="pure-menu-item"><a href="/showcases.html" class="pure-menu-link">Showcases</a></li>
+                        </ul>
                     </div>
                 </div>
-            </article>
-            
-            <article class="article">
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1 panel panel-default">
-                        <header class="header">
-                            <div class="meta">
-                        <span class="date">
-                            <span class="month">10</span>
-                            <span class="day">14</span>
-                        </span>
-                            </div>
-                            <h3 class="title">
-                                <a href="/2015/10/14/pugo-mem-leak-profile.html">Pugo 一次内存泄露的调优</a>
-                            </h3>
-                        </header>
-                        <section class="brief"><p>我刚刚写好新的博客程序 <a href="https://github.com/go-xiaohei/pugo">Pugo</a>，欢迎试用和体验。这两天我把个站 <a href="http://fuxiaohei.me">fuxiaohei.me</a> 迁移到新的博客程序。但是，经过一天的运行，发现内存从启动的 14MB 上升到了 228 MB。显然程序发生内存泄露，所以也开始以下调优过程。</p>
-
-<h3>PPROF</h3>
-
-<p><a href="http://blog.golang.org/profiling-go-programs">pprof</a> 是 Golang 自带的调试工具，有很多可用的工具。pprof 的调试方式有代码的方式和 HTTP 方式。其中 HTTP  调试比较方便，加入很简单的代码：</p>
-<pre><code class="language-go">import _ &quot;net/http/pprof&quot; // pprof 的 http 路由注册在自带路由上
-
-go func() {
-    http.ListenAndServe(&quot;0.0.0.0:6060&quot;, nil) // 启动默认的 http 服务，可以使用自带的路由
-}()
-
-</code></pre>
-</section>
-                        <aside class="aside clearfix">
-                            <a class="btn btn-primary btn-lg pull-right" href="/2015/10/14/pugo-mem-leak-profile.html">Read More</a>
-                        </aside>
+            </div>
+            <div class="pure-u-1-3">
+                <div class="box">
+                    <div class="pure-menu custom-restricted-width">
+                        <div id="language-box">
+                            Language <select id="lang-select" data-url="index.html">
+                                <option value="en" selected>English</option>                           
+                                <option value="zh">简体中文</option>     
+                            </select>
+                        </div>
+                        <h4 class="pure-menu-heading">GitHub</h4>
+                        <div id="github-box">
+                            <a class="github-button" href="https://github.com/go-xiaohei/pugo" data-style="mega"
+                               data-count-href="/go-xiaohei/pugo/stargazers"
+                               data-count-api="/repos/go-xiaohei/pugo#stargazers_count"
+                               data-count-aria-label="# stargazers on GitHub" aria-label="Star go-xiaohei/pugo on GitHub">Star</a>
+                        </div>
+                        <div class="cp-box">
+                            Copyright © 2016 PuGo Engine. <br/> All rights reserved.
+                        </div>
                     </div>
                 </div>
-            </article>
-            
-            <article class="article">
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1 panel panel-default">
-                        <header class="header">
-                            <div class="meta">
-                        <span class="date">
-                            <span class="month">4</span>
-                            <span class="day">29</span>
-                        </span>
-                            </div>
-                            <h3 class="title">
-                                <a href="/2015/4/29/gopher-china-2015.html">Gopher China 大会</a>
-                            </h3>
-                        </header>
-                        <section class="brief"><p>前两天去上海参加 <a href="http://gopherchina.org"><strong>Gopher China 2015</strong></a> 大会，见到很多久闻大名的大神和朋友，感觉很好。而且看到许多的企业，尤其是大企业都已经开始成规模的使用 golang，说明 golang 本身的设计和性能，已经受到了大家的认可。当然其实有很多的话题，不局限在 golang 了。</p>
-</section>
-                        <aside class="aside clearfix">
-                            <a class="btn btn-primary btn-lg pull-right" href="/2015/4/29/gopher-china-2015.html">Read More</a>
-                        </aside>
-                    </div>
-                </div>
-            </article>
-            
-            <div class="article-pager text-center">
-                
-                <a class="btn btn-lg btn-info" href="/posts/2.html">next</a>
             </div>
         </div>
     </div>
-</section>
-<footer id="footer">
-    <div class="container text-center">
-        <p>© 2015 Pugo.Static.
-            <a href="http://creativecommons.org/licenses/by/3.0/">Some rights reserved </a> |
-            <a href="/feed.xml">Feed</a> |
-            <a href="/sitemap.xml">Sitemap</a>
-        </p>
-        <p>Powered by <a href="https://github.com/go-xiaohei/pugo-static">Pugo 0.8.4</a>. Theme by Default.
-        </p>
-    </div>
 </footer>
-<script src="/static/js/jquery-2.1.4.min.js"></script>
-<script src="/static/js/bootstrap.min.js"></script>
-<script src="/static/js/prism.min.js"></script>
+<script src="/js/jquery-2.1.4.min.js"></script>
+<script src="/js/highlight.pack.js"></script>
 <script>
-    $(document).ready(function () {
-        $("pre code").addClass("line-numbers")
+    $(document).ready(function() {
+        $('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
+        $('#lang-select').on("change",function(e){
+            var $e = $(e.target);
+            window.location.href = "/"+ $e.val()+"/"+ $e.data("url");
+        });
+        $('.pure-menu-heading').on("click",function(){
+            var c = $(this).data("li");
+            $("."+c).toggle();
+        }).each(function(i,item){
+            var prefix = $(item).data("prefix");
+            if(prefix && window.location.pathname.indexOf(prefix)>0){
+                var c = $(item).data("li");
+                $("."+c).show();
+                $(item).addClass("menu-hover");
+            }
+        });
+        $('a[href="'+window.location.pathname+'"]').parent().addClass("pure-menu-selected");
     });
 </script>
+<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive - PuGo</title>
+    <title>Write New Page - PuGo</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web" type="text/css"/>
     <link rel="stylesheet" href="/css/pure-min.css"/>
     <link rel="stylesheet" href="/css/railscasts.css"/>
@@ -15,7 +15,7 @@
         <div class="pure-menu pure-menu-horizontal" id="nav">
             <a href="/" class="pure-menu-heading pure-menu-link">PUGO</a>
             <ul class="pure-menu-list" id="nav-list">
-                <li class="pure-menu-item"><a href="/en/guide.html" class="pure-menu-link">Guide</a></li>
+                <li class="pure-menu-item pure-menu-selected"><a href="/en/guide.html" class="pure-menu-link">Guide</a></li>
                 <li class="pure-menu-item"><a href="/en/docs.html" class="pure-menu-link">Docs</a></li>
                 <li class="pure-menu-item"><a href="/en/showcases.html" class="pure-menu-link">Showcases</a></li>
                 <li class="pure-menu-item"><a href="https://github.com/go-xiaohei/pugo" class="pure-menu-link">Github</a></li>
@@ -23,49 +23,135 @@
         </div>
     </div>
 </header>
-<section id="main">
-    <div class="container">
-        <div id="archive-list">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1 panel panel-default">
-                    
-                    <div class="archive">
-                        <h3>2016</h3>
-                        <hr/>
-                        
-                        <h4>
-                            <span class="date">3.25</span>
-                            <a href="/2016/3/25/0-10-0-release.html">0.10.0 Released - TOML, I18n, Cloud Deploy</a>
-                        </h4>
-                        
-                    </div>
-                    
-                    <div class="archive">
-                        <h3>2015</h3>
-                        <hr/>
-                        
-                        <h4>
-                            <span class="date">12.31</span>
-                            <a href="/2015/12/31/0-9-0-release.html">0.9.0 Released - Deployment support</a>
-                        </h4>
-                        
-                        <h4>
-                            <span class="date">11.20</span>
-                            <a href="/2015/11/20/0-8-0-release.html">0.8.0 Released - &#39;new&#39; Command</a>
-                        </h4>
-                        
-                        <h4>
-                            <span class="date">11.14</span>
-                            <a href="/2015/11/14/0-7-0-release.html">0.7.0 Released - First Version</a>
-                        </h4>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
+<div id="main">
+    <div class="wrapper">
+       <div class="pure-g">
+           <div class="pure-u-1-4">
+               <div class="pure-menu">
+    <ul class="pure-menu-list guide-nav">
+        <li class="pure-menu-heading">Getting Started</li>
+        <li class="pure-menu-item"><a href="/en/guide/install.html" class="pure-menu-link">Install PuGo</a></li>
+        <li class="pure-menu-item"><a href="/en/guide/create-new-site.html" class="pure-menu-link">Create New Site</a></li>
+        <li class="pure-menu-item"><a href="/en/guide/write-new-post.html" class="pure-menu-link">Write New Post</a></li>
+        <li class="pure-menu-item"><a href="/en/guide/write-new-page.html" class="pure-menu-link">Write New Page</a></li>
+        <li class="pure-menu-item"><a href="/en/guide/add-comment-system.html" class="pure-menu-link">Add Comment System</a></li>
+        <li class="pure-menu-item"><a href="/en/guide/build-files.html" class="pure-menu-link">Build Files</a></li>
+        <li class="pure-menu-item"><a href="/en/guide/standalone-server.html" class="pure-menu-link">Standalone Server</a></li>
+        <li class="pure-menu-item"><a href="/en/guide/deploy-nginx.html" class="pure-menu-link">Deploy to Nginx</a></li>
+    </ul>
+</div>         
+           </div>
+           <div class="pure-u-3-4 guide-page">
+               
+               <h1 class="title">Write New Page</h1>
+               <div class="content">
+                   <p>To create a new page, run command:</p>
+<pre><code class="language-bash">pugo new page &lt;title&gt;
+</code></pre>
+
+<p>The new post file is created in <code>source/page/&lt;title&gt;.md</code>. For example:</p>
+<pre><code class="language-bash">pugo new page &quot;this is a new page&quot;
+</code></pre>
+
+<p>Result is <code>source/page/this-is-a-new-post.md</code>.</p>
+
+<h3 id="front-matter">Front-Matter</h3>
+
+<p><code>Front-Matter</code> provides some details to describe your writting. Now it supports <code>toml</code> and writes as a code block in markdown.</p>
+<pre><code>```toml
+title = &quot;this is a new post&quot;
+```
+</code></pre>
+
+<p>The full items:</p>
+<pre><code class="language-toml"># post's title
+title = &quot;this is a new post&quot;
+
+# post's slug link, use to generate visitable link
+# Optional, it uses relative path that based on [source/page]
+slug = &quot;this-is-a-new-post&quot;
+
+# post's creating date
+date = &quot;2016-02-05 15:00:00&quot;
+
+# post's updating date, optional. If not set ,use creating date
+update_date = &quot;2016-02-05 16:00:00&quot;
+
+# author's name. It finds the proper author by name in meta.toml
+author = &quot;pugo&quot;
+
+# language environment. Use correct i18n tool in this page
+lang = &quot;en&quot;
+
+# use specific template file
+# Otherwise, use `page.html` as default
+template = &quot;page.html&quot;
+
+# hove class set global hover class to render this page,
+# read following &quot;Hover&quot; section
+hover = &quot;hover&quot;
+
+# meta set extra data
+# read following &quot;Meta&quot; section
+[meta]
+data1 = &quot;data1&quot;
+data2 = &quot;data2&quot; 
+</code></pre>
+
+<p><strong>Front-Matter</strong> support <code>ini</code> format.</p>
+
+<h3 id="content">Content</h3>
+
+<p>The post&rsquo;s content is <code>markdown</code> format. So just write it after <code>toml</code> block.</p>
+<pre><code class="language-md">
+# title
+
+the post content
+
+[link](/)
+
+</code></pre>
+
+<h3 id="url">URL</h3>
+<pre><code class="language-toml">slug = &quot;this-is-a-new-post&quot;
+</code></pre>
+
+<p><code>slug</code> is optional item. If you don&rsquo;s set <code>slug</code> value, use relative path to create link.</p>
+
+<p>For example, a page <code>source/page/new/this-is-page.md</code> without <code>slug</code> item. It will be built at <code>http://{domain}/new/this-is-page.html</code>.</p>
+
+<h3 id="hover">Hover</h3>
+
+<p><code>hover = &quot;hover&quot;</code> set global <code>Hover</code> var in template when rendering this page. So you can set hover status of navigation, such as :</p>
+<pre><code class="language-html">{{if eq .Hover .Nav.Hover}}
+    &lt;a href=&quot;#&quot;&gt;current link&lt;/a&gt;
+{{end}}
+</code></pre>
+
+<h3 id="meta">Meta</h3>
+<pre><code class="language-toml">[meta]
+data1 = &quot;data1&quot;
+data2 = &quot;data2&quot; 
+</code></pre>
+
+<p>You can add extra string data in a page (<strong>only support string value</strong>). So you can do some custom changes for page view. Such as :</p>
+<pre><code class="language-html">&lt;aside&gt;
+    {{range $k,$v := .Page.Meta}}
+    &lt;p&gt;&lt;span&gt;{{.$k}}:&lt;/span&gt;{{.$v}}&lt;/p&gt;
+    {{end}}
+&lt;/aside&gt;
+</code></pre>
+
+<h3 id="theme">Theme</h3>
+
+<p>All pages use template <code>theme/default/page.html</code>. If you need custom style, set <code>template = &quot;my_page.html&quot;</code> and modify <code>my_page.html</code> to display page data.</p>
+
+               </div>
+               
+           </div>
+       </div>
     </div>
-</section>
+</div>
 <footer id="footer">
     <div class="wrapper">
         <div class="pure-g">
@@ -98,7 +184,7 @@
                 <div class="box">
                     <div class="pure-menu custom-restricted-width">
                         <div id="language-box">
-                            Language <select id="lang-select" data-url="archive">
+                            Language <select id="lang-select" data-url="guide/write-new-page.html">
                                 <option value="en" selected>English</option>                           
                                 <option value="zh">简体中文</option>     
                             </select>
